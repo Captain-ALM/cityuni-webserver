@@ -4,10 +4,12 @@ import (
 	"fmt"
 	"github.com/joho/godotenv"
 	"golang.captainalm.com/cityuni-webserver/conf"
+	"golang.captainalm.com/cityuni-webserver/pageHandler"
 	"gopkg.in/yaml.v3"
 	"log"
 	"net"
 	"net/http"
+	"net/http/fcgi"
 	"os"
 	"os/signal"
 	"path"
@@ -79,13 +81,18 @@ func main() {
 	var fcgiListen net.Listener
 	switch strings.ToLower(configYml.Listen.WebMethod) {
 	case "http":
-		webServer, _ = web.New(configYml, getListener(configYml, cwdDir))
+		webServer = &http.Server{
+			Handler:           pageHandler.GetRouter(configYml),
+			ReadTimeout:       configYml.Listen.ReadTimeout,
+			ReadHeaderTimeout: configYml.Listen.WriteTimeout,
+		}
+		go runBackgroundHttp(webServer, getListener(configYml, cwdDir), false)
 	case "fcgi":
 		fcgiListen = getListener(configYml, cwdDir)
 		if fcgiListen == nil {
 			log.Fatalln("Listener Nil")
 		} else {
-			//Serve FCGI
+			go runBackgroundFCgi(pageHandler.GetRouter(configYml), fcgiListen)
 		}
 	default:
 		log.Fatalln("Unknown Web Method.")
@@ -178,5 +185,32 @@ func getListener(config conf.ConfigYaml, cwd string) net.Listener {
 			return nil
 		}
 		return theListener
+	}
+}
+
+func runBackgroundHttp(s *http.Server, l net.Listener, tlsEnabled bool) {
+	var err error
+	if tlsEnabled {
+		err = s.ServeTLS(l, "", "")
+	} else {
+		err = s.Serve(l)
+	}
+	if err != nil {
+		if err == http.ErrServerClosed {
+			log.Println("The http server shutdown successfully")
+		} else {
+			log.Fatalf("[Http] Error trying to host the http server: %s\n", err.Error())
+		}
+	}
+}
+
+func runBackgroundFCgi(h http.Handler, l net.Listener) {
+	err := fcgi.Serve(l, h)
+	if err != nil {
+		if err == net.ErrClosed {
+			log.Println("The fcgi server shutdown successfully")
+		} else {
+			log.Fatalf("[Http] Error trying to host the fcgi server: %s\n", err.Error())
+		}
 	}
 }
