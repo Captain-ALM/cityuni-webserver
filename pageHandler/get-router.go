@@ -1,0 +1,42 @@
+package pageHandler
+
+import (
+	"github.com/gorilla/mux"
+	"golang.captainalm.com/cityuni-webserver/conf"
+	"golang.captainalm.com/cityuni-webserver/pageHandler/utils"
+	"net/http"
+)
+
+var theRouter *mux.Router
+var thePageHandler *PageHandler
+
+func GetRouter(config conf.ConfigYaml) http.Handler {
+	if theRouter == nil {
+		theRouter = mux.NewRouter()
+		if thePageHandler == nil {
+			thePageHandler = NewPageHandler(config.Serve)
+		}
+		if len(config.Serve.Domains) == 0 {
+			theRouter.PathPrefix("/").HandlerFunc(thePageHandler.ServeHTTP)
+		} else {
+			for _, domain := range config.Serve.Domains {
+				theRouter.Host(domain).HandlerFunc(thePageHandler.ServeHTTP)
+			}
+			theRouter.PathPrefix("/").HandlerFunc(domainNotAllowed)
+		}
+	}
+	return theRouter
+}
+
+func domainNotAllowed(rw http.ResponseWriter, req *http.Request) {
+	if req.Method == http.MethodGet || req.Method == http.MethodHead {
+		utils.WriteResponseHeaderCanWriteBody(req.Method, rw, http.StatusNotFound, "Domain Not Allowed")
+	} else {
+		rw.Header().Set("Allow", http.MethodOptions+", "+http.MethodGet+", "+http.MethodHead)
+		if req.Method == http.MethodOptions {
+			utils.WriteResponseHeaderCanWriteBody(req.Method, rw, http.StatusOK, "")
+		} else {
+			utils.WriteResponseHeaderCanWriteBody(req.Method, rw, http.StatusMethodNotAllowed, "")
+		}
+	}
+}
