@@ -19,6 +19,7 @@ type PageHandler struct {
 	PageProviders            map[string]PageProvider
 	pageContentsCacheRWMutex *sync.RWMutex
 	RangeSupported           bool
+	FilterURLQueries         bool
 	CacheSettings            conf.CacheSettingsYaml
 }
 
@@ -40,6 +41,7 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 		PageProviders:            GetProviders(config.CacheSettings.EnableTemplateCaching, config.DataStorage),
 		pageContentsCacheRWMutex: theMutex,
 		RangeSupported:           config.RangeSupported,
+		FilterURLQueries:         config.FilterURLQueries,
 		CacheSettings:            config.CacheSettings,
 	}
 }
@@ -162,7 +164,10 @@ func (ph *PageHandler) GetCleanQuery(request *http.Request) (url.Values, string)
 		return make(url.Values), ""
 	}
 	supportedKeys := provider.GetSupportedURLParameters()
-	toDelete := make([]string, len(toClean))
+	var toDelete []string
+	if ph.FilterURLQueries {
+		toDelete = make([]string, len(toClean))
+	}
 	theSize := 0
 	theQuery := ""
 	for s, v := range toClean {
@@ -174,8 +179,10 @@ func (ph *PageHandler) GetCleanQuery(request *http.Request) (url.Values, string)
 			}
 		}
 		if noExist {
-			toDelete[theSize] = s
-			theSize++
+			if ph.FilterURLQueries {
+				toDelete[theSize] = s
+				theSize++
+			}
 		} else {
 			for _, i := range v {
 				if i == "" {
@@ -186,8 +193,10 @@ func (ph *PageHandler) GetCleanQuery(request *http.Request) (url.Values, string)
 			}
 		}
 	}
-	for i := 0; i < theSize; i++ {
-		delete(toClean, toDelete[i])
+	if ph.FilterURLQueries {
+		for i := 0; i < theSize; i++ {
+			delete(toClean, toDelete[i])
+		}
 	}
 	return toClean, strings.TrimRight(theQuery, "&")
 }
