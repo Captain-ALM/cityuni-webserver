@@ -26,7 +26,7 @@ func getListener(config conf.ConfigYaml, cwd string) net.Listener {
 	} else {
 		var theListener net.Listener
 		var theError error
-		log.Println("[Main] Socket Network Type:" + split[0])
+		log.Println("[Main] Socket Network Type: " + split[0])
 		log.Printf("[Main] Starting up %s server on %s...\n", config.Listen.WebMethod, config.Listen.Web)
 		switch split[0] {
 		case "tcp", "tcp4", "tcp6":
