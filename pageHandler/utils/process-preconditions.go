@@ -37,6 +37,7 @@ func ProcessSupportedPreconditionsForNext(rw http.ResponseWriter, req *http.Requ
 		}
 		if conditionFailed {
 			SwitchToNonCachingHeaders(rw.Header())
+			rw.Header().Del("Content-Type")
 			rw.Header().Del("Content-Length")
 			WriteResponseHeaderCanWriteBody(req.Method, rw, http.StatusPreconditionFailed, "")
 			return false
@@ -55,6 +56,7 @@ func ProcessSupportedPreconditionsForNext(rw http.ResponseWriter, req *http.Requ
 		parse, err := time.Parse(http.TimeFormat, req.Header.Get("If-Unmodified-Since"))
 		if err == nil && modT.After(parse) {
 			SwitchToNonCachingHeaders(rw.Header())
+			rw.Header().Del("Content-Type")
 			rw.Header().Del("Content-Length")
 			WriteResponseHeaderCanWriteBody(req.Method, rw, http.StatusPreconditionFailed, "")
 			return false
@@ -101,6 +103,7 @@ func ProcessRangePreconditions(maxLength int64, rw http.ResponseWriter, req *htt
 			}
 		} else {
 			SwitchToNonCachingHeaders(rw.Header())
+			rw.Header().Del("Content-Type")
 			rw.Header().Del("Content-Length")
 			rw.Header().Set("Content-Range", "bytes */"+strconv.FormatInt(maxLength, 10))
 			WriteResponseHeaderCanWriteBody(req.Method, rw, http.StatusRequestedRangeNotSatisfiable, "")
