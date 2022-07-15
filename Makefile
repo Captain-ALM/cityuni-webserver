@@ -29,3 +29,8 @@ test:
 clean:
 	go clean
 	rm -r -f dist/
+
+deploy:
+	sudo systemctl stop wappcityuni
+	sudo cp dist/wappcityuni /usr/bin/local
+	sudo systemctl start wappcityuni
