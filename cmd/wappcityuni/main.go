@@ -25,7 +25,7 @@ var (
 )
 
 func main() {
-	log.Printf("[Main] Starting up GO Package Header Server #%s (%s)\n", buildVersion, buildDate)
+	log.Printf("[Main] Starting up City Uni Portfolio Web APP #%s (%s)\n", buildVersion, buildDate)
 	y := time.Now()
 
 	//Hold main thread till safe shutdown exit:
