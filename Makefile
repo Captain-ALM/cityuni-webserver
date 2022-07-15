@@ -1,11 +1,12 @@
 SHELL := /bin/bash
-BIN := dist/wappcityuni
-ENTRY_POINT := ./cmd/wappcityuni
+PRODUCT_NAME := wappcityuni
+BIN := dist/${PRODUCT_NAME}
+ENTRY_POINT := ./cmd/${PRODUCT_NAME}
 HASH := $(shell git rev-parse --short HEAD)
 COMMIT_DATE := $(shell git show -s --format=%ci ${HASH})
 BUILD_DATE := $(shell date '+%Y-%m-%d %H:%M:%S')
 VERSION := ${HASH}
-LD_FLAGS := -s -w -X 'main.buildVersion=${VERSION}' -X 'main.buildDate=${BUILD_DATE}'
+LD_FLAGS := -s -w -X 'main.buildVersion=${VERSION}' -X 'main.buildDate=${BUILD_DATE}' -X 'main.buildName=${PRODUCT_NAME}'
 COMP_BIN := go
 
 ifeq ($(OS),Windows_NT)

@@ -5,6 +5,7 @@ listen:
   identify: true
 serve:
   rangeSupported: true
+  enableGoInfoPage: true
   cacheSettings:
     enableContentsCaching: true
     enableContentsCachePurge: true

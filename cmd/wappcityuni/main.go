@@ -5,6 +5,7 @@ import (
 	"github.com/joho/godotenv"
 	"golang.captainalm.com/cityuni-webserver/conf"
 	"golang.captainalm.com/cityuni-webserver/pageHandler"
+	"golang.captainalm.com/cityuni-webserver/utils/info"
 	"gopkg.in/yaml.v3"
 	"log"
 	"net"
@@ -20,13 +21,16 @@ import (
 )
 
 var (
-	buildVersion = "develop"
-	buildDate    = ""
+	buildName        = ""
+	buildDescription = "City Uni Portfolio Web APP"
+	buildVersion     = "develop"
+	buildDate        = ""
 )
 
 func main() {
-	log.Printf("[Main] Starting up City Uni Portfolio Web APP #%s (%s)\n", buildVersion, buildDate)
+	log.Printf("[Main] Starting up %s (%s) #%s (%s)\n", buildDescription, buildName, buildVersion, buildDate)
 	y := time.Now()
+	info.SetupProductInfo(buildName, buildDescription, buildVersion, buildDate)
 
 	//Hold main thread till safe shutdown exit:
 	wg := &sync.WaitGroup{}
@@ -78,6 +82,8 @@ func main() {
 	//Server definitions:
 	var webServer *http.Server
 	var fcgiListen net.Listener
+	info.ListenSettings = configYml.Listen
+	info.ServeSettings = configYml.Serve
 	switch strings.ToLower(configYml.Listen.WebMethod) {
 	case "http":
 		webServer = &http.Server{Handler: pageHandler.GetRouter(configYml)}

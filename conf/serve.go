@@ -5,5 +5,6 @@ type ServeYaml struct {
 	Domains          []string          `yaml:"domains"`
 	RangeSupported   bool              `yaml:"rangeSupported"`
 	FilterURLQueries bool              `yaml:"filterURLQueries"`
+	EnableGoInfoPage bool              `yaml:"enableGoInfoPage"`
 	CacheSettings    CacheSettingsYaml `yaml:"cacheSettings"`
 }

@@ -36,14 +36,19 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 		thePCCMap = make(map[string]*CachedPage)
 		theMutex = &sync.RWMutex{}
 	}
-	return &PageHandler{
+	toReturn := &PageHandler{
 		PageContentsCache:        thePCCMap,
-		PageProviders:            GetProviders(config.CacheSettings.EnableTemplateCaching, config.DataStorage),
 		pageContentsCacheRWMutex: theMutex,
 		RangeSupported:           config.RangeSupported,
 		FilterURLQueries:         config.FilterURLQueries,
 		CacheSettings:            config.CacheSettings,
 	}
+	if config.EnableGoInfoPage {
+		toReturn.PageProviders = GetProviders(config.CacheSettings.EnableTemplateCaching, config.DataStorage, toReturn)
+	} else {
+		toReturn.PageProviders = GetProviders(config.CacheSettings.EnableTemplateCaching, config.DataStorage, nil)
+	}
+	return toReturn
 }
 
 func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
@@ -295,4 +300,26 @@ func (ph *PageHandler) getAllowedMethodsForPath(pathIn string) []string {
 			return []string{http.MethodHead, http.MethodGet, http.MethodOptions}
 		}
 	}
+}
+
+func (ph *PageHandler) GetRegisteredPages() []string {
+	pages := make([]string, len(ph.PageProviders))
+	index := 0
+	for s := range ph.PageProviders {
+		pages[index] = s
+		index++
+	}
+	return pages
+}
+
+func (ph *PageHandler) GetCachedPages() []string {
+	ph.pageContentsCacheRWMutex.Lock()
+	defer ph.pageContentsCacheRWMutex.Unlock()
+	pages := make([]string, len(ph.PageContentsCache))
+	index := 0
+	for s := range ph.PageContentsCache {
+		pages[index] = s
+		index++
+	}
+	return pages
 }
