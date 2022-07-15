@@ -26,13 +26,13 @@ func (tp *TestPage) GetLastModified() time.Time {
 	return startTime
 }
 
-func (tp *TestPage) GetContents(urlParameters url.Values) (contentType string, contents []byte) {
+func (tp *TestPage) GetContents(urlParameters url.Values) (contentType string, contents []byte, canCache bool) {
 	if val, ok := urlParameters["test"]; ok {
 		if len(val) > 0 {
-			return "text/plain", ([]byte)("Testing!\r\n" + val[0])
+			return "text/plain", ([]byte)("Testing!\r\n" + val[0]), len(val) == 1
 		}
 	}
-	return "text/plain", ([]byte)("Testing!")
+	return "text/plain", ([]byte)("Testing!"), true
 }
 
 func (tp *TestPage) PurgeTemplate() {

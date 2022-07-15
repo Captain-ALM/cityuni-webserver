@@ -65,9 +65,10 @@ func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Reque
 
 	if pageContentType == "" {
 		if provider := ph.PageProviders[actualPagePath]; provider != nil {
-			pageContentType, pageContent = provider.GetContents(queryCollection)
+			var canCache bool
+			pageContentType, pageContent, canCache = provider.GetContents(queryCollection)
 			lastMod = provider.GetLastModified()
-			if pageContentType != "" && ph.CacheSettings.EnableContentsCaching {
+			if pageContentType != "" && canCache && ph.CacheSettings.EnableContentsCaching {
 				ph.setPageToCache(request.URL, actualQueries, &CachedPage{
 					Content:     pageContent,
 					ContentType: pageContentType,
