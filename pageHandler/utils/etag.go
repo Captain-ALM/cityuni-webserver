@@ -1,11 +1,17 @@
 package utils
 
 import (
+	"crypto"
+	"encoding/hex"
 	"strings"
 )
 
-func GetValueForETagUsingBufferedWriter(bWriter *BufferedWriter) string {
-	return "\"" + bWriter.GetHashString() + "\""
+func GetValueForETagUsingByteArray(b []byte) string {
+	theHash := crypto.SHA1.New()
+	_, _ = theHash.Write(b)
+	theSum := theHash.Sum(nil)
+	theHash.Reset()
+	return "\"" + hex.EncodeToString(theSum) + "\""
 }
 
 func GetETagValues(stringIn string) []string {
