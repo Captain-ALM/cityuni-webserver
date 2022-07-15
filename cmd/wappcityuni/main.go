@@ -80,11 +80,7 @@ func main() {
 	var fcgiListen net.Listener
 	switch strings.ToLower(configYml.Listen.WebMethod) {
 	case "http":
-		webServer = &http.Server{
-			Handler:           pageHandler.GetRouter(configYml),
-			ReadTimeout:       configYml.Listen.ReadTimeout,
-			ReadHeaderTimeout: configYml.Listen.WriteTimeout,
-		}
+		webServer = &http.Server{Handler: pageHandler.GetRouter(configYml)}
 		go runBackgroundHttp(webServer, getListener(configYml, cwdDir), false)
 	case "fcgi":
 		fcgiListen = getListener(configYml, cwdDir)

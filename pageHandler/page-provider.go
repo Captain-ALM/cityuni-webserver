@@ -1,7 +1,10 @@
 package pageHandler
 
+import "net/url"
+
 type PageProvider interface {
 	GetPath() string
-	GetContents(urlParameters map[string]string) (contentType string, contents []byte)
+	GetSupportedURLParameters() []string
+	GetContents(urlParameters url.Values) (contentType string, contents []byte)
 	PurgeTemplate()
 }

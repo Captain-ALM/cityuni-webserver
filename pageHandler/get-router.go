@@ -24,6 +24,9 @@ func GetRouter(config conf.ConfigYaml) http.Handler {
 			}
 			theRouter.PathPrefix("/").HandlerFunc(domainNotAllowed)
 		}
+		if config.Listen.Identify {
+			theRouter.Use(headerMiddleware)
+		}
 	}
 	return theRouter
 }
@@ -39,4 +42,13 @@ func domainNotAllowed(rw http.ResponseWriter, req *http.Request) {
 			utils.WriteResponseHeaderCanWriteBody(req.Method, rw, http.StatusMethodNotAllowed, "")
 		}
 	}
+}
+
+func headerMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Server", "Clerie Gilbert")
+		w.Header().Set("X-Powered-By", "Love")
+		w.Header().Set("X-Friendly", "True")
+		next.ServeHTTP(w, r)
+	})
 }

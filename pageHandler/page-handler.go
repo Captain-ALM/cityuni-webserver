@@ -3,6 +3,7 @@ package pageHandler
 import (
 	"golang.captainalm.com/cityuni-webserver/conf"
 	"net/http"
+	"net/url"
 	"strings"
 	"sync"
 )
@@ -24,7 +25,7 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 	}
 	return &PageHandler{
 		PageContentsCache:        thePCCMap,
-		PageProviders:            GetProviders(config.CacheSettings.EnableTemplateCaching),
+		PageProviders:            GetProviders(config.CacheSettings.EnableTemplateCaching, config.DataStorage),
 		pageContentsCacheRWMutex: theMutex,
 		RangeSupported:           config.RangeSupported,
 		CacheSettings:            config.CacheSettings,
@@ -33,6 +34,34 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 
 func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	//Provide processing for requests using providers
+}
+
+func (ph *PageHandler) GetCleanQuery(request *http.Request) url.Values {
+	toClean := request.URL.Query()
+	provider := ph.PageProviders[request.URL.Path]
+	if provider == nil {
+		return make(url.Values)
+	}
+	supportedKeys := provider.GetSupportedURLParameters()
+	toDelete := make([]string, len(toClean))
+	theSize := 0
+	for s := range toClean {
+		noExist := true
+		for _, key := range supportedKeys {
+			if s == key {
+				noExist = false
+				break
+			}
+		}
+		if noExist {
+			toDelete[theSize] = s
+			theSize++
+		}
+	}
+	for i := 0; i < theSize; i++ {
+		delete(toClean, toDelete[i])
+	}
+	return toClean
 }
 
 func (ph *PageHandler) PurgeContentsCache(path string, query string) {

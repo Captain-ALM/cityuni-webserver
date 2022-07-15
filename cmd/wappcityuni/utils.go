@@ -31,13 +31,6 @@ func getListener(config conf.ConfigYaml, cwd string) net.Listener {
 		switch split[0] {
 		case "tcp", "tcp4", "tcp6":
 			theListener, theError = net.Listen(strings.ToLower(config.Listen.WebNetwork), config.Listen.Web)
-			if theError == nil && strings.ToLower(config.Listen.WebMethod) == "fcgi" {
-				theListener = &tListener{
-					Listener:     theListener,
-					ReadTimeout:  config.Listen.ReadTimeout,
-					WriteTimeout: config.Listen.WriteTimeout,
-				}
-			}
 		case "unix", "unixgram", "unixpacket":
 			socketPath := config.Listen.Web
 			if !filepath.IsAbs(socketPath) {
