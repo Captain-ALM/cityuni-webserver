@@ -19,7 +19,6 @@ type PageHandler struct {
 	PageProviders            map[string]PageProvider
 	pageContentsCacheRWMutex *sync.RWMutex
 	RangeSupported           bool
-	FilterURLQueries         bool
 	CacheSettings            conf.CacheSettingsYaml
 }
 
@@ -40,7 +39,6 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 		PageContentsCache:        thePCCMap,
 		pageContentsCacheRWMutex: theMutex,
 		RangeSupported:           config.RangeSupported,
-		FilterURLQueries:         config.FilterURLQueries,
 		CacheSettings:            config.CacheSettings,
 	}
 	if config.EnableGoInfoPage {

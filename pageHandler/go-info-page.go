@@ -20,12 +20,16 @@ func newGoInfoPage(handlerIn *PageHandler, dataStore string, cacheTemplates bool
 	if cacheTemplates {
 		ptm = &sync.Mutex{}
 	}
-	return &goInfoPage{
+	pageToReturn := &goInfoPage{
 		Handler:           handlerIn,
 		DataStore:         dataStore,
 		CacheTemplate:     cacheTemplates,
 		PageTemplateMutex: ptm,
 	}
+	if !cacheTemplates {
+		_, _ = pageToReturn.getPageTemplate()
+	}
+	return pageToReturn
 }
 
 type goInfoPage struct {
@@ -49,6 +53,7 @@ type goInfoTemplateMarshal struct {
 	RegisteredPages    []string
 	CachedPages        []string
 	ProcessID          int
+	ParentProcessID    int
 	ProductLocation    string
 	ProductName        string
 	ProductDescription string
@@ -63,6 +68,9 @@ type goInfoTemplateMarshal struct {
 	NumCPU             int
 	GoRoot             string
 	GoMaxProcs         int
+	Compiler           string
+	GoArch             string
+	GoOS               string
 	ListenSettings     conf.ListenYaml
 	ServeSettings      conf.ServeYaml
 	Environment        []string
@@ -102,6 +110,7 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 		RegisteredPages:    regPages,
 		CachedPages:        cacPages,
 		ProcessID:          os.Getpid(),
+		ParentProcessID:    os.Getppid(),
 		ProductLocation:    getStringOrError(os.Executable),
 		ProductName:        info.BuildName,
 		ProductDescription: info.BuildDescription,
@@ -116,6 +125,9 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 		NumCPU:             runtime.NumCPU(),
 		GoRoot:             runtime.GOROOT(),
 		GoMaxProcs:         runtime.GOMAXPROCS(0),
+		Compiler:           runtime.Compiler,
+		GoArch:             runtime.GOARCH,
+		GoOS:               runtime.GOOS,
 		ListenSettings:     info.ListenSettings,
 		ServeSettings:      info.ServeSettings,
 		Environment:        env,
