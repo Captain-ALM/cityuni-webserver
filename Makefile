@@ -25,13 +25,13 @@ dev:
 	./${BIN}
 
 test:
-	go test
+	${COMP_BIN} test
 
 clean:
-	go clean
+	${COMP_BIN} clean
 	rm -r -f dist/
 
 deploy:
 	sudo systemctl stop wappcityuni
-	sudo cp dist/wappcityuni /usr/bin/local
+	sudo cp "${BIN}" /usr/bin/local
 	sudo systemctl start wappcityuni
