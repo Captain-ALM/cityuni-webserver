@@ -32,6 +32,6 @@ clean:
 	rm -r -f dist/
 
 deploy:
-	systemctl stop wappcityuni
-	cp "${BIN}" /usr/bin/local
-	systemctl start wappcityuni
+	sudo systemctl stop wappcityuni
+	sudo cp "${BIN}" /usr/local/bin
+	sudo systemctl start wappcityuni
