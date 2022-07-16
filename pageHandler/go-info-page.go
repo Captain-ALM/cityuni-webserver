@@ -2,8 +2,8 @@ package pageHandler
 
 import (
 	"golang.captainalm.com/cityuni-webserver/conf"
-	"golang.captainalm.com/cityuni-webserver/pageHandler/utils"
 	"golang.captainalm.com/cityuni-webserver/utils/info"
+	"golang.captainalm.com/cityuni-webserver/utils/io"
 	"html/template"
 	"net/url"
 	"os"
@@ -85,7 +85,7 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 	if err != nil {
 		return "text/plain", []byte("Cannot Get Info.\r\n" + err.Error()), false
 	}
-	theBuffer := &utils.BufferedWriter{}
+	theBuffer := &io.BufferedWriter{}
 	var regPages []string
 	var cacPages []string
 	env := make([]string, 0)

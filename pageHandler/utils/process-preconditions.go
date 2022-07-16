@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"golang.captainalm.com/cityuni-webserver/utils/io"
 	"mime/multipart"
 	"net/http"
 	"net/textproto"
@@ -117,7 +118,7 @@ func ProcessRangePreconditions(maxLength int64, rw http.ResponseWriter, req *htt
 }
 
 func GetMultipartLength(parts []ContentRangeValue, contentType string, maxLength int64) int64 {
-	cWriter := &CountingWriter{Length: 0}
+	cWriter := &io.CountingWriter{Length: 0}
 	var returnLength int64 = 0
 	multWriter := multipart.NewWriter(cWriter)
 	for _, currentPart := range parts {

@@ -1,4 +1,4 @@
-package utils
+package io
 
 type CountingWriter struct {
 	Length int64

@@ -1,4 +1,4 @@
-package utils
+package io
 
 type BufferedWriter struct {
 	Data []byte
