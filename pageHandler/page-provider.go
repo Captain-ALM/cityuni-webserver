@@ -7,8 +7,8 @@ import (
 
 type PageProvider interface {
 	GetPath() string
-	GetSupportedURLParameters() []string
 	GetLastModified() time.Time
+	GetCacheIDExtension(urlParameters url.Values) string
 	GetContents(urlParameters url.Values) (contentType string, contents []byte, canCache bool)
 	PurgeTemplate()
 }

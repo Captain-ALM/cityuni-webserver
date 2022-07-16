@@ -53,26 +53,30 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 
 func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
 	actualPagePath := strings.TrimRight(request.URL.Path, "/")
-	queryCollection, actualQueries := ph.GetCleanQuery(request)
 
+	var currentProvider PageProvider
+	canCache := false
+	actualQueries := ""
+	queryValues := request.URL.Query()
 	var pageContent []byte
-	var pageContentType string
+	pageContentType := ""
 	var lastMod time.Time
 
-	if ph.CacheSettings.EnableContentsCaching {
-		cached := ph.getPageFromCache(request.URL, actualQueries)
-		if cached != nil {
-			pageContent = cached.Content
-			pageContentType = cached.ContentType
-			lastMod = cached.LastMod
-		}
-	}
+	if currentProvider = ph.PageProviders[actualPagePath]; currentProvider != nil {
+		actualQueries = currentProvider.GetCacheIDExtension(queryValues)
 
-	if pageContentType == "" {
-		if provider := ph.PageProviders[actualPagePath]; provider != nil {
-			var canCache bool
-			pageContentType, pageContent, canCache = provider.GetContents(queryCollection)
-			lastMod = provider.GetLastModified()
+		if ph.CacheSettings.EnableContentsCaching {
+			cached := ph.getPageFromCache(request.URL, actualQueries)
+			if cached != nil {
+				pageContent = cached.Content
+				pageContentType = cached.ContentType
+				lastMod = cached.LastMod
+			}
+		}
+
+		if pageContentType == "" {
+			pageContentType, pageContent, canCache = currentProvider.GetContents(queryValues)
+			lastMod = currentProvider.GetLastModified()
 			if pageContentType != "" && canCache && ph.CacheSettings.EnableContentsCaching {
 				ph.setPageToCache(request.URL, actualQueries, &CachedPage{
 					Content:     pageContent,
@@ -161,50 +165,6 @@ func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Reque
 			utils.WriteResponseHeaderCanWriteBody(request.Method, writer, http.StatusMethodNotAllowed, "")
 		}
 	}
-}
-
-func (ph *PageHandler) GetCleanQuery(request *http.Request) (url.Values, string) {
-	toClean := request.URL.Query()
-	provider := ph.PageProviders[request.URL.Path]
-	if provider == nil {
-		return make(url.Values), ""
-	}
-	supportedKeys := provider.GetSupportedURLParameters()
-	var toDelete []string
-	if ph.FilterURLQueries {
-		toDelete = make([]string, len(toClean))
-	}
-	theSize := 0
-	theQuery := ""
-	for s, v := range toClean {
-		noExist := true
-		for _, key := range supportedKeys {
-			if s == key {
-				noExist = false
-				break
-			}
-		}
-		if noExist {
-			if ph.FilterURLQueries {
-				toDelete[theSize] = s
-				theSize++
-			}
-		} else {
-			for _, i := range v {
-				if i == "" {
-					theQuery += s + "&"
-				} else {
-					theQuery += s + "=" + i + "&"
-				}
-			}
-		}
-	}
-	if ph.FilterURLQueries {
-		for i := 0; i < theSize; i++ {
-			delete(toClean, toDelete[i])
-		}
-	}
-	return toClean, strings.TrimRight(theQuery, "&")
 }
 
 func (ph *PageHandler) PurgeContentsCache(path string, query string) {
@@ -313,8 +273,8 @@ func (ph *PageHandler) GetRegisteredPages() []string {
 }
 
 func (ph *PageHandler) GetCachedPages() []string {
-	ph.pageContentsCacheRWMutex.Lock()
-	defer ph.pageContentsCacheRWMutex.Unlock()
+	ph.pageContentsCacheRWMutex.RLock()
+	defer ph.pageContentsCacheRWMutex.RUnlock()
 	pages := make([]string, len(ph.PageContentsCache))
 	index := 0
 	for s := range ph.PageContentsCache {
@@ -322,4 +282,10 @@ func (ph *PageHandler) GetCachedPages() []string {
 		index++
 	}
 	return pages
+}
+
+func (ph *PageHandler) GetNumberOfCachedPages() int {
+	ph.pageContentsCacheRWMutex.RLock()
+	defer ph.pageContentsCacheRWMutex.RUnlock()
+	return len(ph.PageContentsCache)
 }

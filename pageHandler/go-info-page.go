@@ -36,14 +36,27 @@ type goInfoPage struct {
 	PageTemplate      *template.Template
 }
 
+func (gipg *goInfoPage) GetCacheIDExtension(urlParameters url.Values) string {
+	if urlParameters.Has("full") {
+		return "full"
+	} else {
+		return ""
+	}
+}
+
 type goInfoTemplateMarshal struct {
 	FullOutput         bool
 	RegisteredPages    []string
 	CachedPages        []string
+	ProcessID          int
+	ProductLocation    string
 	ProductName        string
 	ProductDescription string
 	BuildVersion       string
 	BuildDate          string
+	WorkingDirectory   string
+	Hostname           string
+	PageSize           int
 	GoVersion          string
 	GoRoutineNum       int
 	GoCGoCallNum       int64
@@ -52,6 +65,7 @@ type goInfoTemplateMarshal struct {
 	GoMaxProcs         int
 	ListenSettings     conf.ListenYaml
 	ServeSettings      conf.ServeYaml
+	Environment        []string
 }
 
 func (gipg *goInfoPage) GetPath() string {
@@ -72,14 +86,30 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 		return "text/plain", []byte("Cannot Get Info.\r\n" + err.Error()), false
 	}
 	theBuffer := &utils.BufferedWriter{}
+	var regPages []string
+	var cacPages []string
+	env := make([]string, 0)
+	if urlParameters.Has("full") {
+		regPages = gipg.Handler.GetRegisteredPages()
+		cacPages = gipg.Handler.GetCachedPages()
+		env = os.Environ()
+	} else {
+		regPages = make([]string, len(gipg.Handler.PageProviders))
+		cacPages = make([]string, gipg.Handler.GetNumberOfCachedPages())
+	}
 	err = theTemplate.ExecuteTemplate(theBuffer, templateName, &goInfoTemplateMarshal{
 		FullOutput:         urlParameters.Has("full"),
-		RegisteredPages:    gipg.Handler.GetRegisteredPages(),
-		CachedPages:        gipg.Handler.GetCachedPages(),
+		RegisteredPages:    regPages,
+		CachedPages:        cacPages,
+		ProcessID:          os.Getpid(),
+		ProductLocation:    getStringOrError(os.Executable),
 		ProductName:        info.BuildName,
 		ProductDescription: info.BuildDescription,
 		BuildVersion:       info.BuildVersion,
 		BuildDate:          info.BuildDate,
+		WorkingDirectory:   getStringOrError(os.Getwd),
+		Hostname:           getStringOrError(os.Hostname),
+		PageSize:           os.Getpagesize(),
 		GoVersion:          runtime.Version(),
 		GoRoutineNum:       runtime.NumGoroutine(),
 		GoCGoCallNum:       runtime.NumCgoCall(),
@@ -88,6 +118,7 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 		GoMaxProcs:         runtime.GOMAXPROCS(0),
 		ListenSettings:     info.ListenSettings,
 		ServeSettings:      info.ServeSettings,
+		Environment:        env,
 	})
 	if err != nil {
 		return "text/plain", []byte("Cannot Get Info.\r\n" + err.Error()), false
@@ -127,5 +158,14 @@ func (gipg *goInfoPage) getPageTemplate() (*template.Template, error) {
 		return tmpl, nil
 	} else {
 		return gipg.PageTemplate, nil
+	}
+}
+
+func getStringOrError(funcIn func() (string, error)) string {
+	toReturn, err := funcIn()
+	if err == nil {
+		return toReturn
+	} else {
+		return "Error: " + err.Error()
 	}
 }
