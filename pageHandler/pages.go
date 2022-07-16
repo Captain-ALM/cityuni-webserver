@@ -1,5 +1,7 @@
 package pageHandler
 
+import "golang.captainalm.com/cityuni-webserver/pageHandler/pages/index"
+
 var providers map[string]PageProvider
 
 func GetProviders(cacheTemplates bool, dataStorage string, pageHandler *PageHandler) map[string]PageProvider {
@@ -9,8 +11,8 @@ func GetProviders(cacheTemplates bool, dataStorage string, pageHandler *PageHand
 			infoPage := newGoInfoPage(pageHandler, dataStorage, cacheTemplates)
 			providers[infoPage.GetPath()] = infoPage //Go Information Page
 		}
-
-		//Add the providers in the pages sub package
+		indexPage := index.NewPage(dataStorage, cacheTemplates)
+		providers[indexPage.GetPath()] = indexPage
 	}
 	return providers
 }

@@ -13,7 +13,7 @@ ifeq ($(OS),Windows_NT)
 	BIN := $(BIN).exe
 endif
 
-.PHONY: build dev test clean
+.PHONY: build dev test clean deploy
 
 build:
 	mkdir -p dist/
@@ -31,7 +31,7 @@ clean:
 	${COMP_BIN} clean
 	rm -r -f dist/
 
-deploy:
+deploy: build
 	sudo systemctl stop wappcityuni
 	sudo cp "${BIN}" /usr/local/bin
 	sudo systemctl start wappcityuni

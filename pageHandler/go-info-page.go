@@ -23,7 +23,6 @@ func newGoInfoPage(handlerIn *PageHandler, dataStore string, cacheTemplates bool
 	pageToReturn := &goInfoPage{
 		Handler:           handlerIn,
 		DataStore:         dataStore,
-		CacheTemplate:     cacheTemplates,
 		PageTemplateMutex: ptm,
 	}
 	if !cacheTemplates {
@@ -35,7 +34,6 @@ func newGoInfoPage(handlerIn *PageHandler, dataStore string, cacheTemplates bool
 type goInfoPage struct {
 	Handler           *PageHandler
 	DataStore         string
-	CacheTemplate     bool
 	PageTemplateMutex *sync.Mutex
 	PageTemplate      *template.Template
 }
@@ -78,10 +76,6 @@ type goInfoTemplateMarshal struct {
 
 func (gipg *goInfoPage) GetPath() string {
 	return "/goinfo.go"
-}
-
-func (gipg *goInfoPage) GetSupportedURLParameters() []string {
-	return []string{"full"}
 }
 
 func (gipg *goInfoPage) GetLastModified() time.Time {
@@ -139,7 +133,7 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 }
 
 func (gipg *goInfoPage) PurgeTemplate() {
-	if gipg.CacheTemplate {
+	if gipg.PageTemplateMutex != nil {
 		gipg.PageTemplateMutex.Lock()
 		gipg.PageTemplate = nil
 		gipg.PageTemplateMutex.Unlock()
@@ -147,7 +141,7 @@ func (gipg *goInfoPage) PurgeTemplate() {
 }
 
 func (gipg *goInfoPage) getPageTemplate() (*template.Template, error) {
-	if gipg.CacheTemplate {
+	if gipg.PageTemplateMutex != nil {
 		gipg.PageTemplateMutex.Lock()
 		defer gipg.PageTemplateMutex.Unlock()
 	}
@@ -164,7 +158,7 @@ func (gipg *goInfoPage) getPageTemplate() (*template.Template, error) {
 		if err != nil {
 			return nil, err
 		}
-		if gipg.CacheTemplate {
+		if gipg.PageTemplateMutex != nil {
 			gipg.PageTemplate = tmpl
 		}
 		return tmpl, nil
