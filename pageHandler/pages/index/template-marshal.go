@@ -8,6 +8,7 @@ type Marshal struct {
 	OrderEndDate   int8
 	OrderName      int8
 	OrderDuration  int8
+	Light          bool
 }
 
 func (m Marshal) GetEntries() (toReturn []EntryYaml) {

@@ -25,9 +25,6 @@ func newGoInfoPage(handlerIn *PageHandler, dataStore string, cacheTemplates bool
 		DataStore:         dataStore,
 		PageTemplateMutex: ptm,
 	}
-	if !cacheTemplates {
-		_, _ = pageToReturn.getPageTemplate()
-	}
 	return pageToReturn
 }
 
@@ -87,7 +84,6 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 	if err != nil {
 		return "text/plain", []byte("Cannot Get Info.\r\n" + err.Error()), false
 	}
-	theBuffer := &io.BufferedWriter{}
 	var regPages []string
 	var cacPages []string
 	env := make([]string, 0)
@@ -99,6 +95,7 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 		regPages = make([]string, len(gipg.Handler.PageProviders))
 		cacPages = make([]string, gipg.Handler.GetNumberOfCachedPages())
 	}
+	theBuffer := &io.BufferedWriter{}
 	err = theTemplate.ExecuteTemplate(theBuffer, templateName, &goInfoTemplateMarshal{
 		FullOutput:         urlParameters.Has("full"),
 		RegisteredPages:    regPages,

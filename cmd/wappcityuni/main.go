@@ -78,6 +78,10 @@ func main() {
 	if err != nil {
 		log.Fatalln("Failed to parse config.yml:", err)
 	}
+	err = configFile.Close()
+	if err != nil {
+		log.Println("Failed to close config file.")
+	}
 
 	//Server definitions:
 	var webServer *http.Server

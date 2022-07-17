@@ -1,6 +1,8 @@
 package index
 
 import (
+	"golang.captainalm.com/cityuni-webserver/utils/io"
+	"gopkg.in/yaml.v3"
 	"html/template"
 	"net/url"
 	"os"
@@ -11,6 +13,7 @@ import (
 )
 
 const templateName = "index.go.html"
+const yamlName = "index.go.yml"
 
 func NewPage(dataStore string, cacheTemplates bool) *Page {
 	var ptm *sync.Mutex
@@ -19,19 +22,20 @@ func NewPage(dataStore string, cacheTemplates bool) *Page {
 	}
 	pageToReturn := &Page{
 		DataStore:         dataStore,
+		StoredDataMutex:   &sync.Mutex{},
 		PageTemplateMutex: ptm,
-	}
-	if !cacheTemplates {
-		_, _ = pageToReturn.getPageTemplate()
 	}
 	return pageToReturn
 }
 
 type Page struct {
-	DataStore         string
-	PageTemplateMutex *sync.Mutex
-	PageTemplate      *template.Template
-	LastModified      time.Time
+	DataStore            string
+	StoredDataMutex      *sync.Mutex
+	StoredData           *DataYaml
+	LastModifiedData     time.Time
+	PageTemplateMutex    *sync.Mutex
+	PageTemplate         *template.Template
+	LastModifiedTemplate time.Time
 }
 
 func (p *Page) GetPath() string {
@@ -39,29 +43,51 @@ func (p *Page) GetPath() string {
 }
 
 func (p *Page) GetLastModified() time.Time {
-	return p.LastModified
+	if p.LastModifiedData.After(p.LastModifiedTemplate) {
+		return p.LastModifiedData
+	} else {
+		return p.LastModifiedTemplate
+	}
 }
 
 func (p *Page) GetCacheIDExtension(urlParameters url.Values) string {
 	toReturn := ""
 	if urlParameters.Has("order") {
-		if theParameter := strings.ToLower(urlParameters.Get("order"));
-			theParameter == "start" || theParameter == "end" || theParameter == "name" || theParameter == "duration" {
+		if theParameter := strings.ToLower(urlParameters.Get("order")); theParameter == "start" || theParameter == "end" || theParameter == "name" || theParameter == "duration" {
 			toReturn += "order=" + theParameter + "&"
 		}
 	}
 	if urlParameters.Has("sort") {
-		if theParameter := strings.ToLower(urlParameters.Get("sort"));
-			theParameter == "asc" || theParameter == "ascending" || theParameter == "desc" || theParameter == "descending" {
-			toReturn += "sort=" + theParameter
+		if theParameter := strings.ToLower(urlParameters.Get("sort")); theParameter == "asc" || theParameter == "ascending" || theParameter == "desc" || theParameter == "descending" {
+			toReturn += "sort=" + theParameter + "&"
 		}
+	}
+	if urlParameters.Has("light") {
+		toReturn += "light"
 	}
 	return strings.TrimRight(toReturn, "&")
 }
 
 func (p *Page) GetContents(urlParameters url.Values) (contentType string, contents []byte, canCache bool) {
-	//TODO implement me
-	panic("implement me")
+	theTemplate, err := p.getPageTemplate()
+	if err != nil {
+		return "text/plain", []byte("Cannot Get Index.\r\n" + err.Error()), false
+	}
+	theData, err := p.getPageData()
+	if err != nil {
+		return "text/plain", []byte("Cannot Get Data.\r\n" + err.Error()), false
+	}
+	theMarshal := &Marshal{
+		Data:  *theData,
+		Light: urlParameters.Has("light"),
+	}
+	//Set up sorting here
+	theBuffer := &io.BufferedWriter{}
+	err = theTemplate.ExecuteTemplate(theBuffer, templateName, theMarshal)
+	if err != nil {
+		return "text/plain", []byte("Cannot Get Page.\r\n" + err.Error()), false
+	}
+	return "text/html", theBuffer.Data, true
 }
 
 func (p *Page) PurgeTemplate() {
@@ -69,6 +95,11 @@ func (p *Page) PurgeTemplate() {
 		p.PageTemplateMutex.Lock()
 		p.PageTemplate = nil
 		p.PageTemplateMutex.Unlock()
+	}
+	if p.StoredDataMutex != nil {
+		p.StoredDataMutex.Lock()
+		p.StoredData = nil
+		p.StoredDataMutex.Unlock()
 	}
 }
 
@@ -82,6 +113,11 @@ func (p *Page) getPageTemplate() (*template.Template, error) {
 		if p.DataStore != "" {
 			thePath = path.Join(p.DataStore, thePath)
 		}
+		stat, err := os.Stat(thePath)
+		if err != nil {
+			return nil, err
+		}
+		p.LastModifiedTemplate = stat.ModTime()
 		loadedData, err := os.ReadFile(thePath)
 		if err != nil {
 			return nil, err
@@ -96,5 +132,44 @@ func (p *Page) getPageTemplate() (*template.Template, error) {
 		return tmpl, nil
 	} else {
 		return p.PageTemplate, nil
+	}
+}
+
+func (p *Page) getPageData() (*DataYaml, error) {
+	if p.StoredDataMutex != nil {
+		p.StoredDataMutex.Lock()
+		defer p.StoredDataMutex.Unlock()
+	}
+	if p.StoredData == nil {
+		thePath := yamlName
+		if p.DataStore != "" {
+			thePath = path.Join(p.DataStore, thePath)
+		}
+		stat, err := os.Stat(thePath)
+		if err != nil {
+			return nil, err
+		}
+		p.LastModifiedData = stat.ModTime()
+		fileHandle, err := os.Open(thePath)
+		if err != nil {
+			return nil, err
+		}
+		dataYaml := &DataYaml{}
+		decoder := yaml.NewDecoder(fileHandle)
+		err = decoder.Decode(dataYaml)
+		if err != nil {
+			_ = fileHandle.Close()
+			return nil, err
+		}
+		err = fileHandle.Close()
+		if err != nil {
+			return nil, err
+		}
+		if p.StoredDataMutex != nil {
+			p.StoredData = dataYaml
+		}
+		return dataYaml, nil
+	} else {
+		return p.StoredData, nil
 	}
 }

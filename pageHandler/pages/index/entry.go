@@ -16,7 +16,6 @@ type EntryYaml struct {
 	VideoContentType   string    `yaml:"videoContentType"`
 	ThumbnailLocations []string  `yaml:"thumbnailLocations"`
 	ImageLocations     []string  `yaml:"imageLocations"`
-	Links              []string  `yaml:"links"`
 }
 
 func (ey EntryYaml) GetStartDate() string {
