@@ -81,7 +81,16 @@ func (p *Page) GetContents(urlParameters url.Values) (contentType string, conten
 		Data:  *theData,
 		Light: urlParameters.Has("light"),
 	}
-	//Set up sorting here
+	switch strings.ToLower(urlParameters.Get("order")) {
+	case "end":
+		theMarshal.OrderEndDate = getSortValue(strings.ToLower(urlParameters.Get("sort")))
+	case "name":
+		theMarshal.OrderName = getSortValue(strings.ToLower(urlParameters.Get("sort")))
+	case "duration":
+		theMarshal.OrderDuration = getSortValue(strings.ToLower(urlParameters.Get("sort")))
+	default:
+		theMarshal.OrderStartDate = getSortValue(strings.ToLower(urlParameters.Get("sort")))
+	}
 	theBuffer := &io.BufferedWriter{}
 	err = theTemplate.ExecuteTemplate(theBuffer, templateName, theMarshal)
 	if err != nil {
@@ -171,5 +180,13 @@ func (p *Page) getPageData() (*DataYaml, error) {
 		return dataYaml, nil
 	} else {
 		return p.StoredData, nil
+	}
+}
+
+func getSortValue(toCheckIn string) int8 {
+	if toCheckIn == "desc" || toCheckIn == "descending" {
+		return -1
+	} else {
+		return 1
 	}
 }
