@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>City University Portfolio</title>
+    <link rel="stylesheet" href="{{ .Data.CSSBaseURL }}"/>
+    {{ if .Light }}
+    <link rel="stylesheet" href="{{ .Data.CSSLightURL }}"/>
+    {{ else }}
+    <link rel="stylesheet" href="{{ .Data.CSSDarkURL }}"/>
+    {{ end }}
+    <script src="{{ .Data.JScriptURL }}"></script>
+</head>
+<body>
+<header class="header">
+    <a href="?" class="home-button no-dec"><b>&#8962;</b></a>
+    <input class="nav-menu" type="checkbox" id="nav-menu"/>
+    <label class="hmb" for="nav-menu"><span class="hmb-line"></span></label>
+    <nav class="nav">
+        <ul class="menu no-lst-style">
+            {{ range .Data.GetHeaderLabels }}
+            <li><b><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec">{{ . }}</a></b></li>
+            {{ end }}
+        </ul>
+    </nav>
+</header>
+<main>
+</main>
+</body>
+</html>

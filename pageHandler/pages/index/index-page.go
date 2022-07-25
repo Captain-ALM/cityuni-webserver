@@ -17,12 +17,14 @@ const yamlName = "index.go.yml"
 
 func NewPage(dataStore string, cacheTemplates bool) *Page {
 	var ptm *sync.Mutex
+	var sdm *sync.Mutex
 	if cacheTemplates {
 		ptm = &sync.Mutex{}
+		sdm = &sync.Mutex{}
 	}
 	pageToReturn := &Page{
 		DataStore:         dataStore,
-		StoredDataMutex:   &sync.Mutex{},
+		StoredDataMutex:   sdm,
 		PageTemplateMutex: ptm,
 	}
 	return pageToReturn

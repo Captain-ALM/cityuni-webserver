@@ -1,0 +1,29 @@
+body{
+	color: #f9f9f9;
+	background-color: #050506;
+	border-color: #696969;
+}
+.header, .nav{
+	background-color: #1d1d1e;
+}
+.home-button{
+	color: #e0e0e0;
+}
+.home-button:hover{
+	background-color: #606061;
+}
+.header{
+	box-shadow-color: #696969;
+}
+.menu a{
+    color: #e0e0e0;
+}
+.menu a:hover{
+    background-color: #606061;
+}
+.hmb:hover{
+	background-color: #606061;
+}
+.hmb-line, .hmb-line::before, .hmb-line::after{
+    background: #e0e0e0;
+}

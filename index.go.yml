@@ -1,0 +1,11 @@
+cssBaseURL: "http://192.168.1.193:8081/test/base.css"
+cssDarkURL: "http://192.168.1.193:8081/test/dark.css"
+cssLightURL: "http://192.168.1.193:8081/test/light.css"
+jScriptURL: "http://192.168.1.193:8081/test/index.js"
+headerLinks:
+  Main Portfolio: "https://portfolio.captainalm.com/"
+  Root Site Home: "https://www.captainalm.com/"
+  Github: "https://github.com/Captain-ALM/"
+about:
+  title: "Alfred Manville (Captain ALM)"
+entries:

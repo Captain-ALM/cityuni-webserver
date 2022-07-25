@@ -1,6 +1,7 @@
 package index
 
 import (
+	"golang.captainalm.com/cityuni-webserver/utils/yaml"
 	"html/template"
 	"time"
 )
@@ -8,14 +9,14 @@ import (
 const dateFormat = "2006-01-02"
 
 type EntryYaml struct {
-	Name               string    `yaml:"name"`
-	Content            string    `yaml:"content"`
-	StartDate          time.Time `yaml:"startDate"`
-	EndDate            time.Time `yaml:"endDate"`
-	VideoLocation      string    `yaml:"videoLocation"`
-	VideoContentType   string    `yaml:"videoContentType"`
-	ThumbnailLocations []string  `yaml:"thumbnailLocations"`
-	ImageLocations     []string  `yaml:"imageLocations"`
+	Name               string        `yaml:"name"`
+	Content            string        `yaml:"content"`
+	StartDate          yaml.DateType `yaml:"startDate"`
+	EndDate            yaml.DateType `yaml:"endDate"`
+	VideoLocation      string        `yaml:"videoLocation"`
+	VideoContentType   string        `yaml:"videoContentType"`
+	ThumbnailLocations []string      `yaml:"thumbnailLocations"`
+	ImageLocations     []string      `yaml:"imageLocations"`
 }
 
 func (ey EntryYaml) GetStartDate() string {
@@ -34,7 +35,7 @@ func (ey EntryYaml) GetEndTime() time.Time {
 	if ey.EndDate.IsZero() {
 		return time.Now()
 	} else {
-		return ey.EndDate
+		return ey.EndDate.Time
 	}
 }
 
@@ -43,5 +44,5 @@ func (ey EntryYaml) GetContent() template.HTML {
 }
 
 func (ey EntryYaml) GetDuration() time.Duration {
-	return ey.GetEndTime().Sub(ey.StartDate).Truncate(time.Second)
+	return ey.GetEndTime().Sub(ey.StartDate.Time).Truncate(time.Second)
 }

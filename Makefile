@@ -34,4 +34,7 @@ clean:
 deploy: build
 	sudo systemctl stop wappcityuni
 	sudo cp "${BIN}" /usr/local/bin
+	sudo cp *.go.html cnf
+	sudo cp *.css cdn
+	sudo cp *.js cdn
 	sudo systemctl start wappcityuni

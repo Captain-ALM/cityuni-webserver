@@ -15,12 +15,12 @@ func (m Marshal) GetEntries() (toReturn []EntryYaml) {
 	toReturn = m.Data.Entries
 	if m.OrderStartDate > 0 {
 		sort.Slice(toReturn, func(i, j int) bool {
-			return toReturn[i].StartDate.Before(toReturn[j].StartDate)
+			return toReturn[i].StartDate.Before(toReturn[j].StartDate.Time)
 		})
 	}
 	if m.OrderStartDate < 0 {
 		sort.Slice(toReturn, func(i, j int) bool {
-			return toReturn[i].StartDate.After(toReturn[j].StartDate)
+			return toReturn[i].StartDate.After(toReturn[j].StartDate.Time)
 		})
 	}
 	if m.OrderEndDate > 0 {
