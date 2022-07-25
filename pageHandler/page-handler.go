@@ -7,12 +7,13 @@ import (
 	"mime/multipart"
 	"net/http"
 	"net/textproto"
-	"net/url"
 	"strconv"
 	"strings"
 	"sync"
 	"time"
 )
+
+const indexName = "index.go"
 
 type PageHandler struct {
 	PageContentsCache        map[string]*CachedPage
@@ -50,7 +51,16 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 }
 
 func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	actualPagePath := strings.TrimRight(request.URL.Path, "/")
+	actualPagePath := ""
+	if strings.HasSuffix(request.URL.Path, "/") {
+		if strings.HasSuffix(request.URL.Path, ".go/") {
+			actualPagePath = strings.TrimRight(request.URL.Path, "/")
+		} else {
+			actualPagePath = request.URL.Path + indexName
+		}
+	} else {
+		actualPagePath = request.URL.Path
+	}
 
 	var currentProvider PageProvider
 	canCache := false
@@ -64,7 +74,7 @@ func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Reque
 		actualQueries = currentProvider.GetCacheIDExtension(queryValues)
 
 		if ph.CacheSettings.EnableContentsCaching {
-			cached := ph.getPageFromCache(request.URL, actualQueries)
+			cached := ph.getPageFromCache(request.URL.Path, actualQueries)
 			if cached != nil {
 				pageContent = cached.Content
 				pageContentType = cached.ContentType
@@ -76,7 +86,7 @@ func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Reque
 			pageContentType, pageContent, canCache = currentProvider.GetContents(queryValues)
 			lastMod = currentProvider.GetLastModified()
 			if pageContentType != "" && canCache && ph.CacheSettings.EnableContentsCaching {
-				ph.setPageToCache(request.URL, actualQueries, &CachedPage{
+				ph.setPageToCache(request.URL.Path, actualQueries, &CachedPage{
 					Content:     pageContent,
 					ContentType: pageContentType,
 					LastMod:     lastMod,
@@ -143,7 +153,7 @@ func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Reque
 					}
 				}
 			case http.MethodDelete:
-				ph.PurgeTemplateCache(actualPagePath)
+				ph.PurgeTemplateCache(actualPagePath, request.URL.Path == "/")
 				ph.PurgeContentsCache(request.URL.Path, actualQueries)
 				utils.SetNeverCacheHeader(writer.Header())
 				utils.WriteResponseHeaderCanWriteBody(request.Method, writer, http.StatusOK, "")
@@ -167,12 +177,12 @@ func (ph *PageHandler) ServeHTTP(writer http.ResponseWriter, request *http.Reque
 
 func (ph *PageHandler) PurgeContentsCache(path string, query string) {
 	if ph.CacheSettings.EnableContentsCaching && ph.CacheSettings.EnableContentsCachePurge {
-		if path == "" {
+		if path == "/" {
 			ph.pageContentsCacheRWMutex.Lock()
 			ph.PageContentsCache = make(map[string]*CachedPage)
 			ph.pageContentsCacheRWMutex.Unlock()
 		} else {
-			if strings.HasSuffix(path, "/") {
+			if strings.HasSuffix(path, ".go/") {
 				ph.pageContentsCacheRWMutex.RLock()
 				toDelete := make([]string, len(ph.PageContentsCache))
 				theSize := 0
@@ -189,22 +199,24 @@ func (ph *PageHandler) PurgeContentsCache(path string, query string) {
 					delete(ph.PageContentsCache, toDelete[i])
 				}
 				ph.pageContentsCacheRWMutex.Unlock()
-			} else {
-				ph.pageContentsCacheRWMutex.Lock()
-				if query == "" {
-					delete(ph.PageContentsCache, path)
-				} else {
-					delete(ph.PageContentsCache, path+"?"+query)
-				}
-				ph.pageContentsCacheRWMutex.Unlock()
+				return
+			} else if strings.HasSuffix(path, "/") {
+				path += indexName
 			}
+			ph.pageContentsCacheRWMutex.Lock()
+			if query == "" {
+				delete(ph.PageContentsCache, path)
+			} else {
+				delete(ph.PageContentsCache, path+"?"+query)
+			}
+			ph.pageContentsCacheRWMutex.Unlock()
 		}
 	}
 }
 
-func (ph *PageHandler) PurgeTemplateCache(path string) {
+func (ph *PageHandler) PurgeTemplateCache(path string, all bool) {
 	if ph.CacheSettings.EnableTemplateCaching && ph.CacheSettings.EnableTemplateCachePurge {
-		if path == "" {
+		if all {
 			for _, pageProvider := range ph.PageProviders {
 				pageProvider.PurgeTemplate()
 			}
@@ -215,36 +227,39 @@ func (ph *PageHandler) PurgeTemplateCache(path string) {
 		}
 	}
 }
-func (ph *PageHandler) getPageFromCache(urlIn *url.URL, cleanedQueries string) *CachedPage {
+func (ph *PageHandler) getPageFromCache(pathIn string, cleanedQueries string) *CachedPage {
 	ph.pageContentsCacheRWMutex.RLock()
 	defer ph.pageContentsCacheRWMutex.RUnlock()
-	if strings.HasSuffix(urlIn.Path, "/") {
-		return ph.PageContentsCache[strings.TrimRight(urlIn.Path, "/")]
+	if strings.HasSuffix(pathIn, ".go/") {
+		return ph.PageContentsCache[strings.TrimRight(pathIn, "/")]
+	} else if strings.HasSuffix(pathIn, "/") {
+		pathIn += indexName
+	}
+	if cleanedQueries == "" {
+		return ph.PageContentsCache[pathIn]
 	} else {
-		if cleanedQueries == "" {
-			return ph.PageContentsCache[urlIn.Path]
-		} else {
-			return ph.PageContentsCache[urlIn.Path+"?"+cleanedQueries]
-		}
+		return ph.PageContentsCache[pathIn+"?"+cleanedQueries]
 	}
 }
 
-func (ph *PageHandler) setPageToCache(urlIn *url.URL, cleanedQueries string, newPage *CachedPage) {
+func (ph *PageHandler) setPageToCache(pathIn string, cleanedQueries string, newPage *CachedPage) {
 	ph.pageContentsCacheRWMutex.Lock()
 	defer ph.pageContentsCacheRWMutex.Unlock()
-	if strings.HasSuffix(urlIn.Path, "/") {
-		ph.PageContentsCache[strings.TrimRight(urlIn.Path, "/")] = newPage
+	if strings.HasSuffix(pathIn, ".go/") {
+		ph.PageContentsCache[strings.TrimRight(pathIn, "/")] = newPage
+		return
+	} else if strings.HasSuffix(pathIn, "/") {
+		pathIn += indexName
+	}
+	if cleanedQueries == "" {
+		ph.PageContentsCache[pathIn] = newPage
 	} else {
-		if cleanedQueries == "" {
-			ph.PageContentsCache[urlIn.Path] = newPage
-		} else {
-			ph.PageContentsCache[urlIn.Path+"?"+cleanedQueries] = newPage
-		}
+		ph.PageContentsCache[pathIn+"?"+cleanedQueries] = newPage
 	}
 }
 
 func (ph *PageHandler) getAllowedMethodsForPath(pathIn string) []string {
-	if strings.HasSuffix(pathIn, "/") {
+	if pathIn == "/" || strings.HasSuffix(pathIn, ".go/") {
 		if (ph.CacheSettings.EnableTemplateCaching && ph.CacheSettings.EnableTemplateCachePurge) ||
 			(ph.CacheSettings.EnableContentsCaching && ph.CacheSettings.EnableContentsCachePurge) {
 			return []string{http.MethodHead, http.MethodGet, http.MethodOptions, http.MethodDelete}
