@@ -1,7 +1,7 @@
-cssBaseURL: "http://192.168.1.193:8081/test/base.css"
-cssDarkURL: "http://192.168.1.193:8081/test/dark.css"
-cssLightURL: "http://192.168.1.193:8081/test/light.css"
-jScriptURL: "http://192.168.1.193:8081/test/index.js"
+cssBaseURL: "https://cityuni.captainalm.com/resources/assets/base.css"
+cssDarkURL: "https://cityuni.captainalm.com/resources/assets/dark.css"
+cssLightURL: "https://cityuni.captainalm.com/resources/assets/light.css"
+jScriptURL: "https://cityuni.captainalm.com/resources/assets/index.js"
 headerLinks:
   Main Portfolio: "https://portfolio.captainalm.com/"
   Root Site Home: "https://www.captainalm.com/"
