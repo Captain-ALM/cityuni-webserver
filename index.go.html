@@ -26,69 +26,61 @@
         </ul>
     </nav>
 </header>
-<main class="main-table">
+<main class="main-box">
     <div>
-        <div>
+        <div class="item-table">
             <div>
-                <div class="item-table">
-                    <div>
-                        <div class="item-table-full">
-                            <div class="centered"><h1>{{ .Data.About.Title }}</h1></div>
-                        </div>
-                        <div class="item-table-360">
-                            <div class="centered"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="item-table-full">
-                            <div>{{ .Data.About.GetContent }}</div>
-                        </div>
-                        <div class="item-table-360">
-                            <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="Image of Me." width="360px"></a></div>
-                        </div>
-                    </div>
+                <div class="item-table-full">
+                    <div class="centered"><h1>{{ .Data.About.Title }}</h1></div>
+                </div>
+                <div class="item-table-360">
+                    <div class="centered"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
+                </div>
+            </div>
+            <div>
+                <div class="item-table-full">
+                    <div>{{ .Data.About.GetContent }}</div>
+                </div>
+                <div class="item-table-360">
+                    <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="Image of Me." width="360px"></a></div>
                 </div>
             </div>
         </div>
     </div>
     {{ range .Data.Entries }}
     <div>
-        <div>
+        <div class="item-table">
             <div>
-                <div class="item-table">
-                    <div>
-                        <div class="item-table-full">
-                            <div class="centered"><h1>{{ .Name }}</h1></div>
-                        </div>
-                        <div class="item-table-360">
-                            {{ if eq .GetStartDate .GetEndDate }}
-                            <div class="centered"><h4>{{ .GetStartDate }}</h4></div>
-                            {{ else }}
-                            <div class="centered"><h4>{{ .GetStartDate }} - {{ .GetEndDate }}</h4></div>
-                            {{ end }}
-                        </div>
-                    </div>
-                    <div>
-                        <div class="item-table-full">
-                            <div>{{ .GetContent }}</div>
-                        </div>
-                        <div class="item-table-360">
-                            <div><video controls="" width="360">
-                                <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
-                            </video></div>
-                        </div>
-                    </div>
-                    {{ if not (eq .GetImageCount 0) }}
-                    <div class="item-table-caption">
-                        <div class="image-box">
-                            {{ range .GetImages }}
-                            <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" width="144"></a>
-                            {{ end }}
-                        </div>
-                    </div>
+                <div class="item-table-full">
+                    <div class="centered"><h1>{{ .Name }}</h1></div>
+                </div>
+                <div class="item-table-360">
+                    {{ if eq .GetStartDate .GetEndDate }}
+                    <div class="centered"><h4>{{ .GetStartDate }}</h4></div>
+                    {{ else }}
+                    <div class="centered"><h4>{{ .GetStartDate }} - {{ .GetEndDate }}</h4></div>
                     {{ end }}
                 </div>
             </div>
+            <div>
+                <div class="item-table-full">
+                    <div>{{ .GetContent }}</div>
+                </div>
+                <div class="item-table-360">
+                    <div><video controls="" width="360">
+                        <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
+                    </video></div>
+                </div>
+            </div>
+            {{ if not (eq .GetImageCount 0) }}
+            <div class="item-table-caption">
+                <div class="image-box">
+                    {{ range .GetImages }}
+                    <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" width="144"></a>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
         </div>
     </div>
     {{ end }}
