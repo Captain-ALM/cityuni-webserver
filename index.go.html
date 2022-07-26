@@ -16,14 +16,14 @@
 <body>
 <header class="header">
     {{ if .Light }}
-    <div><a href="?light" class="home-button no-dec"><b>&#8962;</b></a></div>
-    <div><a href="?{{ .Parameters }}" class="home-button no-dec"><b>&#9790;</b></a></div>
+    <a href="?light" class="home-button no-dec"><div><b>&#8962;</b></div></a>
+    <a href="?{{ .Parameters }}" class="home-button no-dec"><div><b>&#9790;</b></div></a>
     {{ else }}
-    <div><a href="?" class="home-button no-dec"><b>&#8962;</b></a></div>
+    <a href="?" class="home-button no-dec"><div><b>&#8962;</b></div></a>
     {{ if eq .Parameters "" }}
-    <div><a href="?light" class="home-button no-dec"><b>&#9737;</b></a></div>
+    <a href="?light" class="home-button no-dec"><div><b>&#9737;</b></div></a>
     {{ else }}
-    <div><a href="?light&{{ .Parameters }}" class="home-button no-dec"><b>&#9737;</b></a></div>
+    <a href="?light&{{ .Parameters }}" class="home-button no-dec"><div><b>&#9737;</b></div></a>
     {{ end }}
     {{ end }}
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
