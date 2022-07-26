@@ -89,7 +89,7 @@ main{
     padding: 3px 0;
     border-style: solid;
     border-width: 1px;
-    vertical-align: top;
+    vertical-align: middle;
 }
 .item-table{
     display: table;
