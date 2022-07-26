@@ -38,6 +38,14 @@ entries:
     endDate: "31/10/2021"
     videoLocation: "https://cityuni.captainalm.com/resources/stream/vid1.mp4"
     videoContentType: "video/mp4"
+    thumbnailLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic1.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic2.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic3.png"
+    imageLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic1.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic2.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic3.png"
   - name: "City Game Project 2022: Ninjaformer (Alpha, Beta)"
     content: >
       <p>
@@ -60,3 +68,11 @@ entries:
     endDate: "08/05/2022"
     videoLocation: "https://cityuni.captainalm.com/resources/stream/vid2.mp4"
     videoContentType: "video/mp4"
+    thumbnailLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic4.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic5.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic6.png"
+      imageLocations:
+        - "https://cityuni.captainalm.com/resources/assets/pic4.png"
+        - "https://cityuni.captainalm.com/resources/assets/pic5.png"
+        - "https://cityuni.captainalm.com/resources/assets/pic6.png"
