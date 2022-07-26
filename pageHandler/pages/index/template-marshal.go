@@ -4,6 +4,7 @@ import "sort"
 
 type Marshal struct {
 	Data           DataYaml
+	Parameters     string
 	OrderStartDate int8
 	OrderEndDate   int8
 	OrderName      int8

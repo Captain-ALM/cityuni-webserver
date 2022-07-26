@@ -15,7 +15,17 @@
 </head>
 <body>
 <header class="header">
+    {{ if .Light }}
+    <a href="?light" class="home-button no-dec"><b>&#8962;</b></a>
+    <a href="?{{ .Parameters }}" class="home-button no-dec"><b>&#9790;</b></a>
+    {{ else }}
     <a href="?" class="home-button no-dec"><b>&#8962;</b></a>
+    {{ if eq .Parameters "" }}
+    <a href="?light" class="home-button no-dec"><b>&#9737;</b></a>
+    {{ else }}
+    <a href="?light&{{ .Parameters }}" class="home-button no-dec"><b>&#9737;</b></a>
+    {{ end }}
+    {{ end }}
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu"><span class="hmb-line"></span></label>
     <nav class="nav">
