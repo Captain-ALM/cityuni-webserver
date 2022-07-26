@@ -8,4 +8,12 @@ headerLinks:
   Github: "https://github.com/Captain-ALM/"
 about:
   title: "Alfred Manville (Captain ALM)"
+  content: >
+    <p>test</p>
+    <p>#age#</p>
+    <p>#birth#</p>
+  thumbnailLocation: "https://cityuni.captainalm.com/resources/assets/imageofyou.jpg"
+  imageLocation: "https://cityuni.captainalm.com/resources/assets/imageofyou.jpg"
+  birthYear: 2002
+  contactEmail: "alfred@captainalm.com"
 entries:
