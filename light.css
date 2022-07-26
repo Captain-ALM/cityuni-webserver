@@ -1,0 +1,35 @@
+body{
+    color: #060606;
+    background-color: #fafaf9;
+    border-color: #969696;
+}
+a{
+    color: #4f4fff;
+}
+.header, .nav, footer{
+    background-color: #e2e2e1;
+}
+.home-button, .menu a{
+    color: #1f1f1f;
+}
+.home-button:hover, .menu a:hover, .hmb:hover{
+    background-color: #9f9f9e;
+}
+.hmb-line, .hmb-line::before, .hmb-line::after{
+    background: #1f1f1f;
+}
+.main-box{
+    background-color: #f0f0f0;
+}
+.item-table{
+    background-color: #c0c0c0;
+}
+.item-table > div > div, .item-table-caption{
+    border-color: #0a214c;
+}
+.image-box{
+    background-color: #b0b0b0;
+}
+.image-box > a{
+    border-color: #4f4f0f;
+}

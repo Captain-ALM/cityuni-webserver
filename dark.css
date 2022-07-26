@@ -6,22 +6,13 @@ body{
 a{
 	color: #b0b0f0;
 }
-.header, .nav{
+.header, .nav, footer{
 	background-color: #1d1d1e;
 }
-.home-button{
+.home-button, .menu a{
 	color: #e0e0e0;
 }
-.home-button:hover{
-	background-color: #606061;
-}
-.menu a{
-    color: #e0e0e0;
-}
-.menu a:hover{
-    background-color: #606061;
-}
-.hmb:hover{
+.home-button:hover, .menu a:hover, .hmb:hover{
 	background-color: #606061;
 }
 .hmb-line, .hmb-line::before, .hmb-line::after{
