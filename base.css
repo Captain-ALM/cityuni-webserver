@@ -87,6 +87,7 @@ main{
 .main-table > div > div{
     display: table-cell;
     margin: 3px 0;
+    padding: 3px 0;
     border-style: solid;
     border-width: 1px;
     vertical-align: middle;
@@ -100,7 +101,7 @@ main{
     display: table-row;
     background-color: transparent;
 }
-.item-table-full, .item-table-half, .item-table-480{
+.item-table-full, .item-table-half, .item-table-240{
     display: table-cell;
     border-style: solid;
     border-width: 1px;
@@ -110,8 +111,8 @@ main{
 .item-table-full{
     width: 100%;
 }
-.item-table-half{
-    width: 50%;
+.item-table-240{
+    width: 240px;
 }
 @media (min-width: 480px){
     .nav{
@@ -131,9 +132,7 @@ main{
         display: none;
     }
     .main-table > div > div{
+        padding: 5px;
         margin: 5px;
-    }
-    .item-table-480{
-        width: 480px;
     }
 }
