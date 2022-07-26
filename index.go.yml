@@ -17,3 +17,32 @@ about:
   birthYear: 2002
   contactEmail: "alfred@captainalm.com"
 entries:
+  - name: "Bootcamp 2021: Ninjaformer GUI"
+    content: >
+      <p>
+      My first programming task at City, concluding the 2 week 2021 Programming Bootcamp,
+      although I have only spent 3 days programming this and was a tad bit too ambitious.
+      This Processing project show that I can use arrays, loops, mouse and keyboard interaction and geometric transforms.
+      The project contains a GUI library that I made to create the menu system for my ninjaformer game,
+      unfortunately, while the code for loading tile, sprite and level information exists (JSON, sprite sheet support),
+      I ran out of time before the submission to actually even start on the game. But you can play around with the main code and build your own GUIs too so... 
+      </p>
+    startDate: "01/10/2021"
+    endDate: "31/10/2021"
+    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid1.mp4"
+    videoContentType: "video/mp4"
+  - name: "City Game Project 2022: Ninjaformer (Alpha, Beta)"
+    content: >
+      <p>
+      My third programming task and first major project at City, concluding 2.2 Months of programming.
+      Looking back on this, I wish I started earlier (Like January) that way I could have implemented all the features I wanted.
+      This project allows for levels to be designed within the program and allows them to be edited as XML outside the program.
+      The code is extensible and it is relatively straight forward to impliment new features. There are a few bugs that can crop up
+      (Such as sticking to surfaces due to ground body updates) but I already know ways to fix them.
+      This project relies on part of a GUI library I built in it and I had to modify the CityGame library by extending it.
+      The audio and assets were also created by me. 
+      </p>
+    startDate: "25/02/2021"
+    endDate: "08/05/2022"
+    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid2.mp4"
+    videoContentType: "video/mp4"

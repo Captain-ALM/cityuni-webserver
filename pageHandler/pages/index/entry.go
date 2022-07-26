@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-const dateFormat = "2006-01-02"
+const dateFormat = "2006-01"
 
 type EntryYaml struct {
 	Name               string        `yaml:"name"`

@@ -51,6 +51,34 @@
             </div>
         </div>
     </div>
+    {{ range .Data.Entries }}
+    <div>
+        <div>
+            <div>
+                <div class="item-table">
+                    <div>
+                        <div class="item-table-full">
+                            <div class="centered padded-2px"><h1>{{ .Name }}</h1></div>
+                        </div>
+                        <div class="item-table-240">
+                            <div class="centered padded-2px"><h4>{{ .GetStartDate }} - {{ .GetEndDate }}</h4></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="item-table-full">
+                            <div class="padded-2px">{{ .GetContent }}</div>
+                        </div>
+                        <div class="item-table-240">
+                            <div><video controls="" width="240">
+                                <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
+                            </video></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
 </main>
 </body>
 </html>
