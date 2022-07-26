@@ -78,6 +78,7 @@ main{
 }
 .main-table{
     display: table;
+    width: 100%;
     box-sizing: content-box;
 }
 .main-table > div{
@@ -98,6 +99,7 @@ main{
 }
 .item-table{
     display: table;
+    width: 100%;
     box-sizing: content-box;
     background-color: transparent;
 }
@@ -118,7 +120,7 @@ main{
     width: 100%;
 }
 .item-table-half{
-    width: 100%;
+    width: 50%;
 }
 .item-table-240{
     width: 240px;
