@@ -86,7 +86,7 @@ main{
 }
 .main-table > div > div{
     display: table-cell;
-    padding: 3px 0;
+    margin: 3px 0;
     border-style: solid;
     border-width: 1px;
     vertical-align: middle;
@@ -113,9 +113,6 @@ main{
 .item-table-half{
     width: 50%;
 }
-.item-table-480{
-    width: 480px;
-}
 @media (min-width: 480px){
     .nav{
         max-height: none;
@@ -134,6 +131,9 @@ main{
         display: none;
     }
     .main-table > div > div{
-        padding: 5px;
+        margin: 5px;
+    }
+    .item-table-480{
+        width: 480px;
     }
 }
