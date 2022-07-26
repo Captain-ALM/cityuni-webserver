@@ -99,7 +99,7 @@ main{
 }
 .item-table{
     display: table;
-    width: 100%;
+    width: 90%;
     box-sizing: content-box;
     background-color: transparent;
 }

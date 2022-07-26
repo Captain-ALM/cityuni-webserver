@@ -3,6 +3,9 @@ body{
 	background-color: #050506;
 	border-color: #696969;
 }
+a{
+	color: #9090f0;
+}
 .header, .nav{
 	background-color: #1d1d1e;
 }
