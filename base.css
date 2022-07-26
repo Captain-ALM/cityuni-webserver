@@ -14,7 +14,6 @@ main{
 	list-style: none;
 }
 .header{
-    box-shadow: 1px 1px 5px 0px;
     position: fixed;
     top: 0;
     width: 100%;
@@ -48,7 +47,6 @@ main{
     height: 2px;
     position: relative;
     width: 24px;
-
 }
 .hmb-line::before, .hmb-line::after{
     content: '';
@@ -78,15 +76,43 @@ main{
     transform: rotate(45deg);
     top:0;
 }
-.flex-main{
-  display: flex;
-  flex-direction: column;
+.main-table{
+    display: table;
+    width: 100%;
 }
-.box-main{
-	display: table;
-	width: 100%;
-	margin: 1px;
-	align-self: center;
+.main-table > div{
+    display: table-row;
+    background-color: transparent;
+}
+.main-table > div > div{
+    display: table-cell;
+    padding: 3px 0;
+    border-style: solid;
+    border-width: 1px;
+}
+.item-table{
+    display: table;
+    width: 100%;
+    background-color: transparent;
+}
+.item-table > div{
+    display: table-row;
+    background-color: transparent;
+}
+.item-table-full, .item-table-half, .item-table-480{
+    display: table-cell;
+    border-style: solid;
+    border-width: 1px;
+    background-color: transparent;
+}
+.item-table-full{
+    width: 100%;
+}
+.item-table-half{
+    width: 50%;
+}
+.item-table-480{
+    width: 480px;
 }
 @media (min-width: 480px){
     .nav{
@@ -101,12 +127,11 @@ main{
     }
     .menu a:hover{
         background-color: transparent;
-
     }
     .hmb{
         display: none;
     }
-	.box-main{
-		margin: 5px 10px;
-	}
+    .main-table > div > div{
+        padding: 5px;
+    }
 }

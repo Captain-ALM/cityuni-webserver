@@ -26,7 +26,29 @@
         </ul>
     </nav>
 </header>
-<main>
+<main class="main-table">
+    <div>
+        <div>
+            <div class="item-table">
+                <div>
+                    <div class="item-table-half">
+                        <h1>{{ .Data.About.Title }}</h1>
+                    </div>
+                    <div class="item-table-half">
+                        <h1>Email:</h1> <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="item-table-full">
+                        {{ .Data.About.GetContent }}
+                    </div>
+                    <div class="item-table-480">
+                        <a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="Image of Me." width="480px"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
 </body>
 </html>

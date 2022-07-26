@@ -12,9 +12,6 @@ body{
 .home-button:hover{
 	background-color: #606061;
 }
-.header{
-	box-shadow-color: #696969;
-}
 .menu a{
     color: #e0e0e0;
 }
@@ -26,4 +23,14 @@ body{
 }
 .hmb-line, .hmb-line::before, .hmb-line::after{
     background: #e0e0e0;
+}
+.main-table{
+	border-color: wheat;
+	background-color: #1d1d1e;
+}
+.main-table > div > div{
+	border-color: wheat;
+}
+.item-table > div > div{
+	border-color: whitesmoke;
 }
