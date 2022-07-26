@@ -127,6 +127,17 @@ main{
 .item-table-360{
     display: none;
 }
+.item-table-span{
+    position: absolute;
+    left: 0;
+}
+.item-table-dummy{
+    display: table-cell;
+    vertical-align: top;
+    border-color: transparent;
+    background-color: transparent;
+    box-sizing: inherit;
+}
 @media (min-width: 480px){
     .main-table > div > div > div{
         margin: 5px;
