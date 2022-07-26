@@ -94,8 +94,6 @@ main{
 }
 .main-table > div > div{
     display: table-cell;
-    border-style: solid;
-    border-width: 1px;
     vertical-align: middle;
     box-sizing: inherit;
 }

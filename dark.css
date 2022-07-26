@@ -28,12 +28,8 @@ a{
     background: #e0e0e0;
 }
 .main-table{
-	border-color: wheat;
 	background-color: #0f0f0f;
 }
-.main-table > div > div{
-	border-color: wheat;
-}
 .item-table > div > div{
-	border-color: whitesmoke;
+	border-color: wheat;
 }
