@@ -12,6 +12,7 @@ type AboutYaml struct {
 	Content           string `yaml:"content"`
 	ThumbnailLocation string `yaml:"thumbnailLocation"`
 	ImageLocation     string `yaml:"imageLocation"`
+	ImageAltText      string `yaml:"imageAltText"`
 	BirthYear         int    `yaml:"birthYear"`
 	ContactEmail      string `yaml:"contactEmail"`
 }

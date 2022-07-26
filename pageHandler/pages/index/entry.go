@@ -18,11 +18,13 @@ type EntryYaml struct {
 	VideoContentType   string        `yaml:"videoContentType"`
 	ThumbnailLocations []string      `yaml:"thumbnailLocations"`
 	ImageLocations     []string      `yaml:"imageLocations"`
+	ImageAltTexts      []string      `yaml:"imageAltTexts"`
 }
 
 type ImageReference struct {
 	ThumbnailLocation string
 	ImageLocation     string
+	ImageAltText      string
 }
 
 func (ey EntryYaml) GetStartDate() string {
@@ -54,15 +56,16 @@ func (ey EntryYaml) GetDuration() time.Duration {
 }
 
 func (ey EntryYaml) GetImageCount() int {
-	return int(math.Min(float64(len(ey.ThumbnailLocations)), float64(len(ey.ImageLocations))))
+	return int(math.Min(math.Min(float64(len(ey.ThumbnailLocations)), float64(len(ey.ImageLocations))), float64(len(ey.ImageAltTexts))))
 }
 
 func (ey EntryYaml) GetImages() []ImageReference {
 	toReturn := make([]ImageReference, ey.GetImageCount())
-	for i := 0; i < len(ey.ThumbnailLocations) && i < len(ey.ImageLocations); i++ {
+	for i := 0; i < len(ey.ThumbnailLocations) && i < len(ey.ImageLocations) && i < len(ey.ImageAltTexts); i++ {
 		toReturn[i] = ImageReference{
 			ThumbnailLocation: ey.ThumbnailLocations[i],
 			ImageLocation:     ey.ImageLocations[i],
+			ImageAltText:      ey.ImageAltTexts[i],
 		}
 	}
 	return toReturn

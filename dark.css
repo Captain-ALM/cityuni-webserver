@@ -30,8 +30,14 @@ a{
 .main-box{
 	background-color: #0f0f0f;
 }
+.item-table{
+	background-color: #3f3f3f;
+}
 .item-table > div > div, .item-table-caption{
-	border-color: #F5DEB3FF;
+	border-color: #f5deb3;
+}
+.image-box{
+	background-color: #4f4f4f;
 }
 .image-box > a{
 	border-color: #b0b0f0;

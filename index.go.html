@@ -42,7 +42,7 @@
                     <div>{{ .Data.About.GetContent }}</div>
                 </div>
                 <div class="item-table-360">
-                    <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="Image of Me." width="360px"></a></div>
+                    <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
                 </div>
             </div>
         </div>
@@ -67,8 +67,9 @@
                     <div>{{ .GetContent }}</div>
                 </div>
                 <div class="item-table-360">
-                    <div><video controls="" width="360">
+                    <div><video controls width="360">
                         <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
+                        <a href="{{ .VideoLocation }}">The Video</a>
                     </video></div>
                 </div>
             </div>
@@ -76,7 +77,7 @@
             <div class="item-table-caption">
                 <div class="image-box">
                     {{ range .GetImages }}
-                    <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" width="144"></a>
+                    <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" alt="{{ .ImageAltText }}" width="240"></a>
                     {{ end }}
                 </div>
             </div>
