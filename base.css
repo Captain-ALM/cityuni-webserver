@@ -117,7 +117,7 @@ main{
     display: table-caption;
     caption-side: bottom;
 }
-.item-table-full, .item-table-360{
+.item-table-full, .item-table-360, .item-table-caption{
     border-style: solid;
     border-width: 1px;
     background-color: transparent;
