@@ -27,7 +27,7 @@ a{
 .hmb-line, .hmb-line::before, .hmb-line::after{
     background: #e0e0e0;
 }
-.main-table, .main-box{
+.main-box{
 	background-color: #0f0f0f;
 }
 .item-table > div > div, .item-table-caption{

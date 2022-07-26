@@ -101,26 +101,6 @@ main{
     padding: 2px;
     box-sizing: content-box;
 }
-.main-table{
-    display: table;
-    width: 100%;
-    box-sizing: content-box;
-}
-.main-table > div{
-    display: table-row;
-    background-color: transparent;
-    box-sizing: inherit;
-}
-.main-table > div > div{
-    display: table-cell;
-    vertical-align: middle;
-    box-sizing: inherit;
-}
-.main-table > div > div > div{
-    margin: 3px 0;
-    padding: 2px;
-    box-sizing: inherit;
-}
 .item-table{
     display: table;
     width: 100%;
@@ -179,9 +159,6 @@ main{
 }
 @media (min-width: 480px){
     .main-box > div{
-        margin: 5px;
-    }
-    .main-table > div > div > div{
         margin: 5px;
     }
     .item-table-360{
