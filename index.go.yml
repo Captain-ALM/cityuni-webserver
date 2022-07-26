@@ -72,7 +72,7 @@ entries:
       - "https://cityuni.captainalm.com/resources/assets/pic4.png"
       - "https://cityuni.captainalm.com/resources/assets/pic5.png"
       - "https://cityuni.captainalm.com/resources/assets/pic6.png"
-      imageLocations:
-        - "https://cityuni.captainalm.com/resources/assets/pic4.png"
-        - "https://cityuni.captainalm.com/resources/assets/pic5.png"
-        - "https://cityuni.captainalm.com/resources/assets/pic6.png"
+    imageLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic4.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic5.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic6.png"
