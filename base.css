@@ -28,8 +28,9 @@ main{
     overflow: hidden;
 }
 .home-button > div{
+    display: inline;
     font-size: 60px;
-    padding: 10px;
+    padding: 8px 10px;
     vertical-align: top;
     text-align: center;
 }
