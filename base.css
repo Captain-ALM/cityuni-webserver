@@ -23,8 +23,11 @@ main{
 }
 .home-button{
     display: inline-block;
+    overflow: hidden;
+}
+.home-button > div{
     font-size: 60px;
-    padding: 7px 10px 6px;
+    padding: 8px 10px;
 }
 .nav{
     width: 100%;

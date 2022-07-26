@@ -9,7 +9,7 @@ a{
 .header, .nav, footer{
 	background-color: #1d1d1e;
 }
-.home-button, .menu a{
+.home-button > div, .menu a{
 	color: #e0e0e0;
 }
 .home-button:hover, .menu a:hover, .hmb:hover{
