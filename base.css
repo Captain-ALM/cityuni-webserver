@@ -78,7 +78,7 @@ main{
 }
 .main-table{
     display: table;
-    width: 100%;
+    width: 95%;
     box-sizing: content-box;
 }
 .main-table > div{
@@ -99,7 +99,7 @@ main{
 }
 .item-table{
     display: table;
-    width: 90%;
+    width: 95%;
     box-sizing: content-box;
     background-color: transparent;
 }
