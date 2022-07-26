@@ -78,26 +78,33 @@ main{
 }
 .main-table{
     display: table;
+    box-sizing: content-box;
 }
 .main-table > div{
     display: table-row;
     background-color: transparent;
+    box-sizing: inherit;
 }
 .main-table > div > div{
     display: table-cell;
-    margin: 3px 0;
-    padding: 3px 0;
     border-style: solid;
     border-width: 1px;
     vertical-align: middle;
+    box-sizing: inherit;
+}
+.main-table > div > div > div{
+    margin: 3px 0;
+    box-sizing: inherit;
 }
 .item-table{
     display: table;
+    box-sizing: content-box;
     background-color: transparent;
 }
 .item-table > div{
     display: table-row;
     background-color: transparent;
+    box-sizing: inherit;
 }
 .item-table-full, .item-table-half, .item-table-240{
     display: table-cell;
@@ -105,8 +112,12 @@ main{
     border-width: 1px;
     background-color: transparent;
     vertical-align: top;
+    box-sizing: inherit;
 }
 .item-table-full{
+    width: 100%;
+}
+.item-table-half{
     width: 100%;
 }
 .item-table-240{
@@ -129,8 +140,8 @@ main{
     .hmb{
         display: none;
     }
-    .main-table > div > div{
-        padding: 5px;
+    .main-table > div > div > div{
         margin: 5px;
+        box-sizing: inherit;
     }
 }
