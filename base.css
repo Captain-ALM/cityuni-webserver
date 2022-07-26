@@ -23,6 +23,8 @@ main{
 }
 .home-button{
     display: inline-block;
+    width: 80px;
+    height: 76px;
     overflow: hidden;
 }
 .home-button > div{
