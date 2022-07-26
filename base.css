@@ -16,9 +16,6 @@ main{
 .centered{
     text-align: center;
 }
-.padded-2px{
-    padding: 2px;
-}
 .header{
     position: fixed;
     top: 0;
@@ -112,6 +109,9 @@ main{
     display: table-row;
     background-color: transparent;
     box-sizing: inherit;
+}
+.item-table > div > div > div{
+    padding: 2px;
 }
 .item-table-caption{
     display: table-caption;
