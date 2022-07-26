@@ -78,7 +78,6 @@ main{
 }
 .main-table{
     display: table;
-    width: 100%;
 }
 .main-table > div{
     display: table-row;
@@ -94,7 +93,6 @@ main{
 }
 .item-table{
     display: table;
-    width: 100%;
     background-color: transparent;
 }
 .item-table > div{
