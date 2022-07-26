@@ -31,5 +31,8 @@ a{
 	background-color: #0f0f0f;
 }
 .item-table > div > div{
-	border-color: wheat;
+	border-color: #F5DEB3FF;
+}
+.image-box > a{
+	border-color: #b0b0f0;
 }

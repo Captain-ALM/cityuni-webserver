@@ -78,21 +78,19 @@
                             </video></div>
                         </div>
                     </div>
+                    {{ if not (eq .GetImageCount 0) }}
+                    <div class="item-table-caption">
+                        <div class="image-box">
+                            {{ range .GetImages }}
+                            <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" width="144"></a>
+                            {{ end }}
+                        </div>
+                    </div>
+                    {{ end }}
                 </div>
             </div>
         </div>
     </div>
-    {{ if not (eq .GetImageCount 0) }}
-    <div>
-        <div>
-            <div class="image-box">
-                {{ range .GetImages }}
-                <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" width="144"></a>
-                {{ end }}
-            </div>
-        </div>
-    </div>
-    {{ end }}
     {{ end }}
 </main>
 </body>

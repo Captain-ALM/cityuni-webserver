@@ -113,6 +113,10 @@ main{
     background-color: transparent;
     box-sizing: inherit;
 }
+.item-table-caption{
+    display: table-caption;
+    caption-side: bottom;
+}
 .item-table-full, .item-table-360{
     border-style: solid;
     border-width: 1px;
@@ -147,6 +151,8 @@ main{
     justify-content: center;
 }
 .image-box > a{
+    border-style: solid;
+    border-width: 1px;
 	margin: 2px;
 }
 @media (min-width: 480px){
@@ -159,6 +165,7 @@ main{
         width: 360px;
     }
 	.image-box > a{
+        border-width: 4px;
 	    margin: 10px;
     }
 }
@@ -168,7 +175,7 @@ main{
         top: 0;
         position: relative;
         float: right;
-        width: fit-content;
+        width: auto;
     }
     .menu li{
         float: left;
