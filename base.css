@@ -115,30 +115,31 @@ main{
     background-color: transparent;
     box-sizing: inherit;
 }
-.item-table-full, .item-table-240{
+.item-table-full, .item-table-360{
     border-style: solid;
     border-width: 1px;
     background-color: transparent;
-    vertical-align: top;
     box-sizing: inherit;
 }
 .item-table-full{
     display: table-cell;
+    vertical-align: top;
     width: 100%;
 }
-.item-table-240{
+.item-table-360{
     display: none;
 }
-@media (min-width: 320px){
+@media (min-width: 360px){
     .main-table > div > div > div{
         margin: 5px;
     }
-    .item-table-240{
+    .item-table-360{
         display: table-cell;
-        width: 240px;
+        vertical-align: middle;
+        width: 360px;
     }
 }
-@media (min-width: 480px){
+@media (min-width: 570px){
     .nav{
         max-height: none;
         top: 0;

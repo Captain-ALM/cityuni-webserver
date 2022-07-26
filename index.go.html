@@ -35,7 +35,7 @@
                         <div class="item-table-full">
                             <div class="centered padded-2px"><h1>{{ .Data.About.Title }}</h1></div>
                         </div>
-                        <div class="item-table-240">
+                        <div class="item-table-360">
                             <div class="centered padded-2px"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
                         </div>
                     </div>
@@ -43,8 +43,8 @@
                         <div class="item-table-full">
                             <div class="padded-2px">{{ .Data.About.GetContent }}</div>
                         </div>
-                        <div class="item-table-240">
-                            <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="Image of Me." width="240px"></a></div>
+                        <div class="item-table-360">
+                            <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="Image of Me." width="360px"></a></div>
                         </div>
                     </div>
                 </div>
@@ -60,16 +60,20 @@
                         <div class="item-table-full">
                             <div class="centered padded-2px"><h1>{{ .Name }}</h1></div>
                         </div>
-                        <div class="item-table-240">
+                        <div class="item-table-360">
+                            {{ if eq .GetStartDate .GetEndDate }}
+                            <div class="centered padded-2px"><h4>{{ .GetStartDate }}</h4></div>
+                            {{ else }}
                             <div class="centered padded-2px"><h4>{{ .GetStartDate }} - {{ .GetEndDate }}</h4></div>
+                            {{ end }}
                         </div>
                     </div>
                     <div>
                         <div class="item-table-full">
                             <div class="padded-2px">{{ .GetContent }}</div>
                         </div>
-                        <div class="item-table-240">
-                            <div><video controls="" width="240">
+                        <div class="item-table-360">
+                            <div><video controls="" width="360">
                                 <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
                             </video></div>
                         </div>
