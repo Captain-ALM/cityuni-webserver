@@ -16,6 +16,10 @@ main{
 .centered{
     text-align: center;
 }
+.content > p{
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
 .header{
     position: fixed;
     top: 0;
@@ -27,6 +31,9 @@ main{
     height: 82px;
     overflow: hidden;
     text-align: center;
+}
+.sort-button{
+    cursor: pointer;
 }
 .home-button > div, .sort-button > div{
     display: inline;
