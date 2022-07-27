@@ -58,9 +58,12 @@ main{
 }
 .so-pane > *{
     font-size: 24px;
-    text-align: center;
+    text-align: left;
     width: 180px;
     padding: 0 1px;
+}
+.so-pane > label{
+    background-color: transparent;
 }
 .nav-menu, .sort-menu, .data-hold{
 	display: none;
@@ -121,7 +124,7 @@ main{
     text-align: center;
     vertical-align: middle;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
 }
 .main-box{
     display: -webkit-box;

@@ -33,6 +33,7 @@
         <input id="so-theme" type="hidden" name="light" />
         {{ end }}
         {{ $sort := 0 }}
+        <p>
         <label class="no-dec" for="so-order">Order by:</label>
         <select name="order" id="so-order">
             {{ if eq .OrderStartDate 0 }}
@@ -60,20 +61,25 @@
             {{ $sort = .OrderDuration }}
             {{ end }}
         </select>
+        </p>
+        <p>
         <label class="no-dec" for="so-sort">Sort:</label>
         <select name="sort" id="so-sort">
-            {{ if lt $sort 0 }}
+            {{ if gt $sort 0 }}
             <option value="asc" selected>Ascending</option>
             {{ else }}
             <option value="asc">Ascending</option>
             {{ end }}
-            {{ if gt $sort 0 }}
+            {{ if lt $sort 0 }}
             <option value="desc" selected>Descending</option>
             {{ else }}
             <option value="desc">Descending</option>
             {{ end }}
         </select>
+        </p>
+        <p>
         <input id="so-submit" type="submit" value="Commit">
+        </p>
     </form>
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu" title="Navigation Links"><span class="hmb-line"></span></label>
