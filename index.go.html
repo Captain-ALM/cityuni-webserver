@@ -79,10 +79,16 @@
                     <div class="content">{{ .GetContent }}</div>
                 </div>
                 <div class="item-table-360">
-                    <div><video controls width="360">
-                        <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
-                        <a href="{{ .VideoLocation }}">The Video</a>
-                    </video></div>
+                    <div>
+                    {{ if eq .VideoLocation "" }}
+                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video">
+                    {{ else }}
+                        <video controls width="360">
+                            <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
+                            <a href="{{ .VideoLocation }}">The Video</a>
+                        </video>
+                    {{ end }
+                    </div>
                 </div>
             </div>
             {{ if not (eq .GetImageCount 0) }}
