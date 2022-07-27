@@ -16,14 +16,14 @@
 <body>
 <header class="header">
     {{ if .Light }}
-    <a href="?light" class="home-button no-dec"><div><b>&#8962;</b></div></a>
-    <a href="?{{ .Parameters }}" class="home-button no-dec"><div><b>&#9790;</b></div></a>
+    <a href="?light" class="home-button no-dec"><div><img src="{{ .Data.LogoImageLocation }}" width="64px" alt="&#8962;"></div></a>
+    <a href="?{{ .Parameters }}" class="home-button no-dec"><div><img src="{{ .Data.MoonImageLocation }}" width="64px" alt='{{ "{" }}'></div></a>
     {{ else }}
-    <a href="?" class="home-button no-dec"><div><b>&#8962;</b></div></a>
+    <a href="?" class="home-button no-dec"><div><img src="{{ .Data.LogoImageLocation }}" width="64px" alt="&#8962;"></div></a>
     {{ if eq .Parameters "" }}
-    <a href="?light" class="home-button no-dec"><div><b>&#9737;</b></div></a>
+    <a href="?light" class="home-button no-dec"><div><img src="{{ .Data.SunImageLocation }}" width="64px" alt='()'></div></a>
     {{ else }}
-    <a href="?light&{{ .Parameters }}" class="home-button no-dec"><div><b>&#9737;</b></div></a>
+    <a href="?light&{{ .Parameters }}" class="home-button no-dec"><div><img src="{{ .Data.SunImageLocation }}" width="64px" alt='()'></div></a>
     {{ end }}
     {{ end }}
     <input class="sort-menu" type="checkbox" id="sort-menu"/>
@@ -81,9 +81,9 @@
                 <div class="item-table-360">
                     <div>
                     {{ if eq .VideoLocation "" }}
-                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="360">
+                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
                     {{ else }}
-                        <video controls width="360">
+                        <video controls width="360px">
                             <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
                             <a href="{{ .VideoLocation }}">The Video</a>
                         </video>
@@ -95,7 +95,7 @@
             <div class="item-table-caption">
                 <div class="image-box">
                     {{ range .GetImages }}
-                    <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" alt="{{ .ImageAltText }}" width="240"></a>
+                    <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" alt="{{ .ImageAltText }}" width="240px"></a>
                     {{ end }}
                 </div>
             </div>

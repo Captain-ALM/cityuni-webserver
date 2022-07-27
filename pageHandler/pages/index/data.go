@@ -9,6 +9,9 @@ type DataYaml struct {
 	CSSDarkURL           template.URL            `yaml:"cssDarkURL"`
 	JScriptURL           template.URL            `yaml:"jScriptURL"`
 	NoVideoImageLocation template.URL            `yaml:"noVideoImageLocation"`
+	LogoImageLocation    template.URL            `yaml:"logoImageLocation"`
+	SunImageLocation     template.URL            `yaml:"sunImageLocation"`
+	MoonImageLocation    template.URL            `yaml:"moonImageLocation"`
 	About                AboutYaml               `yaml:"about"`
 	Entries              []EntryYaml             `yaml:"entries"`
 }
