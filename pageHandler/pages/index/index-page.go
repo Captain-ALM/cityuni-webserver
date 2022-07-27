@@ -90,7 +90,7 @@ func (p *Page) GetContents(urlParameters url.Values) (contentType string, conten
 	theMarshal := &Marshal{
 		Data:       *theData,
 		Light:      urlParameters.Has("light"),
-		Parameters: p.getNonThemedCleanQuery(urlParameters),
+		Parameters: template.URL(p.getNonThemedCleanQuery(urlParameters)),
 	}
 	switch strings.ToLower(urlParameters.Get("order")) {
 	case "end":

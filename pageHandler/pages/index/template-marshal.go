@@ -1,10 +1,13 @@
 package index
 
-import "sort"
+import (
+	"html/template"
+	"sort"
+)
 
 type Marshal struct {
 	Data           DataYaml
-	Parameters     string
+	Parameters     template.URL
 	OrderStartDate int8
 	OrderEndDate   int8
 	OrderName      int8

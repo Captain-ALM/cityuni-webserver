@@ -10,20 +10,20 @@ import (
 const dateFormat = "01-2006"
 
 type EntryYaml struct {
-	Name               string        `yaml:"name"`
-	Content            string        `yaml:"content"`
-	StartDate          yaml.DateType `yaml:"startDate"`
-	EndDate            yaml.DateType `yaml:"endDate"`
-	VideoLocation      string        `yaml:"videoLocation"`
-	VideoContentType   string        `yaml:"videoContentType"`
-	ThumbnailLocations []string      `yaml:"thumbnailLocations"`
-	ImageLocations     []string      `yaml:"imageLocations"`
-	ImageAltTexts      []string      `yaml:"imageAltTexts"`
+	Name               string         `yaml:"name"`
+	Content            string         `yaml:"content"`
+	StartDate          yaml.DateType  `yaml:"startDate"`
+	EndDate            yaml.DateType  `yaml:"endDate"`
+	VideoLocation      template.URL   `yaml:"videoLocation"`
+	VideoContentType   string         `yaml:"videoContentType"`
+	ThumbnailLocations []template.URL `yaml:"thumbnailLocations"`
+	ImageLocations     []template.URL `yaml:"imageLocations"`
+	ImageAltTexts      []string       `yaml:"imageAltTexts"`
 }
 
 type ImageReference struct {
-	ThumbnailLocation string
-	ImageLocation     string
+	ThumbnailLocation template.URL
+	ImageLocation     template.URL
 	ImageAltText      string
 }
 

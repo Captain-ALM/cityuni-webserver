@@ -1,13 +1,15 @@
 package index
 
+import "html/template"
+
 type DataYaml struct {
-	HeaderLinks map[string]string `yaml:"headerLinks"`
-	CSSBaseURL  string            `yaml:"cssBaseURL"`
-	CSSLightURL string            `yaml:"cssLightURL"`
-	CSSDarkURL  string            `yaml:"cssDarkURL"`
-	JScriptURL  string            `yaml:"jScriptURL"`
-	About       AboutYaml         `yaml:"about"`
-	Entries     []EntryYaml       `yaml:"entries"`
+	HeaderLinks map[string]template.URL `yaml:"headerLinks"`
+	CSSBaseURL  template.URL            `yaml:"cssBaseURL"`
+	CSSLightURL template.URL            `yaml:"cssLightURL"`
+	CSSDarkURL  template.URL            `yaml:"cssDarkURL"`
+	JScriptURL  template.URL            `yaml:"jScriptURL"`
+	About       AboutYaml               `yaml:"about"`
+	Entries     []EntryYaml             `yaml:"entries"`
 }
 
 func (dy DataYaml) GetHeaderLabels() []string {
@@ -23,7 +25,7 @@ func (dy DataYaml) GetHeaderLabels() []string {
 	return toReturn
 }
 
-func (dy DataYaml) GetHeaderLink(headerLabel string) string {
+func (dy DataYaml) GetHeaderLink(headerLabel string) template.URL {
 	if dy.HeaderLinks == nil {
 		return ""
 	}
