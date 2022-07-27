@@ -4,6 +4,7 @@ import (
 	"golang.captainalm.com/cityuni-webserver/utils/yaml"
 	"html/template"
 	"math"
+	"net/http"
 	"time"
 )
 
@@ -31,12 +32,20 @@ func (ey EntryYaml) GetStartDate() string {
 	return ey.StartDate.Format(dateFormat)
 }
 
+func (ey EntryYaml) GetStartDateHTML() string {
+	return ey.StartDate.Format(http.TimeFormat)
+}
+
 func (ey EntryYaml) GetEndDate() string {
 	if ey.EndDate.IsZero() {
 		return ""
 	} else {
 		return ey.EndDate.Format(dateFormat)
 	}
+}
+
+func (ey EntryYaml) GetEndDateHTML() string {
+	return ey.GetEndTime().Format(http.TimeFormat)
 }
 
 func (ey EntryYaml) GetEndTime() time.Time {

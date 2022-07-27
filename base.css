@@ -50,7 +50,19 @@ main{
     overflow: hidden;
 	max-height: 0;
 }
-.nav-menu, .sort-menu, .duration-hold{
+.so-pane{
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    max-height: 0;
+}
+.so-pane > *{
+    font-size: 24px;
+    text-align: center;
+    width: 90px;
+    padding: 0 1px;
+}
+.nav-menu, .sort-menu, .data-hold{
 	display: none;
 }
 .menu a{
@@ -96,6 +108,20 @@ main{
 .nav-menu:checked ~ .hmb .hmb-line::after{
     transform: rotate(45deg);
     top:0;
+}
+.sort-menu:checked ~ .so-pane{
+    display: block;
+    box-sizing: content-box;
+    position: fixed;
+    top: 85px;
+    max-height: 48px;
+    width: 360px;
+    height: 32px;
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 1px;
 }
 .main-box{
     display: -webkit-box;
@@ -175,7 +201,7 @@ main{
     border-width: 1px;
 	margin: 2px;
 }
-@media (min-width: 540px){
+@media (min-width: 560px){
     .main-box > div, footer > p{
         margin: 5px;
     }

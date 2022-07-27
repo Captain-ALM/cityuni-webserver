@@ -1,4 +1,4 @@
-body{
+body, .so-pane > *{
 	color: #f9f9f9;
 	background-color: #050506;
 	border-color: #696969;
@@ -6,7 +6,7 @@ body{
 a{
 	color: #b0b0f0;
 }
-.header, .nav, footer{
+.header, .nav, footer, .so-pane{
 	background-color: #1d1d1e;
 }
 .home-button > div, .sort-button > div, .menu a{
@@ -23,6 +23,9 @@ a{
 }
 .item-table{
 	background-color: #3f3f3f;
+}
+.so-pane{
+	border-color: #3f3f3f;
 }
 .item-table > div > div, .item-table-caption{
 	border-color: #f5deb3;
