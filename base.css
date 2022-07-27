@@ -56,13 +56,13 @@ main{
     position: fixed;
     max-height: 0;
 }
-.so-pane > *{
+.so-pane > p > *{
     font-size: 24px;
     text-align: left;
     width: 180px;
     padding: 0 1px;
 }
-.so-pane > label{
+.so-pane > p > label{
     background-color: transparent;
 }
 .nav-menu, .sort-menu, .data-hold{
