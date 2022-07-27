@@ -17,6 +17,7 @@ main{
     text-align: center;
 }
 .content > p{
+    word-break: break-all;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
