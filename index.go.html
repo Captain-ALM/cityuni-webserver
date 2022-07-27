@@ -26,6 +26,8 @@
     <a href="?light&{{ .Parameters }}" class="home-button no-dec"><div><b>&#9737;</b></div></a>
     {{ end }}
     {{ end }}
+    <input class="sort-menu" type="checkbox" id="sort-menu"/>
+    <label class="sort-button no-dec" for="sort-menu"><div><b>&#8595;</b></div></label>
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu"><span class="hmb-line"></span></label>
     <nav class="nav">
@@ -93,6 +95,7 @@
             </div>
             {{ end }}
         </div>
+        <div class="duration-hold">{{ .GetInt64Duration }}</div>
     </div>
     {{ end }}
 </main>

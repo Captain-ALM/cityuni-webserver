@@ -21,18 +21,18 @@ main{
     top: 0;
     width: 100%;
 }
-.home-button{
+.home-button, .sort-button{
     display: inline-block;
-    width: 76px;
+    width: 64px;
     height: 82px;
     overflow: hidden;
+    text-align: center;
 }
-.home-button > div{
+.home-button > div, .sort-button > div{
     display: inline;
     font-size: 60px;
-    padding: 12px 8px;
+    padding: 10px;
     vertical-align: middle;
-    text-align: center;
 }
 .nav{
     width: 100%;
@@ -40,7 +40,7 @@ main{
     overflow: hidden;
 	max-height: 0;
 }
-.nav-menu{
+.nav-menu, .sort-menu, .duration-hold{
 	display: none;
 }
 .menu a{
@@ -104,7 +104,7 @@ main{
     align-content: center;
     width: 100%;
 }
-.main-box > div{
+.main-box > div, footer > p{
     margin: 3px 0;
     padding: 2px;
     box-sizing: content-box;
@@ -166,7 +166,7 @@ main{
 	margin: 2px;
 }
 @media (min-width: 540px){
-    .main-box > div{
+    .main-box > div, footer > p{
         margin: 5px;
     }
     .item-table-360{

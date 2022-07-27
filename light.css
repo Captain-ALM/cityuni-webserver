@@ -12,7 +12,7 @@ a{
 .home-button > div, .menu a{
     color: #1f1f1f;
 }
-.home-button:hover, .menu a:hover, .hmb:hover{
+.home-button:hover, .menu a:hover, .hmb:hover, .sort-button div, .sort-menu:checked ~ .sort-button div{
     background-color: #9f9f9e;
 }
 .hmb-line, .hmb-line::before, .hmb-line::after{

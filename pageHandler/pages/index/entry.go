@@ -55,6 +55,10 @@ func (ey EntryYaml) GetDuration() time.Duration {
 	return ey.GetEndTime().Sub(ey.StartDate.Time).Truncate(time.Second)
 }
 
+func (ey EntryYaml) GetInt64Duration() int64 {
+	return int64(ey.GetDuration())
+}
+
 func (ey EntryYaml) GetImageCount() int {
 	return int(math.Min(math.Min(float64(len(ey.ThumbnailLocations)), float64(len(ey.ImageLocations))), float64(len(ey.ImageAltTexts))))
 }
