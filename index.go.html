@@ -81,7 +81,7 @@
                 <div class="item-table-360">
                     <div>
                     {{ if eq .VideoLocation "" }}
-                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="320">
+                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="360">
                     {{ else }}
                         <video controls width="360">
                             <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
