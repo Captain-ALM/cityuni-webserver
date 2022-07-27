@@ -23,14 +23,14 @@ main{
 }
 .home-button{
     display: inline-block;
-    width: 82px;
+    width: 76px;
     height: 82px;
     overflow: hidden;
 }
 .home-button > div{
     display: inline;
     font-size: 60px;
-    padding: 12px;
+    padding: 12px 8px;
     vertical-align: middle;
     text-align: center;
 }
