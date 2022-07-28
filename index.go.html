@@ -111,7 +111,7 @@
             </div>
             <div class="small-only-row">
                 <div class="item-table-full">
-                    <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
+                    <div class="centered"><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
                 </div>
             </div>
         </div>
@@ -124,6 +124,15 @@
                     <div class="centered"><h1>{{ .Name }}</h1></div>
                 </div>
                 <div class="item-table-360">
+                    {{ if eq .GetStartDate .GetEndDate }}
+                    <div class="centered"><h4>{{ .GetStartDate }}</h4></div>
+                    {{ else }}
+                    <div class="centered"><h4>{{ .GetStartDate }} - {{ .GetEndDate }}</h4></div>
+                    {{ end }}
+                </div>
+            </div>
+            <div class="small-only-row">
+                <div class="item-table-full">
                     {{ if eq .GetStartDate .GetEndDate }}
                     <div class="centered"><h4>{{ .GetStartDate }}</h4></div>
                     {{ else }}
@@ -145,6 +154,20 @@
                             <a href="{{ .VideoLocation }}">The Video</a>
                         </video>
                     {{ end }}
+                    </div>
+                </div>
+            </div>
+            <div class="small-only-row">
+                <div class="item-table-full">
+                    <div class="centered">
+                        {{ if eq .VideoLocation "" }}
+                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
+                        {{ else }}
+                        <video controls width="360px">
+                            <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
+                            <a href="{{ .VideoLocation }}">The Video</a>
+                        </video>
+                        {{ end }}
                     </div>
                 </div>
             </div>
