@@ -17,12 +17,14 @@ const yamlName = "index.go.yml"
 
 func NewPage(dataStore string, cacheTemplates bool) *Page {
 	var ptm *sync.Mutex
+	var sdm *sync.Mutex
 	if cacheTemplates {
 		ptm = &sync.Mutex{}
+		sdm = &sync.Mutex{}
 	}
 	pageToReturn := &Page{
 		DataStore:         dataStore,
-		StoredDataMutex:   &sync.Mutex{},
+		StoredDataMutex:   sdm,
 		PageTemplateMutex: ptm,
 	}
 	return pageToReturn
@@ -51,6 +53,17 @@ func (p *Page) GetLastModified() time.Time {
 }
 
 func (p *Page) GetCacheIDExtension(urlParameters url.Values) string {
+	toReturn := p.getNonThemedCleanQuery(urlParameters)
+	if toReturn != "" {
+		toReturn += "&"
+	}
+	if urlParameters.Has("light") {
+		toReturn += "light"
+	}
+	return strings.TrimRight(toReturn, "&")
+}
+
+func (p *Page) getNonThemedCleanQuery(urlParameters url.Values) string {
 	toReturn := ""
 	if urlParameters.Has("order") {
 		if theParameter := strings.ToLower(urlParameters.Get("order")); theParameter == "start" || theParameter == "end" || theParameter == "name" || theParameter == "duration" {
@@ -59,11 +72,8 @@ func (p *Page) GetCacheIDExtension(urlParameters url.Values) string {
 	}
 	if urlParameters.Has("sort") {
 		if theParameter := strings.ToLower(urlParameters.Get("sort")); theParameter == "asc" || theParameter == "ascending" || theParameter == "desc" || theParameter == "descending" {
-			toReturn += "sort=" + theParameter + "&"
+			toReturn += "sort=" + theParameter
 		}
-	}
-	if urlParameters.Has("light") {
-		toReturn += "light"
 	}
 	return strings.TrimRight(toReturn, "&")
 }
@@ -78,8 +88,9 @@ func (p *Page) GetContents(urlParameters url.Values) (contentType string, conten
 		return "text/plain", []byte("Cannot Get Data.\r\n" + err.Error()), false
 	}
 	theMarshal := &Marshal{
-		Data:  *theData,
-		Light: urlParameters.Has("light"),
+		Data:       *theData,
+		Light:      urlParameters.Has("light"),
+		Parameters: template.URL(p.getNonThemedCleanQuery(urlParameters)),
 	}
 	switch strings.ToLower(urlParameters.Get("order")) {
 	case "end":

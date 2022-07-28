@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+main{
+	padding-top: 90px;
+	padding-left: 6px;
+}
+.no-dec{
+    text-decoration: none;
+}
+.no-lst-style{
+	list-style: none;
+}
+.centered{
+    text-align: center;
+}
+.content > p{
+    word-break: break-word;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.home-button, .sort-button{
+    display: inline-block;
+    width: 64px;
+    height: 82px;
+    overflow: hidden;
+    text-align: center;
+}
+.sort-button{
+    cursor: pointer;
+}
+.home-button > div, .sort-button > div{
+    display: inline;
+    font-size: 60px;
+    padding: 10px;
+    vertical-align: middle;
+}
+.nav{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+	max-height: 0;
+}
+.so-pane{
+    display: none;
+    overflow: hidden;
+    position: fixed;
+    max-height: 0;
+}
+.so-pane > *{
+    vertical-align: middle;
+    font-size: 16px;
+    text-align: left;
+    padding: 2px;
+}
+.so-pane > label{
+    background-color: transparent;
+}
+.nav-menu, .sort-menu, .data-hold{
+	display: none;
+}
+.menu a{
+    display: block;
+    padding: 32px 18px;
+}
+.hmb{
+    cursor: pointer;
+    float: right;
+	background-color: transparent;
+    padding: 40px 20px;
+}
+.hmb-line{
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+}
+.hmb-line::before, .hmb-line::after{
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .1s ease-out;
+    width: 100%;
+}
+.hmb-line::before{
+    top: 5px;
+}
+.hmb-line::after{
+    top: -5px;
+}
+.nav-menu:checked ~ nav{
+    max-height: 100%;
+}
+.nav-menu:checked ~ .hmb .hmb-line{
+    background: transparent;
+}
+.nav-menu:checked ~ .hmb .hmb-line::before{
+    transform: rotate(-45deg);
+    top:0;
+}
+.nav-menu:checked ~ .hmb .hmb-line::after{
+    transform: rotate(45deg);
+    top:0;
+}
+.sort-menu:checked ~ .so-pane{
+    display: block;
+    box-sizing: content-box;
+    position: fixed;
+    top: 85px;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    padding: 4px;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+}
+.main-box{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-align-content: center;
+    align-content: center;
+    width: 100%;
+}
+.main-box > div, footer > p{
+    margin: 3px 0;
+    padding: 2px;
+    box-sizing: content-box;
+}
+.item-table{
+    display: table;
+    width: 100%;
+    box-sizing: content-box;
+    background-color: transparent;
+}
+.item-table > div{
+    display: table-row;
+    background-color: transparent;
+    box-sizing: inherit;
+}
+.item-table > div > div > div{
+    padding: 2px;
+}
+.item-table-caption{
+    display: table-caption !important;
+    caption-side: bottom;
+}
+.item-table-full, .item-table-360, .item-table-caption{
+    border-style: solid;
+    border-width: 1px;
+    background-color: transparent;
+    box-sizing: inherit;
+}
+.item-table-full{
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+.item-table-360{
+    display: none;
+}
+.image-box{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.image-box > a{
+    border-style: solid;
+    border-width: 1px;
+	margin: 2px;
+}
+@media (min-width: 560px){
+    .main-box > div, footer > p{
+        margin: 5px;
+    }
+    .item-table-360{
+        display: table-cell;
+        vertical-align: middle;
+        width: 360px;
+        overflow: hidden;
+    }
+	.image-box > a{
+        border-width: 4px;
+	    margin: 10px;
+    }
+    .small-only-row{
+        display: none !important;
+    }
+}
+@media (min-width: 640px){
+    .nav{
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: auto;
+    }
+    .menu li{
+        float: left;
+    }
+    .menu a:hover{
+        background-color: transparent;
+    }
+    .hmb{
+        display: none;
+    }
+}

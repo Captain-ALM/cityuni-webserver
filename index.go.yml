@@ -1,0 +1,160 @@
+#This file is (C) Captain ALM
+#Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+cssBaseURL: "https://cityuni.captainalm.com/resources/assets/base.css"
+cssDarkURL: "https://cityuni.captainalm.com/resources/assets/dark.css"
+cssLightURL: "https://cityuni.captainalm.com/resources/assets/light.css"
+jScriptURL: "https://cityuni.captainalm.com/resources/assets/index.js"
+noVideoImageLocation: "https://cityuni.captainalm.com/resources/assets/novideo.png"
+logoImageLocation: "https://cityuni.captainalm.com/resources/assets/logo.png"
+moonImageLocation: "https://cityuni.captainalm.com/resources/assets/moon.png"
+sunImageLocation: "https://cityuni.captainalm.com/resources/assets/sun.png"
+sortImageLocation: "https://cityuni.captainalm.com/resources/assets/sort.png"
+headerLinks:
+  Main Portfolio: "https://portfolio.captainalm.com/"
+  Root Site Home: "https://www.captainalm.com/"
+  Github: "https://github.com/Captain-ALM/"
+about:
+  title: "Alfred Manville (Captain ALM)"
+  content: >
+    <p>
+    Hello, I'm Alfred Manville (#age# Years Old).
+    I'm a free and open-source developer who enjoys networking my laptops together,
+    writes network software to communicate between them and then tries to break said software.
+    I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
+    </p>
+    <p>
+    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript (Circa. 2000), Processing and Microsoft Smallbasic
+    (I have also dabbled in C++, Python and Bash/Batch).
+    I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a command console in VB .net for my own
+    pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some network communication applications
+    (Including a peer-to-peer VOIP client using NAudio as the audio library and my own network wrapper library).
+    </p>
+    <p>
+    On the cracking / hacking side, I've used virtual machines a lot (Mainly infrastructure testing
+    but I did at one point try creating and breaking into a test windows domain network I had setup).
+    I've also used VMs to pull perform a PXE boot off a network and analyse the partially deployed image
+    (And this is why the deployment servers should be switched off when unneeded, especially since PXE
+    auto-domain-join would store its credentials in the image).
+    I also played around with accessing the RDP servers when I was in secondary school (Turns out remote apps
+    is just a glorified application auto-launcher with window size detection).
+    </p>
+    <p>
+    I also <a href="https://subsection.captainalm.com/">bake bread</a> although this sub-site is still under construction (Mostly learnt from my grandma).
+    I also play video-games and am an expert at using lower-end hardware.
+    </p>
+    <p>
+    I used to do Karate (Kyokushin Brown Belt) and I wish I could still fit my bike.
+    My <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
+    </p>
+  thumbnailLocation: "https://cityuni.captainalm.com/resources/assets/imageofyou_t.jpg"
+  imageLocation: "https://cityuni.captainalm.com/resources/assets/imageofyou.jpg"
+  imageAltText: "Image of me."
+  birthYear: 2002
+  contactEmail: "alfred@captainalm.com"
+entries:
+  - name: "Bootcamp 2021: Ninjaformer GUI"
+    content: >
+      <p>
+      My first programming task at City, concluding the 2 week 2021 Programming Bootcamp,
+      although I have only spent 3 days programming this and was a tad bit too ambitious.
+      (I could have started earlier though)
+      </p>
+      <p>
+      This Processing project show that I can use arrays, loops, mouse and keyboard interaction and geometric transforms.
+      The project contains a GUI library that I made to create the menu system for what could have been the Ninjaformer game.
+      </p>
+      <p>
+      Unfortunately, while the code for loading tile, sprite and level information exists (JSON, sprite sheet support);
+      I ran out of time before the submission to actually even start on the game. But you can play around with the main code and build your own GUIs too so... 
+      </p>
+      <p>
+      Here is the repo: <a href="https://github.com/Captain-ALM/Ninjaformer-Processing">https://github.com/Captain-ALM/Ninjaformer-Processing</a>
+      </p>
+    startDate: "01/10/2021"
+    endDate: "31/10/2021"
+    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid1.mp4"
+    videoContentType: "video/mp4"
+    thumbnailLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic1_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic2_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic3_t.png"
+    imageLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic1.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic2.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic3.png"
+    imageAltTexts:
+      - "Level select screen."
+      - "Empty content interface (Gameplay)."
+      - "Level editor screen."
+  - name: "City Game Project 2022: Ninjaformer (Alpha, Beta)"
+    content: >
+      <p>
+      My first major project at City (A Java Game), concluding 2.2 Months of programming.
+      This game uses the University provided game library (Which is just JBox2D extended).
+      </p>
+      <p>
+      Looking back on this, I wish I started earlier (Like January) that way I could have implemented all the features I wanted.
+      This project allows for levels to be designed within the program and allows them to be edited as XML outside the program.
+      </p>
+      <p>
+      The code is extensible and it is relatively straight forward to implement new features. There are a few bugs that can crop up
+      (Such as sticking to surfaces due to ground body updates) but I already know ways to fix them.
+      This project relies on part of a GUI library I built in it and I had to modify the CityGame library by extending it.
+      The audio and assets were also created by me, although they're a bit amateurish as I'm a computer scientist not an artist!
+      </p>
+      <p>
+      This game is designed to be a story based game... The tutorial level at the beginning of the game is the dream in which the main
+      character dreams of being a ninja, this allows for the player to learn the controls and basic mechanics of the game.
+      The next level is the training level in which the ninja trains within a monastery.
+      The final level allows the ninja to "complete" the game while exploring a set of caves.
+      </p>
+      <p>
+      Here is the repo: <a href="https://github.com/cityteaching/citygame2122-Captain-ALM"><strike><del>Not public due to university anti-plagiarism policy.</del></strike></a>
+      </p>
+    startDate: "25/02/2022"
+    endDate: "08/05/2022"
+    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid2.mp4"
+    videoContentType: "video/mp4"
+    thumbnailLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic4_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic5_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic6_t.png"
+    imageLocations:
+      - "https://cityuni.captainalm.com/resources/assets/pic4.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic5.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic6.png"
+    imageAltTexts:
+      - "Cave level."
+      - "Tutorial level."
+      - "Training level."
+  - name: "Global Game Jam January 2022 : Shadow work"
+    content: >
+      <p>
+      I may have not done any programming for this (Even though I know C#) but I helped write a good chunk of the background story
+      (I also helped with the level design although it turns out 48 hours is hard to get polished stuff done in, so some stuff had to be axed).
+      </p>
+      <p>
+      Read about and get the game files from: <a href="https://globalgamejam.org/2022/games/shadow-work-8">https://globalgamejam.org/2022/games/shadow-work-8</a>
+      </p>
+      <p>
+      Download the windows executable from: <a href="https://cdn.captainalm.com/download/ShadowWorkExecutable.zip">https://cdn.captainalm.com/download/ShadowWorkExecutable.zip</a>
+      </p>
+    startDate: "20/01/2022"
+    endDate: "30/01/2022"
+    #videoLocation: "https://cityuni.captainalm.com/resources/stream/vid3.mp4"
+    #videoContentType: "video/mp4"
+  - name: "City-University Portfolio"
+    content: >
+      <p>
+      This project is what's outputting this page at the moment! The backend is written in Go and there is both custom front-end Javascript and CSS!
+      The pages support theming and the entries can be sorted through Javascript or on the backend through GET parameters.
+      </p>
+      <p>
+      This project is under the BSD-3-Clause License, so if reusing, you must scrub references to me, the yml file this is written in is under
+      Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-nd.png" alt="License" height="16"></a>.
+      </p>
+      <p>
+      Find the source code here: <a href="https://code.mrmelon54.xyz/alfred/cityuni-webserver">https://code.mrmelon54.xyz/alfred/cityuni-webserver</a>
+      </p>
+    startDate: "13/07/2022"

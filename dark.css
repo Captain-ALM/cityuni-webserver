@@ -1,0 +1,38 @@
+body{
+	color: #f9f9f9;
+	background-color: #050506;
+	border-color: #696969;
+}
+a{
+	color: #b0b0f0;
+}
+.header, .nav, footer, .so-pane{
+	background-color: #1d1d1e;
+}
+.home-button > div, .sort-button > div, .menu a, .so-pane > *{
+	color: #e0e0e0;
+}
+.home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .so-pane > input, .so-pane > select{
+	background-color: #606061;
+}
+.hmb-line, .hmb-line::before, .hmb-line::after{
+    background: #e0e0e0;
+}
+.main-box{
+	background-color: #0f0f0f;
+}
+.item-table{
+	background-color: #3f3f3f;
+}
+.so-pane{
+	border-color: #3f3f3f;
+}
+.item-table > div > div, .item-table-caption{
+	border-color: #f5deb3;
+}
+.image-box{
+	background-color: #4f4f4f;
+}
+.image-box > a{
+	border-color: #b0b0f0;
+}
