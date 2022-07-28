@@ -9,10 +9,10 @@ a{
 .header, .nav, footer, .so-pane{
     background-color: #e2e2e1;
 }
-.home-button > div, .sort-button > div, .menu a, .so-pane > p > *{
+.home-button > div, .sort-button > div, .menu a, .so-pane > *{
     color: #1f1f1f;
 }
-.home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .so-pane > p > input, .so-pane > p > select{
+.home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .so-pane > input, .so-pane > select{
     background-color: #9f9f9e;
 }
 .hmb-line, .hmb-line::before, .hmb-line::after{
