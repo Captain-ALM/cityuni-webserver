@@ -60,7 +60,7 @@ main{
     vertical-align: middle;
     font-size: 16px;
     text-align: left;
-    padding: 0 2px;
+    padding: 2px;
 }
 .so-pane > label{
     background-color: transparent;
@@ -216,6 +216,9 @@ main{
 	.image-box > a{
         border-width: 4px;
 	    margin: 10px;
+    }
+    .small-only-row{
+        display: none !important;
     }
 }
 @media (min-width: 640px){

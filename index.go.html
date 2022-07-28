@@ -96,11 +96,21 @@
                     <div class="centered"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
                 </div>
             </div>
+            <div class="small-only-row">
+                <div class="item-table-full">
+                    <div class="centered"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
+                </div>
+            </div>
             <div>
                 <div class="item-table-full">
                     <div class="content">{{ .Data.About.GetContent }}</div>
                 </div>
                 <div class="item-table-360">
+                    <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
+                </div>
+            </div>
+            <div class="small-only-row">
+                <div class="item-table-full">
                     <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
                 </div>
             </div>
