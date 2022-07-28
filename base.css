@@ -117,8 +117,9 @@ main{
     box-sizing: content-box;
     position: fixed;
     top: 85px;
+    max-height: 100%;
     width: auto;
-    height: 24px;
+    height: auto;
     padding: 4px;
     text-align: center;
     border-style: solid;
