@@ -12,6 +12,7 @@ type DataYaml struct {
 	LogoImageLocation    template.URL            `yaml:"logoImageLocation"`
 	SunImageLocation     template.URL            `yaml:"sunImageLocation"`
 	MoonImageLocation    template.URL            `yaml:"moonImageLocation"`
+	SortImageLocation    template.URL            `yaml:"sortImageLocation"`
 	About                AboutYaml               `yaml:"about"`
 	Entries              []EntryYaml             `yaml:"entries"`
 }
