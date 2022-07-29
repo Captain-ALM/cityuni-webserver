@@ -163,7 +163,8 @@ main{
     display: table-row;
     background-color: transparent;
     box-sizing: inherit;
-    max-width: 100%
+    width: 100%;
+    max-width: 100%;
 }
 .flex-row, .item-table > div{
     display: -webkit-box;
@@ -183,6 +184,8 @@ main{
     flex-wrap: wrap;
     -webkit-justify-content: center;
     justify-content: center;
+    width: 100%;
+    max-width: 100%;
 }
 .item-table > div > div > div{
     padding: 2px;
@@ -253,5 +256,13 @@ main{
     }
     .hmb{
         display: none;
+    }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .item-table-full, .item-table-360 {
+        display: block !important;
+    }
+    .item-table-caption{
+        display: block !important;
     }
 }
