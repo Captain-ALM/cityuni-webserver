@@ -32,6 +32,8 @@ main{
     top: 0;
     width: 100%;
     z-index: 100;
+    border-style: solid;
+    border-width: 0 0 2px;
 }
 .home-button, .sort-button{
     display: inline-block;
@@ -271,8 +273,11 @@ main{
 	margin: 2px;
 }
 @media (min-width: 560px){
-    .main-box > div, footer > p{
-        padding: 10px;
+    .main-box > div{
+        padding: 12px;
+    }
+    footer > p{
+        padding: 4px;
     }
     .item-table > div{
         -ms-flex-wrap: nowrap;

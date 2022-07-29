@@ -29,7 +29,7 @@ a{
     background-color: #c0c0c0;
     border-color: #0a214c;
 }
-.so-pane{
+.so-pane, .header{
     border-color: #c0c0c0;
 }
 .image-box, .item-heading{
