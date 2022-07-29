@@ -1,3 +1,7 @@
+/*
+This file is (C) Captain ALM
+Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+*/
 body{
 	color: #f9f9f9;
 	background-color: #050506;
@@ -9,10 +13,10 @@ a{
 .header, .nav, footer, .so-pane{
 	background-color: #1d1d1e;
 }
-.home-button > div, .sort-button > div, .menu a, .so-pane > *{
+.home-button > div, .sort-button > div, .menu a, .so-pane > form > div > * > *{
 	color: #e0e0e0;
 }
-.home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .so-pane > input, .so-pane > select{
+.home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .sort-button-active, .so-pane > form > div > span > input, .so-pane > form > div > div > select{
 	background-color: #606061;
 }
 .hmb-line, .hmb-line::before, .hmb-line::after{
@@ -23,14 +27,12 @@ a{
 }
 .item-table{
 	background-color: #3f3f3f;
-}
-.so-pane{
-	border-color: #3f3f3f;
-}
-.item-table > div > div, .item-table-caption{
 	border-color: #f5deb3;
 }
-.image-box{
+.so-pane, .header{
+	border-color: #6f6f6f;
+}
+.image-box, .item-heading{
 	background-color: #4f4f4f;
 }
 .image-box > a{

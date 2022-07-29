@@ -7,9 +7,9 @@
     <title>City University Portfolio</title>
     <link rel="stylesheet" href="{{ .Data.CSSBaseURL }}"/>
     {{ if .Light }}
-    <link rel="stylesheet" href="{{ .Data.CSSLightURL }}"/>
+    <link id="style-theme" rel="stylesheet" href="{{ .Data.CSSLightURL }}"/>
     {{ else }}
-    <link rel="stylesheet" href="{{ .Data.CSSDarkURL }}"/>
+    <link id="style-theme" rel="stylesheet" href="{{ .Data.CSSDarkURL }}"/>
     {{ end }}
     <script src="{{ .Data.JScriptURL }}"></script>
 </head>
@@ -28,13 +28,15 @@
     {{ end }}
     <input class="sort-menu" type="checkbox" id="sort-menu"/>
     <label class="sort-button no-dec" for="sort-menu" title="Order and Sort Options"><div><img src="{{ .Data.SortImageLocation }}" width="64px" alt='&#8595;'></div></label>
-    <form class="so-pane" action="?" method="get" id="so-form">
+    <div class="so-pane" id="so-pane">
+    <form action="?" method="get" id="so-form">
         {{ if .Light }}
         <input id="so-theme" type="hidden" name="light" />
         {{ end }}
+        <div>
         {{ $sort := 0 }}
-        <label class="no-dec" for="so-order">Order by:</label>
-        <select name="order" id="so-order">
+            <div><label class="no-dec" for="so-order">Order by:</label></div>
+            <div><select name="order" id="so-order">
             {{ if eq .OrderStartDate 0 }}
             <option value="start">Start Date</option>
             {{ else }}
@@ -59,9 +61,11 @@
             <option value="duration" selected>Duration</option>
             {{ $sort = .OrderDuration }}
             {{ end }}
-        </select>
-        <label class="no-dec" for="so-sort">Sort:</label>
-        <select name="sort" id="so-sort">
+            </select></div>
+        </div>
+        <div>
+            <div><label class="no-dec" for="so-sort">Sort:</label></div>
+            <div><select name="sort" id="so-sort">
             {{ if gt $sort 0 }}
             <option value="asc" selected>Ascending</option>
             {{ else }}
@@ -72,9 +76,13 @@
             {{ else }}
             <option value="desc">Descending</option>
             {{ end }}
-        </select>
-        <input id="so-submit" type="submit" value="Commit">
+            </select></div>
+        </div>
+        <div class="so-pane-full">
+        <span><input id="so-submit" type="submit" value="Commit"></span>
+        </div>
     </form>
+    </div>
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu" title="Navigation Links"><span class="hmb-line"></span></label>
     <nav class="nav" id="nav">
@@ -85,19 +93,14 @@
         </ul>
     </nav>
 </header>
-<main class="main-box">
+<main class="main-box flex-col">
     <div>
-        <div class="item-table">
-            <div>
+        <div class="item-table flex-col">
+            <div class="item-heading">
                 <div class="item-table-full">
                     <div class="centered"><h1>{{ .Data.About.Title }}</h1></div>
                 </div>
                 <div class="item-table-360">
-                    <div class="centered"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
-                </div>
-            </div>
-            <div class="small-only-row">
-                <div class="item-table-full">
                     <div class="centered"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
                 </div>
             </div>
@@ -109,30 +112,16 @@
                     <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
                 </div>
             </div>
-            <div class="small-only-row">
-                <div class="item-table-full">
-                    <div class="centered"><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
-                </div>
-            </div>
         </div>
     </div>
     {{ range .GetEntries }}
     <div>
-        <div class="item-table">
-            <div>
+        <div class="item-table flex-col">
+            <div class="item-heading">
                 <div class="item-table-full">
                     <div class="centered"><h1>{{ .Name }}</h1></div>
                 </div>
                 <div class="item-table-360">
-                    {{ if eq .GetStartDate .GetEndDate }}
-                    <div class="centered"><h4>{{ .GetStartDate }}</h4></div>
-                    {{ else }}
-                    <div class="centered"><h4>{{ .GetStartDate }} - {{ .GetEndDate }}</h4></div>
-                    {{ end }}
-                </div>
-            </div>
-            <div class="small-only-row">
-                <div class="item-table-full">
                     {{ if eq .GetStartDate .GetEndDate }}
                     <div class="centered"><h4>{{ .GetStartDate }}</h4></div>
                     {{ else }}
@@ -157,23 +146,9 @@
                     </div>
                 </div>
             </div>
-            <div class="small-only-row">
-                <div class="item-table-full">
-                    <div class="centered">
-                        {{ if eq .VideoLocation "" }}
-                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
-                        {{ else }}
-                        <video controls width="360px">
-                            <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
-                            <a href="{{ .VideoLocation }}">The Video</a>
-                        </video>
-                        {{ end }}
-                    </div>
-                </div>
-            </div>
             {{ if not (eq .GetImageCount 0) }}
             <div class="item-table-caption">
-                <div class="image-box">
+                <div class="image-box flex-row">
                     {{ range .GetImages }}
                     <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" alt="{{ .ImageAltText }}" title="{{ .ImageAltText }}" width="240px"></a>
                     {{ end }}
@@ -181,9 +156,11 @@
             </div>
             {{ end }}
         </div>
+        <!-- This needs to be moved into a script tag along with other stuff not here yet for JS support
         <div class="data-hold">{{ .GetInt64Duration }}</div>
         <div class="data-hold">{{ .GetStartDateHTML }}</div>
         <div class="data-hold">{{ .GetEndDateHTML }}</div>
+        -->
     </div>
     {{ end }}
 </main>

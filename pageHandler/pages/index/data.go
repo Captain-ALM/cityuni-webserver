@@ -3,18 +3,19 @@ package index
 import "html/template"
 
 type DataYaml struct {
-	HeaderLinks          map[string]template.URL `yaml:"headerLinks"`
-	CSSBaseURL           template.URL            `yaml:"cssBaseURL"`
-	CSSLightURL          template.URL            `yaml:"cssLightURL"`
-	CSSDarkURL           template.URL            `yaml:"cssDarkURL"`
-	JScriptURL           template.URL            `yaml:"jScriptURL"`
-	NoVideoImageLocation template.URL            `yaml:"noVideoImageLocation"`
-	LogoImageLocation    template.URL            `yaml:"logoImageLocation"`
-	SunImageLocation     template.URL            `yaml:"sunImageLocation"`
-	MoonImageLocation    template.URL            `yaml:"moonImageLocation"`
-	SortImageLocation    template.URL            `yaml:"sortImageLocation"`
-	About                AboutYaml               `yaml:"about"`
-	Entries              []EntryYaml             `yaml:"entries"`
+	HeaderLinks            map[string]template.URL `yaml:"headerLinks"`
+	CSSBaseURL             template.URL            `yaml:"cssBaseURL"`
+	CSSLightURL            template.URL            `yaml:"cssLightURL"`
+	CSSDarkURL             template.URL            `yaml:"cssDarkURL"`
+	JScriptURL             template.URL            `yaml:"jScriptURL"`
+	PlayVideoImageLocation template.URL            `yaml:"playVideoImageLocation"`
+	NoVideoImageLocation   template.URL            `yaml:"noVideoImageLocation"`
+	LogoImageLocation      template.URL            `yaml:"logoImageLocation"`
+	SunImageLocation       template.URL            `yaml:"sunImageLocation"`
+	MoonImageLocation      template.URL            `yaml:"moonImageLocation"`
+	SortImageLocation      template.URL            `yaml:"sortImageLocation"`
+	About                  AboutYaml               `yaml:"about"`
+	Entries                []EntryYaml             `yaml:"entries"`
 }
 
 func (dy DataYaml) GetHeaderLabels() []string {

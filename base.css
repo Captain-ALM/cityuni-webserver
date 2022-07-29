@@ -1,10 +1,14 @@
+/*
+This file is (C) Captain ALM
+Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+*/
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 main{
-	padding-top: 90px;
+	padding-top: 70px;
 	padding-left: 6px;
 }
 .no-dec{
@@ -27,11 +31,14 @@ main{
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 100;
+    border-style: solid;
+    border-width: 0 0 2px;
 }
 .home-button, .sort-button{
     display: inline-block;
     width: 64px;
-    height: 82px;
+    height: 62px;
     overflow: hidden;
     text-align: center;
 }
@@ -40,7 +47,7 @@ main{
 }
 .home-button > div, .sort-button > div{
     display: inline;
-    font-size: 60px;
+    font-size: 48px;
     padding: 10px;
     vertical-align: middle;
 }
@@ -56,27 +63,62 @@ main{
     position: fixed;
     max-height: 0;
 }
-.so-pane > *{
+.so-pane > form > div{
+    display: table-row;
+    background-color: transparent;
+    box-sizing: inherit;
+    max-width: 100%;
+    width: 100%;
+}
+.so-pane > form > div > div, .so-pane > form > div > span{
+    background-color: transparent;
+    box-sizing: inherit;
+    padding: 2px;
+    text-align: center;
+    vertical-align: middle;
+}
+.so-pane > form > div > div{
+    display: table-cell;
+    max-width: 50%;
+    width: 50%;
+}
+.so-pane > form > div > span{
+    display: block;
+    max-width: 100%;
+    width: 100%;
+}
+.so-pane-full{
+    display: table-caption !important;
+    caption-side: bottom;
+}
+.so-pane > form > div > * > *{
+    max-width: 100%;
+    width: 100%;
     vertical-align: middle;
     font-size: 16px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.so-pane > form > div > div > *{
     text-align: left;
-    padding: 2px;
 }
-.so-pane > label{
+.so-pane > form > div > div > label{
     background-color: transparent;
+    text-align: center;
 }
-.nav-menu, .sort-menu, .data-hold{
+.nav-menu, .sort-menu{
 	display: none;
 }
 .menu a{
     display: block;
-    padding: 32px 18px;
+    padding: 22px 18px;
 }
 .hmb{
     cursor: pointer;
     float: right;
 	background-color: transparent;
-    padding: 40px 20px;
+    padding: 30px 20px;
 }
 .hmb-line{
     display: block;
@@ -98,34 +140,63 @@ main{
 .hmb-line::after{
     top: -5px;
 }
-.nav-menu:checked ~ nav{
+.nav-menu:checked ~ nav, .nav-open{
     max-height: 100%;
 }
-.nav-menu:checked ~ .hmb .hmb-line{
+.nav-menu:checked ~ .hmb .hmb-line, .nav-open-hmb .hmb-line{
     background: transparent;
 }
-.nav-menu:checked ~ .hmb .hmb-line::before{
+.nav-menu:checked ~ .hmb .hmb-line::before, .nav-open-hmb .hmb-line::before{
     transform: rotate(-45deg);
     top:0;
 }
-.nav-menu:checked ~ .hmb .hmb-line::after{
+.nav-menu:checked ~ .hmb .hmb-line::after, .nav-open-hmb .hmb-line::after{
     transform: rotate(45deg);
     top:0;
 }
-.sort-menu:checked ~ .so-pane{
+.sort-menu:checked ~ .so-pane, .so-pane-open{
     display: block;
+    z-index: 101;
     box-sizing: content-box;
     position: fixed;
-    top: 85px;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    padding: 4px;
     text-align: center;
+    top: 66px;
+    left: 136px;
+    max-height: 100%;
+    width: 230px;
+    height: auto;
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 4px;
     border-style: solid;
-    border-width: 2px;
+    border-width: 0 2px 2px;
+    overflow: hidden;
 }
-.main-box{
+.sort-menu:checked ~ .so-pane > form, .so-pane-open > form{
+    display: table;
+    box-sizing: inherit;
+}
+.main-box > div, footer > p{
+    max-width: 100%;
+    margin: 3px 0;
+    padding: 2px;
+    box-sizing: content-box;
+}
+.item-table{
+    display: table;
+    box-sizing: content-box;
+    background-color: transparent;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    border-radius: 32px;
+    border-width: 1px;
+    border-style: solid;
+}
+.flex-col{
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -140,46 +211,17 @@ main{
     flex-direction: column;
     -webkit-align-content: center;
     align-content: center;
+    max-width: 100%;
     width: 100%;
-}
-.main-box > div, footer > p{
-    margin: 3px 0;
-    padding: 2px;
-    box-sizing: content-box;
-}
-.item-table{
-    display: table;
-    width: 100%;
-    box-sizing: content-box;
-    background-color: transparent;
+    overflow: hidden;
 }
 .item-table > div{
     display: table-row;
-    background-color: transparent;
     box-sizing: inherit;
-}
-.item-table > div > div > div{
-    padding: 2px;
-}
-.item-table-caption{
-    display: table-caption !important;
-    caption-side: bottom;
-}
-.item-table-full, .item-table-360, .item-table-caption{
-    border-style: solid;
-    border-width: 1px;
-    background-color: transparent;
-    box-sizing: inherit;
-}
-.item-table-full{
-    display: table-cell;
-    vertical-align: top;
+    max-width: 100%;
     width: 100%;
 }
-.item-table-360{
-    display: none;
-}
-.image-box{
+.flex-row, .item-table > div{
     display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -197,6 +239,33 @@ main{
     flex-wrap: wrap;
     -webkit-justify-content: center;
     justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.item-table > div > div > div{
+    padding: 2px;
+}
+.item-table-caption, .so-pane-caption{
+    display: table-caption !important;
+    caption-side: bottom;
+}
+.item-table-full, .item-table-360, .item-table-caption, .so-pane-caption{
+    background-color: transparent;
+    box-sizing: inherit;
+}
+.item-table-full{
+    display: table-cell;
+    vertical-align: top;
+    width: 100%;
+}
+.item-table-360{
+    display: table-cell;
+    vertical-align: middle;
+    max-width: 360px;
+    width: 360px;
+    overflow: hidden;
+    text-align: center;
 }
 .image-box > a{
     border-style: solid;
@@ -204,21 +273,28 @@ main{
 	margin: 2px;
 }
 @media (min-width: 560px){
-    .main-box > div, footer > p{
-        margin: 5px;
+    .main-box > div{
+        padding: 12px;
     }
-    .item-table-360{
-        display: table-cell;
-        vertical-align: middle;
-        width: 360px;
-        overflow: hidden;
+    footer > p{
+        padding: 4px;
+    }
+    .item-table > div{
+        -ms-flex-wrap: nowrap;
+        -webkit-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    }
+    .item-table-full{
+        max-width: -webkit-calc(100% - 361px);
+        max-width: -moz-calc(100% - 361px);
+        max-width: calc(100% - 361px);
+        width: -webkit-calc(100% - 361px);
+        width: -moz-calc(100% - 361px);
+        width: calc(100% - 361px);
     }
 	.image-box > a{
         border-width: 4px;
 	    margin: 10px;
-    }
-    .small-only-row{
-        display: none !important;
     }
 }
 @media (min-width: 640px){
@@ -237,5 +313,13 @@ main{
     }
     .hmb{
         display: none;
+    }
+}
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .item-table-full, .item-table-360 {
+        display: block !important;
+    }
+    .item-table-caption{
+        display: block !important;
     }
 }
