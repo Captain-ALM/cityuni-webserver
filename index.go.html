@@ -88,7 +88,7 @@
 <main class="main-box flex-col">
     <div>
         <div class="item-table flex-col">
-            <div class="flex-row">
+            <div>
                 <div class="item-table-full">
                     <div class="centered"><h1>{{ .Data.About.Title }}</h1></div>
                 </div>
@@ -96,7 +96,7 @@
                     <div class="centered"><h4>Email: <a href="mailto:{{ .Data.About.ContactEmail }}">{{ .Data.About.ContactEmail }}</a></h4></div>
                 </div>
             </div>
-            <div class="flex-row">
+            <div>
                 <div class="item-table-full">
                     <div class="content">{{ .Data.About.GetContent }}</div>
                 </div>
@@ -109,7 +109,7 @@
     {{ range .GetEntries }}
     <div>
         <div class="item-table flex-col">
-            <div class="flex-row">
+            <div>
                 <div class="item-table-full">
                     <div class="centered"><h1>{{ .Name }}</h1></div>
                 </div>
@@ -121,7 +121,7 @@
                     {{ end }}
                 </div>
             </div>
-            <div class="flex-row">
+            <div>
                 <div class="item-table-full">
                     <div class="content">{{ .GetContent }}</div>
                 </div>
@@ -139,7 +139,7 @@
                 </div>
             </div>
             {{ if not (eq .GetImageCount 0) }}
-            <div class="item-table-caption flex-row">
+            <div class="item-table-caption">
                 <div class="image-box flex-row">
                     {{ range .GetImages }}
                     <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" alt="{{ .ImageAltText }}" title="{{ .ImageAltText }}" width="240px"></a>
