@@ -80,7 +80,7 @@ main{
     max-width: 50%;
     width: 50%;
 }
-.so-pane > form > div > span, .so-pane > form > div > span > *{
+.so-pane > form > div > span{
     display: block;
     max-width: 100%;
     width: 100%;
@@ -89,15 +89,17 @@ main{
     display: table-caption !important;
     caption-side: bottom;
 }
-.so-pane > form > div > div > *{
+.so-pane > form > div > * > *{
     max-width: 100%;
     width: 100%;
     vertical-align: middle;
     font-size: 16px;
-    text-align: left;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+.so-pane > form > div > div > *{
+    text-align: left;
 }
 .so-pane > form > div > div > label{
     background-color: transparent;
@@ -158,7 +160,7 @@ main{
     top: 85px;
     left: 136px;
     max-height: 100%;
-    width: 280px;
+    width: 210px;
     height: auto;
     -webkit-border-bottom-left-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;

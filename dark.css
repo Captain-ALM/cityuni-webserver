@@ -13,7 +13,7 @@ a{
 .header, .nav, footer, .so-pane{
 	background-color: #1d1d1e;
 }
-.home-button > div, .sort-button > div, .menu a, .so-pane > form > div > div > *{
+.home-button > div, .sort-button > div, .menu a, .so-pane > form > div > * > *{
 	color: #e0e0e0;
 }
 .home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .sort-button-active, .so-pane > form > div > span > input, .so-pane > form > div > div > select{
