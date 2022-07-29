@@ -32,7 +32,7 @@ a{
 .so-pane{
     border-color: #c0c0c0;
 }
-.image-box{
+.image-box, .item-heading{
     background-color: #b0b0b0;
 }
 .image-box > a{
