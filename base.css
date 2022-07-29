@@ -90,6 +90,8 @@ main{
     caption-side: bottom;
 }
 .so-pane > form > div > * > *{
+    max-width: 100%;
+    width: 100%;
     vertical-align: middle;
     font-size: 16px;
     -webkit-border-radius: 5px;
@@ -158,8 +160,7 @@ main{
     top: 85px;
     left: 136px;
     max-height: 100%;
-    max-width: 100%;
-    width: auto;
+    width: 220px;
     height: auto;
     -webkit-border-bottom-left-radius: 8px;
     -webkit-border-bottom-right-radius: 8px;
