@@ -32,10 +32,10 @@
         {{ if .Light }}
         <input id="so-theme" type="hidden" name="light" />
         {{ end }}
-        <p>
+        <div>
         {{ $sort := 0 }}
-        <label class="no-dec" for="so-order">Order by:</label>
-        <select name="order" id="so-order">
+            <div><label class="no-dec" for="so-order">Order by:</label></div>
+            <div><select name="order" id="so-order">
             {{ if eq .OrderStartDate 0 }}
             <option value="start">Start Date</option>
             {{ else }}
@@ -60,11 +60,11 @@
             <option value="duration" selected>Duration</option>
             {{ $sort = .OrderDuration }}
             {{ end }}
-        </select>
-        </p>
-        <p>
-        <label class="no-dec" for="so-sort">Sort:</label>
-        <select name="sort" id="so-sort">
+            </select></div>
+        </div>
+        <div>
+            <div><label class="no-dec" for="so-sort">Sort:</label></div>
+            <div><select name="sort" id="so-sort">
             {{ if gt $sort 0 }}
             <option value="asc" selected>Ascending</option>
             {{ else }}
@@ -75,11 +75,11 @@
             {{ else }}
             <option value="desc">Descending</option>
             {{ end }}
-        </select>
-        </p>
-        <p>
-        <input id="so-submit" type="submit" value="Commit">
-        </p>
+            </select></div>
+        </div>
+        <div>
+        <div><input id="so-submit" type="submit" value="Commit"></div>
+        </div>
     </form>
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu" title="Navigation Links"><span class="hmb-line"></span></label>
