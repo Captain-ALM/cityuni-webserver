@@ -28,7 +28,8 @@
     {{ end }}
     <input class="sort-menu" type="checkbox" id="sort-menu"/>
     <label class="sort-button no-dec" for="sort-menu" title="Order and Sort Options"><div><img src="{{ .Data.SortImageLocation }}" width="64px" alt='&#8595;'></div></label>
-    <form class="so-pane" action="?" method="get" id="so-form">
+    <div class="so-pane">
+    <form action="?" method="get" id="so-form">
         {{ if .Light }}
         <input id="so-theme" type="hidden" name="light" />
         {{ end }}
@@ -81,6 +82,7 @@
         <span><input id="so-submit" type="submit" value="Commit"></span>
         </div>
     </form>
+    </div>
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu" title="Navigation Links"><span class="hmb-line"></span></label>
     <nav class="nav" id="nav">

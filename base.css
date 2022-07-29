@@ -61,26 +61,26 @@ main{
     position: fixed;
     max-height: 0;
 }
-.so-pane > div{
+.so-pane > form > div{
     display: table-row;
     background-color: transparent;
     box-sizing: inherit;
     max-width: 100%;
     width: 100%;
 }
-.so-pane > div > div, .so-pane > div > span{
+.so-pane > form > div > div, .so-pane > form > div > span{
     background-color: transparent;
-    box-sizing: content-box;
+    box-sizing: inherit;
     padding: 2px;
     text-align: center;
     vertical-align: middle;
 }
-.so-pane > div > div{
+.so-pane > form > div > div{
     display: table-cell;
     max-width: 50%;
     width: 50%;
 }
-.so-pane > div > span{
+.so-pane > form > div > span{
     display: block;
     max-width: 100%;
     width: 100%;
@@ -89,7 +89,7 @@ main{
     display: table-caption !important;
     caption-side: bottom;
 }
-.so-pane > div > div > *{
+.so-pane > form > div > div > *{
     max-width: 100%;
     width: 100%;
     vertical-align: middle;
@@ -99,7 +99,7 @@ main{
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
-.so-pane > div > div > label{
+.so-pane > form > div > div > label{
     background-color: transparent;
     text-align: center;
 }
