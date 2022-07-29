@@ -8,7 +8,7 @@ Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internati
     box-sizing: border-box;
 }
 main{
-	padding-top: 90px;
+	padding-top: 70px;
 	padding-left: 6px;
 }
 .no-dec{
@@ -36,7 +36,7 @@ main{
 .home-button, .sort-button{
     display: inline-block;
     width: 64px;
-    height: 82px;
+    height: 62px;
     overflow: hidden;
     text-align: center;
 }
@@ -45,7 +45,7 @@ main{
 }
 .home-button > div, .sort-button > div{
     display: inline;
-    font-size: 60px;
+    font-size: 48px;
     padding: 10px;
     vertical-align: middle;
 }
@@ -110,13 +110,13 @@ main{
 }
 .menu a{
     display: block;
-    padding: 32px 18px;
+    padding: 22px 18px;
 }
 .hmb{
     cursor: pointer;
     float: right;
 	background-color: transparent;
-    padding: 40px 20px;
+    padding: 30px 20px;
 }
 .hmb-line{
     display: block;
@@ -154,10 +154,11 @@ main{
 }
 .sort-menu:checked ~ .so-pane, .so-pane-open{
     display: block;
+    z-index: 101;
     box-sizing: content-box;
     position: fixed;
     text-align: center;
-    top: 85px;
+    top: 65px;
     left: 136px;
     max-height: 100%;
     width: 230px;
