@@ -79,6 +79,8 @@ main{
     vertical-align: middle;
 }
 .so-pane-full{
+    display: table-caption !important;
+    caption-side: bottom;
     max-width: 100%;
     width: 100%;
 }
@@ -88,6 +90,9 @@ main{
     vertical-align: middle;
     font-size: 16px;
     text-align: left;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 .so-pane > div > div > label{
     background-color: transparent;
