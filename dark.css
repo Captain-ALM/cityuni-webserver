@@ -27,12 +27,10 @@ a{
 }
 .item-table{
 	background-color: #3f3f3f;
+	border-color: #f5deb3;
 }
 .so-pane{
 	border-color: #3f3f3f;
-}
-.item-table > div > div, .item-table-caption{
-	border-color: #f5deb3;
 }
 .image-box{
 	background-color: #4f4f4f;

@@ -140,6 +140,11 @@ main{
     display: table;
     box-sizing: content-box;
     background-color: transparent;
+    -webkit-border-radius: 32px;
+    -moz-border-radius: 32px;
+    border-radius: 32px;
+    border-width: 1px;
+    border-style: solid;
 }
 .flex-col{
     display: -webkit-box;
@@ -195,8 +200,6 @@ main{
     caption-side: bottom;
 }
 .item-table-full, .item-table-360, .item-table-caption{
-    border-style: solid;
-    border-width: 1px;
     background-color: transparent;
     box-sizing: inherit;
 }
