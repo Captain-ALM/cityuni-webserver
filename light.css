@@ -1,3 +1,7 @@
+/*
+This file is (C) Captain ALM
+Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+*/
 body{
     color: #060606;
     background-color: #fafaf9;
@@ -12,7 +16,7 @@ a{
 .home-button > div, .sort-button > div, .menu a, .so-pane > *{
     color: #1f1f1f;
 }
-.home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .so-pane > input, .so-pane > select{
+.home-button:hover, .menu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .sort-button-active, .so-pane > input, .so-pane > select{
     background-color: #9f9f9e;
 }
 .hmb-line, .hmb-line::before, .hmb-line::after{
