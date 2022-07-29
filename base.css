@@ -61,13 +61,15 @@ main{
     position: fixed;
     max-height: 0;
 }
-.so-pane > *{
+.so-pane > p{
+    padding: 2px;
+}
+.so-pane > p, .so-pane > p > *{
     vertical-align: middle;
     font-size: 16px;
     text-align: left;
-    padding: 2px;
 }
-.so-pane > label{
+.so-pane > p > label, .so-pane > p{
     background-color: transparent;
 }
 .nav-menu, .sort-menu{
@@ -163,6 +165,7 @@ main{
     align-content: center;
     max-width: 100%;
     width: 100%;
+    overflow: hidden;
 }
 .item-table > div{
     display: table-row;
@@ -191,6 +194,7 @@ main{
     justify-content: center;
     width: 100%;
     max-width: 100%;
+    overflow: hidden;
 }
 .item-table > div > div > div{
     padding: 2px;
