@@ -80,7 +80,7 @@ main{
     max-width: 50%;
     width: 50%;
 }
-.so-pane > form > div > span{
+.so-pane > form > div > span, .so-pane > form > div > span > *{
     display: block;
     max-width: 100%;
     width: 100%;
@@ -151,23 +151,29 @@ main{
     top:0;
 }
 .sort-menu:checked ~ .so-pane, .so-pane-open{
-    display: table;
+    display: block;
     box-sizing: content-box;
     position: fixed;
+    text-align: center;
     top: 85px;
     max-height: 100%;
     width: auto;
     height: auto;
-    padding: 4px;
-    text-align: center;
-    border-style: solid;
-    border-width: 2px;
     -webkit-border-bottom-left-radius: 5px;
     -webkit-border-bottom-right-radius: 5px;
     -moz-border-radius-bottomleft: 5px;
     -moz-border-radius-bottomright: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+.sort-menu:checked ~ .so-pane > form, .so-pane-open > form{
+    display: table;
+    box-sizing: inherit;
+    padding: 4px;
+    border-style: solid;
+    border-width: 2px;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
 }
 .main-box > div, footer > p{
