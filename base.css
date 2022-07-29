@@ -90,8 +90,6 @@ main{
     caption-side: bottom;
 }
 .so-pane > form > div > * > *{
-    max-width: 100%;
-    width: 100%;
     vertical-align: middle;
     font-size: 16px;
     -webkit-border-radius: 5px;
@@ -160,17 +158,18 @@ main{
     top: 85px;
     left: 136px;
     max-height: 100%;
-    width: 210px;
+    max-width: 100%;
+    width: auto;
     height: auto;
-    -webkit-border-bottom-left-radius: 5px;
-    -webkit-border-bottom-right-radius: 5px;
-    -moz-border-radius-bottomleft: 5px;
-    -moz-border-radius-bottomright: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -moz-border-radius-bottomright: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     padding: 4px;
     border-style: solid;
-    border-width: 2px;
+    border-width: 0 2px 2px;
     overflow: hidden;
 }
 .sort-menu:checked ~ .so-pane > form, .so-pane-open > form{
