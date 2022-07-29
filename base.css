@@ -68,21 +68,26 @@ main{
     max-width: 100%;
     width: 100%;
 }
-.so-pane > div > div{
-    display: table-cell;
+.so-pane > div > div, .so-pane > div > span{
     background-color: transparent;
-    box-sizing: inherit;
-    max-width: 50%;
-    width: 50%;
+    box-sizing: content-box;
     padding: 2px;
     text-align: center;
     vertical-align: middle;
 }
+.so-pane > div > div{
+    display: table-cell;
+    max-width: 50%;
+    width: 50%;
+}
+.so-pane > div > span{
+    display: block;
+    max-width: 100%;
+    width: 100%;
+}
 .so-pane-full{
     display: table-caption !important;
     caption-side: bottom;
-    max-width: 100%;
-    width: 100%;
 }
 .so-pane > div > div > *{
     max-width: 100%;
