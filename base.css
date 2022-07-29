@@ -165,15 +165,14 @@ main{
     -moz-border-radius-bottomright: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    border-style: solid;
+    border-width: 2px;
+    overflow: hidden;
 }
 .sort-menu:checked ~ .so-pane > form, .so-pane-open > form{
     display: table;
     box-sizing: inherit;
     padding: 4px;
-    border-style: solid;
-    border-width: 2px;
-    width: 100%;
-    height: 100%;
     overflow: hidden;
 }
 .main-box > div, footer > p{
