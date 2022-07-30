@@ -15,11 +15,11 @@
     {{ end }}
     <script type="application/javascript">
         var TheParameters = "{{ .Parameters }}"
-        const CssLightURL = "{{ .Data.CSSLightURL }}"
-        const CssDarkURL = "{{ .Data.CSSDarkURL }}"
-        const SunImageURL = "{{ .Data.SunImageLocation }}"
-        const MoonImageURL = "{{ .Data.MoonImageLocation }}"
-        const PlayImageURL = "{{ .Data.PlayVideoImageLocation }}"
+        var CssLightURL = "{{ .Data.CSSLightURL }}"
+        var CssDarkURL = "{{ .Data.CSSDarkURL }}"
+        var SunImageURL = "{{ .Data.SunImageLocation }}"
+        var MoonImageURL = "{{ .Data.MoonImageLocation }}"
+        var PlayImageURL = "{{ .Data.PlayVideoImageLocation }}"
     </script>
     <script type="application/javascript" src="{{ .Data.JScriptURL }}"></script>
 </head>

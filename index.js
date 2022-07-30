@@ -2,12 +2,19 @@
 This file is (C) Captain ALM
 Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 */
-const EntryData = []
+var EntryData = []
+var EntryIndices = []
 var SortOrderStateI = true
 var SortOrderBStateI = true
+var SortOrderEnabled = false
+var SortValue = ""
+var OrderValue = ""
 function SetupJS() {
+    SetupIndexArray()
     SetupJSTheme()
+    SetupJSHPL()
     SetupJSHSO()
+    SetupJSSOI()
 }
 function CreateEntry(id, name, videourl, videotype, start, end, duration) {
     EntryData[id] = {
@@ -52,6 +59,11 @@ function ActivateVideo(id) {
     holder.appendChild(vid)
     if (vid.play) {vid.play();}
 }
+function SetupIndexArray() {
+    for (var i = 0; i < EntryData.length; i++) {
+        EntryIndices[i] = i
+    }
+}
 function SetupJSTheme() {
     let th = document.getElementById("theme")
     th.href = "#"
@@ -66,7 +78,11 @@ function ReplaceHistory(url) {
     let s = true
     if (window.history) {
         if (window.history.replaceState) {
-            window.history.replaceState({}, "", url)
+            window.history.replaceState({
+                light: !!document.getElementById("so-theme"),
+                order: document.getElementById("so-order").value,
+                sort: document.getElementById("so-sort").value
+            }, "", url);
             s = false
         }
     }
@@ -87,7 +103,7 @@ function ToggleTheme() {
         th.title = "Switch to Light Mode"
         document.getElementById("so-form").removeChild(document.getElementById("so-theme"))
         logo.href = "?"
-        ReplaceHistory(url+"?"+TheParameters)
+        ReplaceHistory(url+"?"+TheParameters+"#")
         thsty.href = CssDarkURL
     } else {
         thimg.src = MoonImageURL
@@ -100,11 +116,27 @@ function ToggleTheme() {
         document.getElementById("so-form").appendChild(thi)
         logo.href = "?light"
         if (TheParameters === "") {
-            ReplaceHistory(url+"?light")
+            ReplaceHistory(url+"?light#")
         } else {
-            ReplaceHistory(url+"?light&"+TheParameters)
+            ReplaceHistory(url+"?light&"+TheParameters+"#")
         }
         thsty.href = CssLightURL
+    }
+}
+function SetupJSHPL(){
+    if (window.onpopstate) {
+        window.addEventListener("popstate", HandleHistoryPop)
+    }
+}
+function HandleHistoryPop(event) {
+    if (event.state) {
+        SortOrderEnabled = false
+        let isnl = !document.getElementById("so-theme")
+        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {ToggleTheme();}
+        document.getElementById("so-order").value = event.state.order
+        document.getElementById("so-sort").value = event.state.sort
+        EntrySort(event.state.order, event.state.sort)
+        SortOrderEnabled = true
     }
 }
 function SetupJSHSO() {
@@ -143,4 +175,137 @@ function HandleSortOrderEnter() {
 }
 function HandleSortOrderLeave(){
     SortOrderStateI = true
+}
+function SetupJSSOI() {
+    let submit = document.getElementById("so-submit")
+    if (submit.parentNode) {submit.parentNode.removeChild(submit);}
+    let oc = document.getElementById("so-order")
+    OrderValue = oc.value
+    let sc = document.getElementById("so-sort")
+    SortValue = sc.value
+    if (document.addEventListener) {
+        oc.addEventListener("change", HandleSortOrderChange)
+        sc.addEventListener("change", HandleSortOrderChange)
+    } else {
+        oc.setAttribute("onchange", "HandleSortOrderChange();")
+        sc.setAttribute("onchange", "HandleSortOrderChange();")
+        oc.onchange = HandleSortOrderChange
+        sc.onchange = HandleSortOrderChange
+    }
+    SortOrderEnabled = true
+}
+function HandleSortOrderChange() {
+    if (SortOrderEnabled) {EntrySort(document.getElementById("so-order").value, document.getElementById("so-sort").value);}
+}
+function EntrySort(o, s) {
+    var ts = s.toString().toLowerCase()
+    var chg = false
+    if (SortValue !== s) {
+        chg = true
+        SortValue = s
+    }
+    if (ts === "desc" || ts === "descending") {
+        ts = -1
+    } else {
+        ts = 1
+    }
+    if (OrderValue !== o) {
+        let to = o.toString().toLowerCase()
+        if (to === "start") {
+            if (ts < 0) {
+                EntryIndices = EntryIndices.sort(SortStartD)
+            } else {
+                EntryIndices = EntryIndices.sort(SortStartA)
+            }
+        } else if (to === "end") {
+            if (ts < 0) {
+                EntryIndices = EntryIndices.sort(SortEndD)
+            } else {
+                EntryIndices = EntryIndices.sort(SortEndA)
+            }
+        } else if (to === "name") {
+            if (ts < 0) {
+                EntryIndices = EntryIndices.sort(SortNameD)
+            } else {
+                EntryIndices = EntryIndices.sort(SortNameA)
+            }
+        } else if (to === "duration") {
+            if (ts < 0) {
+                EntryIndices = EntryIndices.sort(SortDurationD)
+            } else {
+                EntryIndices = EntryIndices.sort(SortDurationA)
+            }
+        }
+        chg = true
+        OrderValue = o
+    }
+    if (chg) {
+        TheParameters = "order="+OrderValue+"&sort="+SortValue
+        url = url.split("#", 1)[0].split('?', 1)[0]
+        if (document.getElementById("so-theme")) {
+            ReplaceHistory(url+"?light&"+TheParameters)
+        } else {
+            ReplaceHistory(url+"?"+TheParameters)
+        }
+        for (var i = 0; i < EntryIndices.length; i++) {
+            tNode = EntryData[EntryIndices[i]].parentNode.removeChild(EntryData[EntryIndices[i]])
+            EntryData[EntryIndices[i]].parentNode.appendChild(tNode)
+        }
+    }
+}
+function SortStartA(a, b) {
+    if (EntryData[a].start < EntryData[b].start) {
+        return -1
+    } else {
+        return  1
+    }
+}
+function SortStartD(a, b) {
+    if (EntryData[a].start > EntryData[b].start) {
+        return -1
+    } else {
+        return  1
+    }
+}
+function SortEndA(a, b) {
+    if (EntryData[a].end < EntryData[b].end) {
+        return -1
+    } else {
+        return  1
+    }
+}
+function SortEndD(a, b) {
+    if (EntryData[a].end > EntryData[b].end) {
+        return -1
+    } else {
+        return  1
+    }
+}
+function SortNameA(a, b) {
+    if (EntryData[a].name < EntryData[b].name) {
+        return -1
+    } else {
+        return  1
+    }
+}
+function SortNameD(a, b) {
+    if (EntryData[a].name > EntryData[b].name) {
+        return -1
+    } else {
+        return  1
+    }
+}
+function SortDurationA(a, b) {
+    if (EntryData[a].duration < EntryData[b].duration) {
+        return -1
+    } else {
+        return  1
+    }
+}
+function SortDurationD(a, b) {
+    if (EntryData[a].duration > EntryData[b].duration) {
+        return -1
+    } else {
+        return  1
+    }
 }
