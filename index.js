@@ -9,6 +9,7 @@ var SortOrderBStateI = true
 var SortOrderEnabled = false
 var SortValue = ""
 var OrderValue = ""
+var ReplaceNeeded = true
 function SetupJS() {
     SetupIndexArray()
     SetupJSTheme()
@@ -78,11 +79,16 @@ function PushHistory(url) {
     var s = true
     if (window.history) {
         if (window.history.pushState) {
-            window.history.pushState({
+            var objectData = {
                 light: !!document.getElementById("so-theme"),
                 order: document.getElementById("so-order").value,
                 sort: document.getElementById("so-sort").value
-            }, "", url);
+            };
+            if (ReplaceNeeded) {
+                window.history.replaceState(objectData, "", url);
+                ReplaceNeeded = false
+            }
+            window.history.pushState( objectData, "", url);
             s = false
         }
     }
