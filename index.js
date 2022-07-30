@@ -3,7 +3,9 @@ This file is (C) Captain ALM
 Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 */
 const EntryData = []
-SetupJSTheme()
+function SetupJS(){
+    SetupJSTheme()
+}
 function CreateEntry(id, name, videourl, videotype, start, end, duration) {
     EntryData[id] = {
         name: name,
