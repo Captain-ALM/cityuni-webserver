@@ -9,10 +9,10 @@ var SortOrderBStateI = true
 var SortOrderEnabled = false
 var SortValue = ""
 var OrderValue = ""
+SetupJSHPL()
 function SetupJS() {
     SetupIndexArray()
     SetupJSTheme()
-    SetupJSHPL()
     SetupJSHSO()
     SetupJSSOI()
 }
