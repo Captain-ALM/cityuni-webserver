@@ -3,8 +3,10 @@ This file is (C) Captain ALM
 Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 */
 const EntryData = []
+var SortOrderStateI = true
 function SetupJS() {
     SetupJSTheme()
+    SetupJSHSO()
 }
 function CreateEntry(id, name, videourl, videotype, start, end, duration) {
     EntryData[id] = {
@@ -103,4 +105,28 @@ function ToggleTheme() {
         }
         thsty.href = CssLightURL
     }
+}
+function SetupJSHSO() {
+    let pane = document.getElementById("so-pane")
+    if (document.addEventListener) {
+        document.addEventListener("click", HandleGlobalClick)
+        pane.addEventListener("mouseover", HandleSortOrderEnter)
+        pane.addEventListener("mouseout", HandleSortOrderLeave)
+    } else {
+        document.parentElement.setAttribute("onclick", "HandleGlobalClick();")
+        pane.setAttribute("onmouseover", "HandleSortOrderEnter();")
+        pane.setAttribute("onmouseout", "HandleSortOrderLeave();")
+        document.parentElement.onclick = HandleGlobalClick
+        pane.onmouseover = HandleSortOrderEnter
+        pane.onmouseout = HandleSortOrderLeave
+    }
+}
+function HandleGlobalClick() {
+    if (SortOrderStateI) {document.getElementById("sort-menu").checked = false;}
+}
+function HandleSortOrderEnter() {
+    SortOrderStateI = false
+}
+function HandleSortOrderLeave(){
+    SortOrderStateI = true
 }
