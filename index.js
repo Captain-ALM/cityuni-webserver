@@ -59,11 +59,11 @@ function SetupJSTheme() {
         th.onclick = ToggleTheme
     }
 }
-function PushHistory(url) {
+function ReplaceHistory(url) {
     let s = true
     if (window.history) {
-        if (window.history.pushState) {
-            window.history.pushState({}, "", url)
+        if (window.history.replaceState) {
+            window.history.replaceState({}, "", url)
             s = false
         }
     }
@@ -84,7 +84,7 @@ function ToggleTheme() {
         th.title = "Switch to Light Mode"
         document.getElementById("so-form").removeChild(document.getElementById("so-theme"))
         logo.href = "?"
-        PushHistory(url+"?"+TheParameters)
+        ReplaceHistory(url+"?"+TheParameters)
         thsty.href = CssDarkURL
     } else {
         thimg.src = MoonImageURL
@@ -97,9 +97,9 @@ function ToggleTheme() {
         document.getElementById("so-form").appendChild(thi)
         logo.href = "?light"
         if (TheParameters === "") {
-            PushHistory(url+"?light")
+            ReplaceHistory(url+"?light")
         } else {
-            PushHistory(url+"?light&"+TheParameters)
+            ReplaceHistory(url+"?light&"+TheParameters)
         }
         thsty.href = CssLightURL
     }
