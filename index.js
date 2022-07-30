@@ -33,6 +33,7 @@ function ActivateVideo(id) {
     holder.removeChild(document.getElementById("play-"+id))
     let vid = document.createElement("video")
     vid.controls = true
+    vid.width = 360
     let vids = document.createElement("source")
     vids.src = EntryData[id].videourl
     vids.type = EntryData[id].videotype
