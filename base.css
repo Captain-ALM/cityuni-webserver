@@ -37,7 +37,7 @@ main{
 }
 .home-button, .sort-button{
     display: inline-block;
-    width: 64px;
+    width: 84px;
     height: 62px;
     overflow: hidden;
     text-align: center;
