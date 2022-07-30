@@ -204,12 +204,12 @@ function EntrySort(o, s) {
         chg = true
         SortValue = s
     }
-    if (ts === "desc" || ts === "descending") {
-        ts = -1
-    } else {
-        ts = 1
-    }
-    if (OrderValue !== o) {
+    if (chg || OrderValue !== o) {
+        if (ts === "desc" || ts === "descending") {
+            ts = -1
+        } else {
+            ts = 1
+        }
         var to = o.toString().toLowerCase()
         if (to === "start") {
             if (ts < 0) {
