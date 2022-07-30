@@ -88,7 +88,9 @@ function PushHistory(url) {
                 window.history.replaceState(objectData, "", url);
                 ReplaceNeeded = false
             }
-            window.history.pushState( objectData, "", url);
+            window.history.pushState(objectData, "", url);
+            console.log("PUSH")
+            console.log(objectData)
             s = false
         }
     }
@@ -137,6 +139,8 @@ function SetupJSHPL(){
     }
 }
 function HandleHistoryPop(event) {
+    console.log("POP")
+    console.log(event.state)
     if (event.state) {
         SortOrderEnabled = false
         var isnl = !document.getElementById("so-theme")
