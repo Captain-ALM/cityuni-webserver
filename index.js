@@ -93,13 +93,13 @@ function PushHistory(url) {
     var s = true
     if (window.history) {
         if (window.history.pushState) {
-            ReplaceHistory(url)
             window.history.pushState({
                 light: !!document.getElementById("so-theme"),
                 order: document.getElementById("so-order").value,
                 sort: document.getElementById("so-sort").value
             }, "", url);
             console.log("PUSH")
+            ReplaceHistory(url)
             s = false
         }
     }
