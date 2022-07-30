@@ -11,7 +11,15 @@
     {{ else }}
     <link id="style-theme" rel="stylesheet" href="{{ .Data.CSSDarkURL }}"/>
     {{ end }}
-    <script src="{{ .Data.JScriptURL }}"></script>
+    <script type="application/javascript">
+        const TheParameters = "{{ .Parameters }}"
+        const CssLightURL = "{{ .Data.CSSLightURL }}"
+        const CssDarkURL = "{{ .Data.CSSDarkURL }}"
+        const SunImageURL = "{{ .Data.SunImageLocation }}"
+        const MoonImageURL = "{{ .Data.MoonImageLocation }}"
+        const PlayImageURL = "{{ .Data.PlayVideoImageLocation }}"
+    </script>
+    <script type="application/javascript" src="{{ .Data.JScriptURL }}"></script>
 </head>
 <body>
 <header class="header">
@@ -94,7 +102,7 @@
     </nav>
 </header>
 <main class="main-box flex-col">
-    <div>
+    <div id="about">
         <div class="item-table flex-col">
             <div class="item-heading">
                 <div class="item-table-full">
@@ -114,8 +122,13 @@
             </div>
         </div>
     </div>
+    {{ $c := 0 }}
     {{ range .GetEntries }}
-    <div>
+    {{ $c = $.CounterPlusPlus }}
+    <div id="entry-{{ $c }}">
+        <script type="application/javascript">
+            EntryData[{{ $c }}] = CreateEntry("{{ .Name }}", "{{ .VideoLocation }}", "{{ .VideoContentType }}", "{{ .GetStartDateHTML }}", "{{ .GetEndDateHTML }}", "{{ .GetInt64Duration }}")
+        </script>
         <div class="item-table flex-col">
             <div class="item-heading">
                 <div class="item-table-full">
@@ -134,14 +147,19 @@
                     <div class="content">{{ .GetContent }}</div>
                 </div>
                 <div class="item-table-360">
-                    <div>
+                    <div id="video-{{ $c }}">
                     {{ if eq .VideoLocation "" }}
                         <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
                     {{ else }}
-                        <video controls width="360px">
-                            <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
-                            <a href="{{ .VideoLocation }}">The Video</a>
-                        </video>
+                        <script type="application/javascript">
+                            CreateVideoPlaceholder({{ $c }})
+                        </script>
+                        <noscript>
+                            <video controls width="360px">
+                                <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
+                                <a href="{{ .VideoLocation }}">The Video</a>
+                            </video>
+                        </noscript>
                     {{ end }}
                     </div>
                 </div>
@@ -156,11 +174,6 @@
             </div>
             {{ end }}
         </div>
-        <!-- This needs to be moved into a script tag along with other stuff not here yet for JS support
-        <div class="data-hold">{{ .GetInt64Duration }}</div>
-        <div class="data-hold">{{ .GetStartDateHTML }}</div>
-        <div class="data-hold">{{ .GetEndDateHTML }}</div>
-        -->
     </div>
     {{ end }}
 </main>

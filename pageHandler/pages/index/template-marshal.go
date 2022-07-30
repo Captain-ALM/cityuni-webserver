@@ -13,9 +13,10 @@ type Marshal struct {
 	OrderName      int8
 	OrderDuration  int8
 	Light          bool
+	Counter        int
 }
 
-func (m Marshal) GetEntries() (toReturn []EntryYaml) {
+func (m *Marshal) GetEntries() (toReturn []EntryYaml) {
 	toReturn = m.Data.Entries
 	if m.OrderStartDate > 0 {
 		sort.Slice(toReturn, func(i, j int) bool {
@@ -58,4 +59,10 @@ func (m Marshal) GetEntries() (toReturn []EntryYaml) {
 		})
 	}
 	return toReturn
+}
+
+func (m *Marshal) CounterPlusPlus() int {
+	toret := m.Counter
+	m.Counter++
+	return toret
 }
