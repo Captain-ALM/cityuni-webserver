@@ -13,10 +13,8 @@
     {{ else }}
     <link id="style-theme" rel="stylesheet" href="{{ .Data.CSSDarkURL }}"/>
     {{ end }}
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <script type="application/javascript">
-        const TheParameters = "{{ .Parameters }}"
+        var TheParameters = "{{ .Parameters }}"
         const CssLightURL = "{{ .Data.CSSLightURL }}"
         const CssDarkURL = "{{ .Data.CSSDarkURL }}"
         const SunImageURL = "{{ .Data.SunImageLocation }}"

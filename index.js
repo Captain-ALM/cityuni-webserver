@@ -3,7 +3,7 @@ This file is (C) Captain ALM
 Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 */
 const EntryData = []
-function SetupJS(){
+function SetupJS() {
     SetupJSTheme()
 }
 function CreateEntry(id, name, videourl, videotype, start, end, duration) {
@@ -59,18 +59,33 @@ function SetupJSTheme() {
         th.onclick = ToggleTheme
     }
 }
+function PushHistory(url) {
+    let s = true
+    if (window.history) {
+        if (window.history.pushState) {
+            window.history.pushState({}, "", url)
+            s = false
+        }
+    }
+    if (s) {
+        document.location.href = url
+    }
+}
 function ToggleTheme() {
     let th = document.getElementById("theme")
     let thimg = document.getElementById("theme-img")
     let thsty = document.getElementById("style-theme")
     let logo = document.getElementById("logo")
+    let url = document.location.href
+    url = url.split('?', 1)
     if (document.getElementById("so-theme")) {
         thimg.src = SunImageURL
         thimg.alt = "()"
         th.title = "Switch to Light Mode"
         document.getElementById("so-form").removeChild(document.getElementById("so-theme"))
         logo.href = "?"
-        thsty.src = CssDarkURL
+        PushHistory(url+"?"+TheParameters)
+        thsty.href = CssDarkURL
     } else {
         thimg.src = MoonImageURL
         thimg.alt = "{"
@@ -81,6 +96,11 @@ function ToggleTheme() {
         thi.id = "so-theme"
         document.getElementById("so-form").appendChild(thi)
         logo.href = "?light"
-        thsty.src = CssLightURL
+        if (TheParameters === "") {
+            PushHistory(url+"?light")
+        } else {
+            PushHistory(url+"?light&"+TheParameters)
+        }
+        thsty.href = CssLightURL
     }
 }
