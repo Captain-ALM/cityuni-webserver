@@ -9,7 +9,6 @@ var SortOrderBStateI = true
 var SortOrderEnabled = false
 var SortValue = ""
 var OrderValue = ""
-var ReplaceNeeded = true
 function SetupJS() {
     SetupIndexArray()
     SetupJSTheme()
@@ -75,22 +74,31 @@ function SetupJSTheme() {
         th.onclick = ToggleTheme
     }
 }
+function cReplaceHistory() {
+    ReplaceHistory(window.location.href)
+}
+function ReplaceHistory(url) {
+    if (window.history) {
+        if (window.history.replaceState) {
+            window.history.replaceState({
+                light: !!document.getElementById("so-theme"),
+                order: document.getElementById("so-order").value,
+                sort: document.getElementById("so-sort").value
+            }, "", url);
+            console.log("REPLACE")
+        }
+    }
+}
 function PushHistory(url) {
     var s = true
     if (window.history) {
         if (window.history.pushState) {
-            var objectData = {
+            window.history.pushState({
                 light: !!document.getElementById("so-theme"),
                 order: document.getElementById("so-order").value,
                 sort: document.getElementById("so-sort").value
-            };
-            if (ReplaceNeeded) {
-                window.history.replaceState(objectData, "", url);
-                ReplaceNeeded = false
-            }
-            window.history.pushState(objectData, "", url);
+            }, "", url);
             console.log("PUSH")
-            console.log(objectData)
             s = false
         }
     }
@@ -134,6 +142,7 @@ function ToggleTheme() {
 function SetupJSHPL(){
     if (window.history) {
         if (window.history.pushState) {
+            window.addEventListener("load", cReplaceHistory)
             window.addEventListener("popstate", HandleHistoryPop)
         }
     }
