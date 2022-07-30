@@ -9,11 +9,9 @@ var SortOrderBStateI = true
 var SortOrderEnabled = false
 var SortValue = ""
 var OrderValue = ""
-var ReplaceNeeded = true
 function SetupJS() {
     SetupIndexArray()
     SetupJSTheme()
-    SetupJSHPL()
     SetupJSHSO()
     SetupJSSOI()
 }
@@ -75,20 +73,11 @@ function SetupJSTheme() {
         th.onclick = ToggleTheme
     }
 }
-function PushHistory(url) {
+function ReplaceHistory(url) {
     var s = true
     if (window.history) {
-        if (window.history.pushState) {
-            var objectData = {
-                light: !!document.getElementById("so-theme"),
-                order: document.getElementById("so-order").value,
-                sort: document.getElementById("so-sort").value
-            };
-            if (ReplaceNeeded) {
-                window.history.replaceState(objectData, "", url);
-                ReplaceNeeded = false
-            }
-            window.history.pushState( objectData, "", url);
+        if (window.history.replaceState) {
+            window.history.replaceState({}, "", url);
             s = false
         }
     }
@@ -109,7 +98,7 @@ function ToggleTheme() {
         th.title = "Switch to Light Mode"
         document.getElementById("so-form").removeChild(document.getElementById("so-theme"))
         logo.href = "?"
-        PushHistory(url+"?"+TheParameters+"#")
+        ReplaceHistory(url+"?"+TheParameters+"#")
         thsty.href = CssDarkURL
     } else {
         thimg.src = MoonImageURL
@@ -122,29 +111,11 @@ function ToggleTheme() {
         document.getElementById("so-form").appendChild(thi)
         logo.href = "?light"
         if (TheParameters === "") {
-            PushHistory(url+"?light#")
+            ReplaceHistory(url+"?light#")
         } else {
-            PushHistory(url+"?light&"+TheParameters+"#")
+            ReplaceHistory(url+"?light&"+TheParameters+"#")
         }
         thsty.href = CssLightURL
-    }
-}
-function SetupJSHPL(){
-    if (window.history) {
-        if (window.history.pushState) {
-            window.addEventListener("popstate", HandleHistoryPop)
-        }
-    }
-}
-function HandleHistoryPop(event) {
-    if (event.state) {
-        SortOrderEnabled = false
-        var isnl = !document.getElementById("so-theme")
-        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {ToggleTheme();}
-        document.getElementById("so-order").value = event.state.order
-        document.getElementById("so-sort").value = event.state.sort
-        EntrySort(event.state.order, event.state.sort)
-        SortOrderEnabled = true
     }
 }
 function SetupJSHSO() {
@@ -252,9 +223,9 @@ function EntrySort(o, s) {
         var url = document.location.href
         url = url.split("#", 1)[0].split('?', 1)[0]
         if (document.getElementById("so-theme")) {
-            PushHistory(url+"?light&"+TheParameters)
+            ReplaceHistory(url+"?light&"+TheParameters)
         } else {
-            PushHistory(url+"?"+TheParameters)
+            ReplaceHistory(url+"?"+TheParameters)
         }
         for (var i = 0; i < EntryIndices.length; i++) {
             var tNode = document.getElementById("entry-"+EntryIndices[i])
