@@ -74,11 +74,11 @@ function SetupJSTheme() {
         th.onclick = Toggvarheme
     }
 }
-function ReplaceHistory(url) {
+function PushHistory(url) {
     var s = true
     if (window.history) {
-        if (window.history.replaceState) {
-            window.history.replaceState({
+        if (window.history.pushState) {
+            window.history.pushState({
                 light: !!document.getElementById("so-theme"),
                 order: document.getElementById("so-order").value,
                 sort: document.getElementById("so-sort").value
@@ -103,7 +103,7 @@ function Toggvarheme() {
         th.title = "Switch to Light Mode"
         document.getElementById("so-form").removeChild(document.getElementById("so-theme"))
         logo.href = "?"
-        ReplaceHistory(url+"?"+TheParameters+"#")
+        PushHistory(url+"?"+TheParameters+"#")
         thsty.href = CssDarkURL
     } else {
         thimg.src = MoonImageURL
@@ -116,9 +116,9 @@ function Toggvarheme() {
         document.getElementById("so-form").appendChild(thi)
         logo.href = "?light"
         if (TheParameters === "") {
-            ReplaceHistory(url+"?light#")
+            PushHistory(url+"?light#")
         } else {
-            ReplaceHistory(url+"?light&"+TheParameters+"#")
+            PushHistory(url+"?light&"+TheParameters+"#")
         }
         thsty.href = CssLightURL
     }
@@ -244,9 +244,9 @@ function EntrySort(o, s) {
         var url = document.location.href
         url = url.split("#", 1)[0].split('?', 1)[0]
         if (document.getElementById("so-theme")) {
-            ReplaceHistory(url+"?light&"+TheParameters)
+            PushHistory(url+"?light&"+TheParameters)
         } else {
-            ReplaceHistory(url+"?"+TheParameters)
+            PushHistory(url+"?"+TheParameters)
         }
         for (var i = 0; i < EntryIndices.length; i++) {
             var tNode = document.getElementById("entry-"+EntryIndices[i])
