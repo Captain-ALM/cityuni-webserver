@@ -68,10 +68,10 @@ function SetupJSTheme() {
     var th = document.getElementById("theme")
     th.href = "#"
     if (document.addEventListener) {
-        th.addEventListener("click", ToggleTheme)
+        th.addEventListener("click", CToggleTheme)
     } else {
-        th.setAttribute("onclick", "ToggleTheme();")
-        th.onclick = ToggleTheme
+        th.setAttribute("onclick", "CToggleTheme();")
+        th.onclick = CToggleTheme
     }
 }
 function cReplaceHistory() {
@@ -106,7 +106,10 @@ function PushHistory(url) {
         document.location.href = url
     }
 }
-function ToggleTheme() {
+function CToggleTheme() {
+    ToggleTheme(true)
+}
+function ToggleTheme(p) {
     var th = document.getElementById("theme")
     var thimg = document.getElementById("theme-img")
     var thsty = document.getElementById("style-theme")
@@ -119,7 +122,7 @@ function ToggleTheme() {
         th.title = "Switch to Light Mode"
         document.getElementById("so-form").removeChild(document.getElementById("so-theme"))
         logo.href = "?"
-        PushHistory(url+"?"+TheParameters+"#")
+        if (p) {PushHistory(url+"?"+TheParameters+"#");}
         thsty.href = CssDarkURL
     } else {
         thimg.src = MoonImageURL
@@ -131,10 +134,12 @@ function ToggleTheme() {
         thi.id = "so-theme"
         document.getElementById("so-form").appendChild(thi)
         logo.href = "?light"
-        if (TheParameters === "") {
-            PushHistory(url+"?light#")
-        } else {
-            PushHistory(url+"?light&"+TheParameters+"#")
+        if (p) {
+            if (TheParameters === "") {
+                PushHistory(url + "?light#")
+            } else {
+                PushHistory(url + "?light&" + TheParameters + "#")
+            }
         }
         thsty.href = CssLightURL
     }
@@ -153,10 +158,10 @@ function HandleHistoryPop(event) {
     if (event.state) {
         SortOrderEnabled = false
         var isnl = !document.getElementById("so-theme")
-        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {ToggleTheme();}
+        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {ToggleTheme(false);}
         document.getElementById("so-order").value = event.state.order
         document.getElementById("so-sort").value = event.state.sort
-        EntrySort(event.state.order, event.state.sort)
+        EntrySort(event.state.order, event.state.sort, false)
         SortOrderEnabled = true
     }
 }
@@ -216,9 +221,9 @@ function SetupJSSOI() {
     SortOrderEnabled = true
 }
 function HandleSortOrderChange() {
-    if (SortOrderEnabled) {EntrySort(document.getElementById("so-order").value, document.getElementById("so-sort").value);}
+    if (SortOrderEnabled) {EntrySort(document.getElementById("so-order").value, document.getElementById("so-sort").value, true);}
 }
-function EntrySort(o, s) {
+function EntrySort(o, s, p) {
     var ts = s.toString().toLowerCase()
     var chg = false
     if (SortValue !== s) {
@@ -264,10 +269,12 @@ function EntrySort(o, s) {
         TheParameters = "order="+OrderValue+"&sort="+SortValue
         var url = document.location.href
         url = url.split("#", 1)[0].split('?', 1)[0]
-        if (document.getElementById("so-theme")) {
-            PushHistory(url+"?light&"+TheParameters)
-        } else {
-            PushHistory(url+"?"+TheParameters)
+        if (p) {
+            if (document.getElementById("so-theme")) {
+                PushHistory(url + "?light&" + TheParameters)
+            } else {
+                PushHistory(url + "?" + TheParameters)
+            }
         }
         for (var i = 0; i < EntryIndices.length; i++) {
             var tNode = document.getElementById("entry-"+EntryIndices[i])
