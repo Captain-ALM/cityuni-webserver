@@ -3,14 +3,15 @@ This file is (C) Captain ALM
 Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 */
 const EntryData = []
-function CreateEntry(name, videourl, videotype, start, end, duration) {
-    return {
+SetupJSTheme()
+function CreateEntry(id, name, videourl, videotype, start, end, duration) {
+    EntryData[id] = {
         name: name,
         videourl: videourl,
         videotype: videotype,
         start: Date.parse(start),
         end: Date.parse(end),
-        duration : duration
+        duration : parseInt(duration, 10)
     };
 }
 function CreateVideoPlaceholder(id) {
@@ -44,7 +45,40 @@ function ActivateVideo(id) {
     vid.appendChild(vids)
     vid.appendChild(vida)
     holder.appendChild(vid)
-    if (vid.play) {
-        vid.play()
+    if (vid.play) {vid.play();}
+}
+function SetupJSTheme() {
+    let th = document.getElementById("theme")
+    th.href = "#"
+    if (document.addEventListener) {
+        th.addEventListener("click", ToggleTheme)
+    } else {
+        th.setAttribute("onclick", "ToggleTheme();")
+        th.onclick = ToggleTheme
+    }
+}
+function ToggleTheme() {
+    let th = document.getElementById("theme")
+    let thimg = document.getElementById("theme-img")
+    let thsty = document.getElementById("style-theme")
+    let logo = document.getElementById("logo")
+    if (document.getElementById("so-theme")) {
+        thimg.src = SunImageURL
+        thimg.alt = "()"
+        th.title = "Switch to Light Mode"
+        document.getElementById("so-form").removeChild(document.getElementById("so-theme"))
+        logo.href = "?"
+        thsty.src = CssDarkURL
+    } else {
+        thimg.src = MoonImageURL
+        thimg.alt = "{"
+        th.title = "Switch to Dark Mode"
+        let thi = document.createElement("input")
+        thi.name = "light"
+        thi.type = "hidden"
+        thi.id = "so-theme"
+        document.getElementById("so-form").appendChild(thi)
+        logo.href = "?light"
+        thsty.src = CssLightURL
     }
 }

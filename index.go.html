@@ -4,6 +4,8 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Captain ALM's City University Portfolio">
+    <meta name="keywords" content="CaptainALM Captain_ALM Captain ALM portfolio Alfred Manville projects programming hacking cracking">
     <title>City University Portfolio</title>
     <link rel="stylesheet" href="{{ .Data.CSSBaseURL }}"/>
     {{ if .Light }}
@@ -11,6 +13,8 @@
     {{ else }}
     <link id="style-theme" rel="stylesheet" href="{{ .Data.CSSDarkURL }}"/>
     {{ end }}
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <script type="application/javascript">
         const TheParameters = "{{ .Parameters }}"
         const CssLightURL = "{{ .Data.CSSLightURL }}"
@@ -25,13 +29,13 @@
 <header class="header">
     {{ if .Light }}
     <a href="?light" class="home-button no-dec" title="Home" id="logo"><div><img src="{{ .Data.LogoImageLocation }}" width="64px" alt="&#8962;"></div></a>
-    <a href="?{{ .Parameters }}" class="home-button no-dec" title="Switch to Dark Mode" id="theme"><div><img src="{{ .Data.MoonImageLocation }}" width="64px" alt='{{ "{" }}'></div></a>
+    <a href="?{{ .Parameters }}" class="home-button no-dec" title="Switch to Dark Mode" id="theme"><div><img id="theme-img" src="{{ .Data.MoonImageLocation }}" width="64px" alt='{{ "{" }}'></div></a>
     {{ else }}
     <a href="?" class="home-button no-dec" title="Home" id="logo"><div><img src="{{ .Data.LogoImageLocation }}" width="64px" alt="&#8962;"></div></a>
     {{ if eq .Parameters "" }}
-    <a href="?light" class="home-button no-dec" title="Switch to Light Mode" id="theme"><div><img src="{{ .Data.SunImageLocation }}" width="64px" alt='()'></div></a>
+    <a href="?light" class="home-button no-dec" title="Switch to Light Mode" id="theme"><div><img id="theme-img" src="{{ .Data.SunImageLocation }}" width="64px" alt='()'></div></a>
     {{ else }}
-    <a href="?light&{{ .Parameters }}" class="home-button no-dec" title="Switch to Light Mode" id="theme"><div><img src="{{ .Data.SunImageLocation }}" width="64px" alt='()'></div></a>
+    <a href="?light&{{ .Parameters }}" class="home-button no-dec" title="Switch to Light Mode" id="theme"><div><img id="theme-img" src="{{ .Data.SunImageLocation }}" width="64px" alt='()'></div></a>
     {{ end }}
     {{ end }}
     <input class="sort-menu" type="checkbox" id="sort-menu"/>
@@ -127,7 +131,7 @@
     {{ $c = $.CounterPlusPlus }}
     <div id="entry-{{ $c }}">
         <script type="application/javascript">
-            EntryData[{{ $c }}] = CreateEntry("{{ .Name }}", "{{ .VideoLocation }}", "{{ .VideoContentType }}", "{{ .GetStartDateHTML }}", "{{ .GetEndDateHTML }}", "{{ .GetInt64Duration }}")
+            CreateEntry({{ $c }}, "{{ .Name }}", "{{ .VideoLocation }}", "{{ .VideoContentType }}", "{{ .GetStartDateHTML }}", "{{ .GetEndDateHTML }}", {{ .GetInt64Duration }})
         </script>
         <div class="item-table flex-col">
             <div class="item-heading">
