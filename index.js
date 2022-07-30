@@ -9,10 +9,10 @@ var SortOrderBStateI = true
 var SortOrderEnabled = false
 var SortValue = ""
 var OrderValue = ""
-SetupJSHPL()
 function SetupJS() {
     SetupIndexArray()
     SetupJSTheme()
+    SetupJSHPL()
     SetupJSHSO()
     SetupJSSOI()
 }
@@ -68,10 +68,10 @@ function SetupJSTheme() {
     var th = document.getElementById("theme")
     th.href = "#"
     if (document.addEventListener) {
-        th.addEventListener("click", Toggvarheme)
+        th.addEventListener("click", ToggleTheme)
     } else {
-        th.setAttribute("onclick", "Toggvarheme();")
-        th.onclick = Toggvarheme
+        th.setAttribute("onclick", "ToggleTheme();")
+        th.onclick = ToggleTheme
     }
 }
 function PushHistory(url) {
@@ -90,7 +90,7 @@ function PushHistory(url) {
         document.location.href = url
     }
 }
-function Toggvarheme() {
+function ToggleTheme() {
     var th = document.getElementById("theme")
     var thimg = document.getElementById("theme-img")
     var thsty = document.getElementById("style-theme")
@@ -124,15 +124,17 @@ function Toggvarheme() {
     }
 }
 function SetupJSHPL(){
-    if (window.onpopstate) {
-        window.addEventListener("popstate", HandleHistoryPop)
+    if (window.history) {
+        if (window.history.pushState) {
+            window.addEventListener("popstate", HandleHistoryPop)
+        }
     }
 }
 function HandleHistoryPop(event) {
     if (event.state) {
         SortOrderEnabled = false
         var isnl = !document.getElementById("so-theme")
-        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {Toggvarheme();}
+        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {ToggleTheme();}
         document.getElementById("so-order").value = event.state.order
         document.getElementById("so-sort").value = event.state.sort
         EntrySort(event.state.order, event.state.sort)
