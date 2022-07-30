@@ -249,8 +249,10 @@ function EntrySort(o, s) {
             ReplaceHistory(url+"?"+TheParameters)
         }
         for (var i = 0; i < EntryIndices.length; i++) {
-            tNode = EntryData[EntryIndices[i]].parentNode.removeChild(EntryData[EntryIndices[i]])
-            EntryData[EntryIndices[i]].parentNode.appendChild(tNode)
+            var tNode = document.getElementById("entry-"+EntryIndices[i])
+            var pNode = tNode.parentNode
+            tNode = pNode.removeChild(tNode)
+            pNode.appendChild(tNode)
         }
     }
 }
