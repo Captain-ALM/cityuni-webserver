@@ -93,7 +93,6 @@ function PushHistory(url) {
     var s = true
     if (window.history) {
         if (window.history.pushState) {
-            ReplaceHistory(url)
             window.history.pushState({
                 light: !!document.getElementById("so-theme"),
                 order: document.getElementById("so-order").value,
@@ -111,6 +110,7 @@ function CToggleTheme() {
     ToggleTheme(true)
 }
 function ToggleTheme(p) {
+    if (p) {cReplaceHistory();}
     var th = document.getElementById("theme")
     var thimg = document.getElementById("theme-img")
     var thsty = document.getElementById("style-theme")
