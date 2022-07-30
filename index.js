@@ -98,7 +98,13 @@ function PushHistory(url) {
                 order: document.getElementById("so-order").value,
                 sort: document.getElementById("so-sort").value
             }, "", url);
-            console.log("PUSH")
+            console.log("PUSH1")
+            window.history.pushState({
+                light: !!document.getElementById("so-theme"),
+                order: document.getElementById("so-order").value,
+                sort: document.getElementById("so-sort").value
+            }, "", url);
+            console.log("PUSH2")
             s = false
         }
     }
