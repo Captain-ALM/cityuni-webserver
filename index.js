@@ -77,8 +77,7 @@ function ToggleTheme() {
     let thsty = document.getElementById("style-theme")
     let logo = document.getElementById("logo")
     let url = document.location.href
-    url = url.split("#", 1)
-    url = url.split('?', 1)
+    url = url.split("#", 1)[0].split('?', 1)[0]
     if (document.getElementById("so-theme")) {
         thimg.src = SunImageURL
         thimg.alt = "()"
