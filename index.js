@@ -148,7 +148,7 @@ function ToggleTheme(p) {
 function SetupJSHPL(){
     if (window.history) {
         if (window.history.pushState && window.history.replaceState) {
-            document.addEventListener("DOMContentLoaded", cReplaceHistory)
+            //document.addEventListener("DOMContentLoaded", cReplaceHistory)
             window.addEventListener("popstate", HandleHistoryPop)
         }
     }
