@@ -99,7 +99,6 @@ function PushHistory(url) {
                 sort: document.getElementById("so-sort").value
             }, "", url);
             console.log("PUSH")
-            ReplaceHistory(url)
             s = false
         }
     }
@@ -143,7 +142,7 @@ function ToggleTheme() {
 function SetupJSHPL(){
     if (window.history) {
         if (window.history.pushState && window.history.replaceState) {
-            window.addEventListener("load", cReplaceHistory)
+            document.addEventListener("DOMContentLoaded", cReplaceHistory)
             window.addEventListener("popstate", HandleHistoryPop)
         }
     }
