@@ -27,7 +27,7 @@ function CreateEntry(id, name, videourl, videotype, start, end, duration) {
     };
 }
 function CreateVideoPlaceholder(id) {
-    let imgPH = document.createElement("img")
+    var imgPH = document.createElement("img")
     imgPH.src = PlayImageURL
     imgPH.id = "play-"+id
     imgPH.alt = "Play Video"
@@ -43,15 +43,15 @@ function CreateVideoPlaceholder(id) {
     document.getElementById("video-" + id).appendChild(imgPH)
 }
 function ActivateVideo(id) {
-    let holder = document.getElementById("video-" + id)
+    var holder = document.getElementById("video-" + id)
     holder.removeChild(document.getElementById("play-"+id))
-    let vid = document.createElement("video")
+    var vid = document.createElement("video")
     vid.controls = true
     vid.width = 360
-    let vids = document.createElement("source")
+    var vids = document.createElement("source")
     vids.src = EntryData[id].videourl
     vids.type = EntryData[id].videotype
-    let vida = document.createElement("a")
+    var vida = document.createElement("a")
     vida.href = EntryData[id].videourl
     vida.innerText = "The Video"
     vid.appendChild(vids)
@@ -65,17 +65,17 @@ function SetupIndexArray() {
     }
 }
 function SetupJSTheme() {
-    let th = document.getElementById("theme")
+    var th = document.getElementById("theme")
     th.href = "#"
     if (document.addEventListener) {
-        th.addEventListener("click", ToggleTheme)
+        th.addEventListener("click", Toggvarheme)
     } else {
-        th.setAttribute("onclick", "ToggleTheme();")
-        th.onclick = ToggleTheme
+        th.setAttribute("onclick", "Toggvarheme();")
+        th.onclick = Toggvarheme
     }
 }
 function ReplaceHistory(url) {
-    let s = true
+    var s = true
     if (window.history) {
         if (window.history.replaceState) {
             window.history.replaceState({
@@ -90,12 +90,12 @@ function ReplaceHistory(url) {
         document.location.href = url
     }
 }
-function ToggleTheme() {
-    let th = document.getElementById("theme")
-    let thimg = document.getElementById("theme-img")
-    let thsty = document.getElementById("style-theme")
-    let logo = document.getElementById("logo")
-    let url = document.location.href
+function Toggvarheme() {
+    var th = document.getElementById("theme")
+    var thimg = document.getElementById("theme-img")
+    var thsty = document.getElementById("style-theme")
+    var logo = document.getElementById("logo")
+    var url = document.location.href
     url = url.split("#", 1)[0].split('?', 1)[0]
     if (document.getElementById("so-theme")) {
         thimg.src = SunImageURL
@@ -109,7 +109,7 @@ function ToggleTheme() {
         thimg.src = MoonImageURL
         thimg.alt = "{"
         th.title = "Switch to Dark Mode"
-        let thi = document.createElement("input")
+        var thi = document.createElement("input")
         thi.name = "light"
         thi.type = "hidden"
         thi.id = "so-theme"
@@ -131,8 +131,8 @@ function SetupJSHPL(){
 function HandleHistoryPop(event) {
     if (event.state) {
         SortOrderEnabled = false
-        let isnl = !document.getElementById("so-theme")
-        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {ToggleTheme();}
+        var isnl = !document.getElementById("so-theme")
+        if ((event.state.light && isnl) || (!event.state.light && !isnl)) {Toggvarheme();}
         document.getElementById("so-order").value = event.state.order
         document.getElementById("so-sort").value = event.state.sort
         EntrySort(event.state.order, event.state.sort)
@@ -140,8 +140,8 @@ function HandleHistoryPop(event) {
     }
 }
 function SetupJSHSO() {
-    let pb = document.getElementById("sort-menu-button")
-    let pane = document.getElementById("so-pane")
+    var pb = document.getElementById("sort-menu-button")
+    var pane = document.getElementById("so-pane")
     if (document.addEventListener) {
         document.addEventListener("click", HandleGlobalClick)
         pb.addEventListener("mouseover", HandleSortOrderBEnter)
@@ -177,11 +177,11 @@ function HandleSortOrderLeave(){
     SortOrderStateI = true
 }
 function SetupJSSOI() {
-    let submit = document.getElementById("so-submit")
+    var submit = document.getElementById("so-submit")
     if (submit.parentNode) {submit.parentNode.removeChild(submit);}
-    let oc = document.getElementById("so-order")
+    var oc = document.getElementById("so-order")
     OrderValue = oc.value
-    let sc = document.getElementById("so-sort")
+    var sc = document.getElementById("so-sort")
     SortValue = sc.value
     if (document.addEventListener) {
         oc.addEventListener("change", HandleSortOrderChange)
@@ -210,7 +210,7 @@ function EntrySort(o, s) {
         ts = 1
     }
     if (OrderValue !== o) {
-        let to = o.toString().toLowerCase()
+        var to = o.toString().toLowerCase()
         if (to === "start") {
             if (ts < 0) {
                 EntryIndices = EntryIndices.sort(SortStartD)
@@ -241,7 +241,7 @@ function EntrySort(o, s) {
     }
     if (chg) {
         TheParameters = "order="+OrderValue+"&sort="+SortValue
-        url = url.split("#", 1)[0].split('?', 1)[0]
+        var url = url.split("#", 1)[0].split('?', 1)[0]
         if (document.getElementById("so-theme")) {
             ReplaceHistory(url+"?light&"+TheParameters)
         } else {
