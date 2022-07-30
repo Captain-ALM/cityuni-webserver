@@ -18,6 +18,7 @@ function CreateVideoPlaceholder(id) {
     imgPH.src = PlayImageURL
     imgPH.id = "play-"+id
     imgPH.alt = "Play Video"
+    imgPH.title = "Play"
     imgPH.width = 360
     imgPH.style.cursor = "pointer"
     if (document.addEventListener) {
