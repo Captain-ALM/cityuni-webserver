@@ -4,6 +4,7 @@ Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internati
 */
 const EntryData = []
 var SortOrderStateI = true
+var SortOrderBStateI = true
 function SetupJS() {
     SetupJSTheme()
     SetupJSHSO()
@@ -107,22 +108,35 @@ function ToggleTheme() {
     }
 }
 function SetupJSHSO() {
+    let pb = document.getElementById("sort-menu-button")
     let pane = document.getElementById("so-pane")
     if (document.addEventListener) {
         document.addEventListener("click", HandleGlobalClick)
+        pb.addEventListener("mouseover", HandleSortOrderBEnter)
+        pb.addEventListener("mouseout", HandleSortOrderBLeave)
         pane.addEventListener("mouseover", HandleSortOrderEnter)
         pane.addEventListener("mouseout", HandleSortOrderLeave)
     } else {
         document.parentElement.setAttribute("onclick", "HandleGlobalClick();")
+        pb.setAttribute("onmouseover", "HandleSortOrderBEnter();")
+        pb.setAttribute("onmouseout", "HandleSortOrderBLeave();")
         pane.setAttribute("onmouseover", "HandleSortOrderEnter();")
         pane.setAttribute("onmouseout", "HandleSortOrderLeave();")
         document.parentElement.onclick = HandleGlobalClick
+        pb.onmouseover = HandleSortOrderBEnter
+        pb.onmouseout = HandleSortOrderBLeave
         pane.onmouseover = HandleSortOrderEnter
         pane.onmouseout = HandleSortOrderLeave
     }
 }
 function HandleGlobalClick() {
-    if (SortOrderStateI) {document.getElementById("sort-menu").checked = false;}
+    if (SortOrderStateI && SortOrderBStateI) {document.getElementById("sort-menu").checked = false;}
+}
+function HandleSortOrderBEnter() {
+    SortOrderBStateI = false
+}
+function HandleSortOrderBLeave(){
+    SortOrderBStateI = true
 }
 function HandleSortOrderEnter() {
     SortOrderStateI = false

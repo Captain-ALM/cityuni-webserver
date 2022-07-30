@@ -37,7 +37,7 @@
     {{ end }}
     {{ end }}
     <input class="sort-menu" type="checkbox" id="sort-menu"/>
-    <label class="sort-button no-dec" for="sort-menu" title="Order and Sort Options"><div><img src="{{ .Data.SortImageLocation }}" width="64px" alt='&#8595;'></div></label>
+    <label class="sort-button no-dec" for="sort-menu" id="sort-menu-button" title="Order and Sort Options"><div><img src="{{ .Data.SortImageLocation }}" width="64px" alt='&#8595;'></div></label>
     <div class="so-pane" id="so-pane">
     <form action="?" method="get" id="so-form">
         {{ if .Light }}
