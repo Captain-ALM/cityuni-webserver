@@ -241,7 +241,8 @@ function EntrySort(o, s) {
     }
     if (chg) {
         TheParameters = "order="+OrderValue+"&sort="+SortValue
-        var url = url.split("#", 1)[0].split('?', 1)[0]
+        var url = document.location.href
+        url = url.split("#", 1)[0].split('?', 1)[0]
         if (document.getElementById("so-theme")) {
             ReplaceHistory(url+"?light&"+TheParameters)
         } else {
