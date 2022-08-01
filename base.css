@@ -182,7 +182,7 @@ main{
     display: table;
     box-sizing: inherit;
 }
-.main-box > div, footer > p{
+.main-box > div, footer{
     max-width: 100%;
     margin: 3px 0;
     padding: 2px;
@@ -278,7 +278,7 @@ main{
     .main-box > div{
         padding: 12px;
     }
-    footer > p{
+    footer{
         padding: 4px;
     }
     .item-table > div{

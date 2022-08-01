@@ -26,9 +26,10 @@ about:
     <p>
     On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript (Circa. 2000), Processing and Microsoft Smallbasic
     (I have also dabbled in C++, Python and Bash/Batch).
-    I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a command console in VB .net for my own
-    pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some network communication applications
-    (Including a peer-to-peer VOIP client using NAudio as the audio library and my own network wrapper library).
+    I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a <a href="https://github.com/Captain-ALM/CALM-Console">command console</a>
+    in VB .net for my own pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some <a href="https://github.com/Captain-ALM/CALMNetLibSamples">
+    network communication applications</a> (Including a peer-to-peer <a href="https://github.com/Captain-ALM/C-ALM-VOIP">VOIP client</a>
+    using NAudio as the audio library and my own network wrapper library, however, it is in need of bug-fixing at the moment).
     </p>
     <p>
     On the cracking / hacking side, I've used virtual machines a lot (Mainly infrastructure testing
@@ -36,12 +37,12 @@ about:
     I've also used VMs to pull perform a PXE boot off a network and analyse the partially deployed image
     (And this is why the deployment servers should be switched off when unneeded, especially since PXE
     auto-domain-join would store its credentials in the image).
-    I also played around with accessing the RDP servers when I was in secondary school (Turns out remote apps
-    is just a glorified application auto-launcher with window size detection).
+    I also played around with <a href="https://github.com/Captain-ALM/rdpccgs-ccgsrdp-">accessing the RDP servers</a>
+    when I was in secondary school (Turns out remote apps is just a glorified application auto-launcher with window size detection).
     </p>
     <p>
-    I also <a href="https://subsection.captainalm.com/">bake bread</a> although this sub-site is still under construction (Mostly learnt from my grandma).
-    I also play video-games and am an expert at using lower-end hardware.
+    I also <a href="https://subsection.captainalm.com/">bake bread</a> (Mostly learnt from my grandma); although this sub-site is still under construction.
+    I also play video-games (Check my Youtube Channel or my <a href="https://www.gog.com/u/Captain_ALM">GOG Profile</a>) and am an expert at using lower-end hardware.
     </p>
     <p>
     I used to do Karate (Kyokushin Brown Belt) and I wish I could still fit my bike.
@@ -71,22 +72,34 @@ entries:
       <p>
       Here is the repo: <a href="https://github.com/Captain-ALM/Ninjaformer-Processing">https://github.com/Captain-ALM/Ninjaformer-Processing</a>
       </p>
+      <p>
+      The original video is available here: <a href="https://cityuni.captainalm.com/resources/stream/vid1.mp4">https://cityuni.captainalm.com/resources/stream/vid1.mp4</a>
+      </p>
     startDate: "01/10/2021"
     endDate: "31/10/2021"
-    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid1.mp4"
+    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid-bootcamp.mp4"
     videoContentType: "video/mp4"
     thumbnailLocations:
       - "https://cityuni.captainalm.com/resources/assets/pic1_t.png"
       - "https://cityuni.captainalm.com/resources/assets/pic2_t.png"
       - "https://cityuni.captainalm.com/resources/assets/pic3_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-1_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-2_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-3_t.png"
     imageLocations:
       - "https://cityuni.captainalm.com/resources/assets/pic1.png"
       - "https://cityuni.captainalm.com/resources/assets/pic2.png"
       - "https://cityuni.captainalm.com/resources/assets/pic3.png"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-1.png"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-2.png"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-3.png"
     imageAltTexts:
       - "Level select screen."
       - "Empty content interface (Gameplay)."
       - "Level editor screen."
+      - "Ninjagame source code."
+      - "Button image source code."
+      - "Sprite world source code."
   - name: "City Game Project 2022: Ninjaformer (Alpha, Beta)"
     content: >
       <p>
@@ -110,24 +123,42 @@ entries:
       The final level allows the ninja to "complete" the game while exploring a set of caves.
       </p>
       <p>
+      The game contains a mechanism system allowing for the unlocking of portals (Doors) for the character to progress within and between levels.
+      The character contains a set of different stamina types, core stamina which if depleted causes a death, leg stamina which is a multiplier for
+      doing any action that uses legs and arm stamina which is a multiplier for doing any action that uses arms. The game contains a weapon system of
+      throwing stars, swords and throwable liquids.
+      </p>
+      <p>
       Here is the repo: <a href="https://github.com/cityteaching/citygame2122-Captain-ALM"><strike><del>Not public due to university anti-plagiarism policy.</del></strike></a>
+      </p>
+      <p>
+      The original video is available here: <a href="https://cityuni.captainalm.com/resources/stream/vid2.mp4">https://cityuni.captainalm.com/resources/stream/vid2.mp4</a>
       </p>
     startDate: "25/02/2022"
     endDate: "08/05/2022"
-    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid2.mp4"
+    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid-ninjaformer-2022.mp4"
     videoContentType: "video/mp4"
     thumbnailLocations:
       - "https://cityuni.captainalm.com/resources/assets/pic4_t.png"
       - "https://cityuni.captainalm.com/resources/assets/pic5_t.png"
       - "https://cityuni.captainalm.com/resources/assets/pic6_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-1_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-2_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-3_t.png"
     imageLocations:
       - "https://cityuni.captainalm.com/resources/assets/pic4.png"
       - "https://cityuni.captainalm.com/resources/assets/pic5.png"
       - "https://cityuni.captainalm.com/resources/assets/pic6.png"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-1.png"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-2.png"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-3.png"
     imageAltTexts:
       - "Cave level."
       - "Tutorial level."
-      - "Training level."
+      - "Training level (Editor mode)."
+      - "Main Menu screen."
+      - "Pause Menu screen."
+      - "Audio Settings screen."
   - name: "Global Game Jam January 2022 : Shadow work"
     content: >
       <p>
@@ -138,12 +169,36 @@ entries:
       Read about and get the game files from: <a href="https://globalgamejam.org/2022/games/shadow-work-8">https://globalgamejam.org/2022/games/shadow-work-8</a>
       </p>
       <p>
-      Download the windows executable from: <a href="https://cdn.captainalm.com/download/ShadowWorkExecutable.zip">https://cdn.captainalm.com/download/ShadowWorkExecutable.zip</a>
+      Download the windows executable from: <a href="https://cdn.captainalm.com/download/game/dist/ShadowWorkExecutable.zip">https://cdn.captainalm.com/download/game/dist/ShadowWorkExecutable.zip</a>
+      </p>
+      <p>
+      The Design Document is available here: <a href="https://cdn.captainalm.com/download/game/design/Shadow-WIP-Story-Info.pdf">https://cdn.captainalm.com/download/game/design/Shadow-WIP-Story-Info.pdf</a>
       </p>
     startDate: "20/01/2022"
     endDate: "30/01/2022"
-    #videoLocation: "https://cityuni.captainalm.com/resources/stream/vid3.mp4"
-    #videoContentType: "video/mp4"
+    videoLocation: "https://cityuni.captainalm.com/resources/stream/vid-shadowwork.mp4"
+    videoContentType: "video/mp4"
+    thumbnailLocations:
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-2_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-3_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-4_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-5_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-6_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-1_t.png"
+    imageLocations:
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-2.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-3.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-4.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-5.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-6.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-1.png"
+    imageAltTexts:
+      - "Main Menu screen."
+      - "Controls screen."
+      - "Bedroom (Beginning game area)."
+      - "First Puzzle, duality keys."
+      - "Visualisation of in-game character split."
+      - "End of the game area."
   - name: "City-University Portfolio"
     content: >
       <p>
@@ -152,8 +207,7 @@ entries:
       </p>
       <p>
       This project is under the BSD-3-Clause License, so if reusing, you must scrub references to me, the yml file this is written in is under
-      Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-      <img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc-nd.png" alt="License" height="16"></a>.
+      Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
       </p>
       <p>
       Find the source code here: <a href="https://code.mrmelon54.xyz/alfred/cityuni-webserver">https://code.mrmelon54.xyz/alfred/cityuni-webserver</a>
