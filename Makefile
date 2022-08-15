@@ -1,6 +1,7 @@
 SHELL := /bin/bash
 PRODUCT_NAME := wappcityuni
 BIN := dist/${PRODUCT_NAME}
+DNAME := ${PRODUCT_NAME}_
 ENTRY_POINT := ./cmd/${PRODUCT_NAME}
 HASH := $(shell git rev-parse --short HEAD)
 COMMIT_DATE := $(shell git show -s --format=%ci ${HASH})
@@ -11,9 +12,10 @@ COMP_BIN := go
 
 ifeq ($(OS),Windows_NT)
 	BIN := $(BIN).exe
+	DNAME := $(DNAME).exe
 endif
 
-.PHONY: build dev test clean deploy
+.PHONY: build dev test clean deploy d
 
 build:
 	mkdir -p dist/
@@ -39,3 +41,12 @@ deploy: build
 	sudo cp *.css cdn
 	sudo cp *.js cdn
 	sudo systemctl start wappcityuni
+
+d: build
+	sudo systemctl stop wappcityuni_
+	sudo cp "${BIN}" "/usr/local/bin/${DNAME}"
+	sudo cp *.go.html cnf_
+	sudo cp *.go.yml cnf_
+	sudo cp *.css cdn_
+	sudo cp *.js cdn_
+	sudo systemctl start wappcityuni_

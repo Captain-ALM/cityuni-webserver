@@ -11,7 +11,11 @@ dist/
 # CDN link
 cdn/
 cdn
+cdn_/
+cdn_
 
 # Config Link
 cnf/
 cnf
+cnf_/
+cnf_

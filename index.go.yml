@@ -24,8 +24,8 @@ about:
     I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
     </p>
     <p>
-    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript (Circa. 2000), Processing and Microsoft Smallbasic
-    (I have also dabbled in C++, Python and Bash/Batch).
+    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript (Circa. 2000 ECMAScript although I am learning the latest version of the language),
+    Processing and Microsoft Smallbasic (I have also dabbled in C++, Python and Bash/Batch).
     I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a <a href="https://github.com/Captain-ALM/CALM-Console">command console</a>
     in VB .net for my own pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some <a href="https://github.com/Captain-ALM/CALMNetLibSamples">
     network communication applications</a> (Including a peer-to-peer <a href="https://github.com/Captain-ALM/C-ALM-VOIP">VOIP client</a>
@@ -39,6 +39,9 @@ about:
     auto-domain-join would store its credentials in the image).
     I also played around with <a href="https://github.com/Captain-ALM/rdpccgs-ccgsrdp-">accessing the RDP servers</a>
     when I was in secondary school (Turns out remote apps is just a glorified application auto-launcher with window size detection).
+    Here is <a href="https://github.com/Captain-ALM/op_ctrl">Operation Control</a> (Stylized: op_ctrl) used for same-computer exploiting
+    by wrapping target applications run by other users (Such as via RDP Remote Apps) and then starting a master server to send arbitrary
+    .net DLLs to execute on the target slaved client.
     </p>
     <p>
     I also <a href="https://subsection.captainalm.com/">bake bread</a> (Mostly learnt from my grandma); although this sub-site is still under construction.
@@ -46,7 +49,7 @@ about:
     </p>
     <p>
     I used to do Karate (Kyokushin Brown Belt) and I wish I could still fit my bike.
-    My <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
+    Here is my <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
     </p>
   thumbnailLocation: "https://cityuni.captainalm.com/resources/assets/imageofyou_t.jpg"
   imageLocation: "https://cityuni.captainalm.com/resources/assets/imageofyou.jpg"
@@ -80,19 +83,19 @@ entries:
     videoLocation: "https://cityuni.captainalm.com/resources/stream/vid-bootcamp.mp4"
     videoContentType: "video/mp4"
     thumbnailLocations:
-      - "https://cityuni.captainalm.com/resources/assets/pic1_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic2_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic3_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/bootcamp-1_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/bootcamp-2_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/bootcamp-3_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic1_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic2_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic3_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-1_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-2_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-3_t.jpg"
     imageLocations:
-      - "https://cityuni.captainalm.com/resources/assets/pic1.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic2.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic3.png"
-      - "https://cityuni.captainalm.com/resources/assets/bootcamp-1.png"
-      - "https://cityuni.captainalm.com/resources/assets/bootcamp-2.png"
-      - "https://cityuni.captainalm.com/resources/assets/bootcamp-3.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic1.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic2.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic3.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-1.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-2.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/bootcamp-3.jpg"
     imageAltTexts:
       - "Level select screen."
       - "Empty content interface (Gameplay)."
@@ -139,19 +142,19 @@ entries:
     videoLocation: "https://cityuni.captainalm.com/resources/stream/vid-ninjaformer-2022.mp4"
     videoContentType: "video/mp4"
     thumbnailLocations:
-      - "https://cityuni.captainalm.com/resources/assets/pic4_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic5_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic6_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-1_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-2_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-3_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic4_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic5_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic6_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-1_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-2_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-3_t.jpg"
     imageLocations:
-      - "https://cityuni.captainalm.com/resources/assets/pic4.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic5.png"
-      - "https://cityuni.captainalm.com/resources/assets/pic6.png"
-      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-1.png"
-      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-2.png"
-      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-3.png"
+      - "https://cityuni.captainalm.com/resources/assets/pic4.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic5.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/pic6.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-1.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-2.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/ninjaformer-3.jpg"
     imageAltTexts:
       - "Cave level."
       - "Tutorial level."
@@ -179,19 +182,19 @@ entries:
     videoLocation: "https://cityuni.captainalm.com/resources/stream/vid-shadowwork.mp4"
     videoContentType: "video/mp4"
     thumbnailLocations:
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-2_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-3_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-4_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-5_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-6_t.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-1_t.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-2_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-3_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-4_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-5_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-6_t.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-1_t.jpg"
     imageLocations:
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-2.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-3.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-4.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-5.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-6.png"
-      - "https://cityuni.captainalm.com/resources/assets/shadowwork-1.png"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-2.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-3.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-4.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-5.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-6.jpg"
+      - "https://cityuni.captainalm.com/resources/assets/shadowwork-1.jpg"
     imageAltTexts:
       - "Main Menu screen."
       - "Controls screen."
