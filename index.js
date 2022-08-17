@@ -338,7 +338,7 @@ function GetFirstSubElement(t,r) {
     return t
 }
 function InsertBefore(p,c) {
-    if (p.childNodes > 0) {p.insertBefore(c, p.childNodes[0]);} else {p.appendChild(c);}
+    if (p.childNodes.length > 0) {p.insertBefore(c, p.childNodes[0]);} else {p.appendChild(c);}
 }
 function GetNavTextWidth(s) {
     var st = document.getElementById("st")
