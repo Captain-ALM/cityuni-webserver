@@ -14,6 +14,7 @@ function SetupJS() {
     SetupJSTheme()
     SetupJSHSO()
     SetupJSSOI()
+    SetupJSRSN()
 }
 function CreateEntry(id, name, videourl, videotype, start, end, duration) {
     EntryData[id] = {
@@ -291,6 +292,15 @@ function SortDurationD(a, b) {
         return  1
     }
 }
+function SetupJSRSN() {
+    if (window.addEventListener) {
+        window.addEventListener("resize", PerformNavResize)
+    } else {
+        window.setAttribute("onresize", "PerformNavResize();")
+        window.onresize = PerformNavResize
+    }
+    PerformNavResize()
+}
 function PerformNavResize() {
     var ht = document.getElementsByTagName("html")
     if (ht && ht.length > 0) {
@@ -299,7 +309,7 @@ function PerformNavResize() {
         var vmen = document.getElementById("vmenu")
         if (men && vmen) {
             if (ht[0].clientWidth > 679) {
-                while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[0]));}
+                while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
             } else {
                 var vmeni
                 var mensz = 0
