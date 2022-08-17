@@ -314,7 +314,7 @@ function PerformNavResize() {
         var men = document.getElementById("menu")
         var vmen = document.getElementById("vmenu")
         if (men && vmen) {
-            if (ww > 679) {
+            if (ww > 675) {
                 while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
             } else {
                 var vmeni
