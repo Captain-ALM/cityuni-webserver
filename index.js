@@ -291,3 +291,13 @@ function SortDurationD(a, b) {
         return  1
     }
 }
+function GetNavTextWidth(s) {
+    var st = document.getElementById("st");
+    if (st) {
+        st.textContent = s
+        var trw = st.clientWidth;
+        st.textContent = ""
+        return trw;
+    }
+    return 8 * s.length + 32
+}

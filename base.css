@@ -7,6 +7,14 @@ Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internati
     padding: 0;
     box-sizing: border-box;
 }
+#st{
+    position: absolute;
+    left: -1080px;
+    top: -1080px;
+    font-size: 1em;
+    visibility: hidden;
+    white-space: nowrap;
+}
 main{
 	padding-top: 70px;
 	padding-left: 6px;
@@ -122,6 +130,8 @@ main{
 }
 .menu a, .vmenu a{
     display: block;
+}
+.menu a, .vmenu a, #st{
     padding: 24px 16px;
 }
 .vmenu li{
@@ -320,9 +330,6 @@ main{
         position: relative;
         float: right;
         width: auto;
-    }
-    .vnav{
-        display: none;
     }
     .menu li{
         float: left;
