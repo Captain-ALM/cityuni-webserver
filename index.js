@@ -299,13 +299,13 @@ function PerformNavResize() {
         var vmen = document.getElementById("vmenu")
         if (men && vmen) {
             if (ht[0].clientWidth > 679) {
-                while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[vmen.childNodes.length-1]));}
+                while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[0]));}
             } else {
                 var vmeni
                 var mensz = 0
                 var menc = []
                 var imenc = 0
-                for (vmeni = vmen.childNodes.length - 1; vmeni >= 0; vmeni--) {
+                for (vmeni = 0; vmeni < vmen.childNodes.length; vmeni++) {
                     if (vmen.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
                         if (mensz+vmen.childNodes[vmeni].clientWidth > maxbarsz) {menc[imenc] = vmen.childNodes[vmeni]; imenc++;}
                         mensz += vmen.childNodes[vmeni].clientWidth
