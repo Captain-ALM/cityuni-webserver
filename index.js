@@ -312,8 +312,7 @@ function PerformNavResize() {
                     }
                 }
                 if (menc.length > 0) {
-                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.removeChild(menc[vmeni]);}
-                    for (vmeni = menc.length - 1; vmeni >= 0; vmeni--) {InsertBefore(men, menc[vmeni]);}
+                    for (vmeni = 0; vmeni < menc.length; vmeni++) {men.appendChild(men.removeChild(menc[vmeni]));}
                 } else {
                     for (vmeni = 0; vmeni < men.childNodes.length; vmeni++) {
                         if (men.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
@@ -323,7 +322,8 @@ function PerformNavResize() {
                             mensz += menaw
                         }
                     }
-                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.appendChild(men.removeChild(menc[vmeni]));}
+                    for (vmeni = 0; vmeni < menc.length; vmeni++) {men.removeChild(menc[vmeni]);}
+                    for (vmeni = menc.length - 1; vmeni >= 0; vmeni--) {InsertBefore(vmen, menc[vmeni]);}
                 }
             }
         }
