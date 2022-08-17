@@ -302,13 +302,19 @@ function SetupJSRSN() {
     PerformNavResize()
 }
 function PerformNavResize() {
-    var ht = document.getElementsByTagName("html")
-    if (ht && ht.length > 0) {
-        var maxbarsz = ht[0].clientWidth - 324;
+    var ww = 0
+    if (window.innerWidth && window.innerWidth !== 10) {
+        ww = window.innerWidth
+    } else {
+        var ht = document.getElementsByTagName("html")
+        if (ht && ht.length > 0) {ww = ht[0].clientWidth;}
+    }
+    if (ww > 0) {
+        var maxbarsz = ww - 324;
         var men = document.getElementById("menu")
         var vmen = document.getElementById("vmenu")
         if (men && vmen) {
-            if (ht[0].clientWidth > 679) {
+            if (ww > 679) {
                 while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
             } else {
                 var vmeni
