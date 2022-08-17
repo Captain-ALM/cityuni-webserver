@@ -321,6 +321,9 @@ main{
         float: right;
         width: auto;
     }
+    .vnav{
+        display: none;
+    }
     .menu li{
         float: left;
     }
