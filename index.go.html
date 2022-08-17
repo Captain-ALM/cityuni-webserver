@@ -95,10 +95,14 @@
     </div>
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu" title="Navigation Links"><span class="hmb-line"></span></label>
+    <nav class="vnav" id="vnav">
+        <ul class="vmenu no-lst-style" id="vmenu">
+        </ul>
+    </nav>
     <nav class="nav" id="nav">
-        <ul class="menu no-lst-style">
+        <ul class="menu no-lst-style" id="menu">
             {{ range .Data.GetHeaderLabels }}
-            <li><b><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></b></li>
+            <li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>
             {{ end }}
         </ul>
     </nav>
@@ -188,8 +192,9 @@
     </p>
 	<p>
 	    This page's content is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/png/by-nc-nd.png" alt="License" height="16"></a>.
+        <img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/png/by-nc-nd.png" alt="License" title="License" height="16"></a>.
 	</p>
 </footer>
+<div id="st"></div>
 </body>
 </html>
