@@ -16,6 +16,7 @@ Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internati
     white-space: nowrap;
 }
 main{
+    display: block;
 	padding-top: 70px;
 	padding-left: 6px;
 }
