@@ -73,6 +73,7 @@ main{
     position: relative;
     float: right;
     width: auto;
+    height: 100%;
     overflow: hidden;
 }
 .so-pane{
@@ -331,6 +332,9 @@ main{
         position: relative;
         float: right;
         width: auto;
+    }
+    .vnav{
+        display: none;
     }
     .menu li{
         float: left;

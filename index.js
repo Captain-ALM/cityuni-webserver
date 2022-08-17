@@ -77,7 +77,7 @@ function ReplaceHistory(url) {
     var s = true
     if (window.history) {
         if (window.history.replaceState) {
-            window.history.replaceState({}, "", url);
+            window.history.replaceState({}, "", url)
             s = false
         }
     }
@@ -291,13 +291,62 @@ function SortDurationD(a, b) {
         return  1
     }
 }
+function PerformNavResize() {
+    var ht = document.getElementsByTagName("html")
+    if (ht && ht.length > 0) {
+        var maxbarsz = ht[0].clientWidth - 324;
+        var men = document.getElementById("menu")
+        var vmen = document.getElementById("vmenu")
+        if (men && vmen) {
+            if (ht[0].clientWidth > 679) {
+                while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[vmen.childNodes.length-1]));}
+            } else {
+                var vmeni
+                var mensz = 0
+                var menc = []
+                var imenc = 0
+                for (vmeni = 0; vmeni < vmen.childNodes.length; vmeni++) {
+                    if (vmen.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
+                        if (mensz+vmen.childNodes[vmeni].clientWidth > maxbarsz) {menc[imenc] = vmen.childNodes[vmeni]; imenc++;}
+                        mensz += vmen.childNodes[vmeni].clientWidth
+                    }
+                }
+                if (menc.length > 0) {
+                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.removeChild(menc[vmeni]);}
+                    for (vmeni = menc.length - 1; vmeni >= 0; vmeni--) {InsertBefore(men, menc[vmeni]);}
+                } else {
+                    for (vmeni = 0; vmeni < men.childNodes.length; vmeni++) {
+                        if (men.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
+                            var mena = GetFirstSubElement(men.childNodes[vmeni], 0)
+                            var menaw = GetNavTextWidth(mena.textContent)
+                            if (mensz+menaw <= maxbarsz) {menc[imenc] = men.childNodes[vmeni]; imenc++;}
+                            mensz += menaw
+                        }
+                    }
+                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.appendChild(men.removeChild(menc[vmeni]));}
+                }
+            }
+        }
+    }
+}
+function GetFirstSubElement(t,r) {
+    for (var gfsei = 0; gfsei < t.childNodes.length; gfsei++) {
+        if (t.childNodes[gfsei].nodeType === Node.ELEMENT_NODE) {
+            if (r < 1) {return t.childNodes[gfsei];} else {return GetFirstSubElement(t.childNodes[gfsei], r - 1);}
+        }
+    }
+    return t
+}
+function InsertBefore(p,c) {
+    if (p.childNodes > 0) {p.insertBefore(c, p.childNodes[0]);} else {p.appendChild(c);}
+}
 function GetNavTextWidth(s) {
-    var st = document.getElementById("st");
+    var st = document.getElementById("st")
     if (st) {
         st.textContent = s
-        var trw = st.clientWidth;
+        var trw = st.clientWidth
         st.textContent = ""
-        return trw;
+        return trw
     }
     return 8 * s.length + 32
 }
