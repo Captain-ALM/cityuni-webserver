@@ -59,6 +59,14 @@ main{
     overflow: hidden;
 	max-height: 0;
 }
+.vnav{
+    max-height: none;
+    top: 0;
+    position: relative;
+    float: right;
+    width: auto;
+    overflow: hidden;
+}
 .so-pane{
     display: none;
     overflow: hidden;
@@ -112,9 +120,15 @@ main{
 .nav-menu, .sort-menu{
 	display: none;
 }
-.menu a{
+.menu a, .vmenu a{
     display: block;
     padding: 24px 16px;
+}
+.vmenu li{
+    float: left;
+}
+.vmenu a:hover{
+    background-color: transparent;
 }
 .hmb{
     cursor: pointer;
@@ -142,7 +156,7 @@ main{
 .hmb-line::after{
     top: -5px;
 }
-.nav-menu:checked ~ nav, .nav-open{
+.nav-menu:checked ~ #nav, .nav-open{
     max-height: 100%;
 }
 .nav-menu:checked ~ .hmb .hmb-line, .nav-open-hmb .hmb-line{
@@ -274,7 +288,7 @@ main{
     border-width: 1px;
 	margin: 2px;
 }
-@media (min-width: 560px){
+@media (min-width: 600px){
     .main-box > div{
         padding: 12px;
     }
