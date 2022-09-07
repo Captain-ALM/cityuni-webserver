@@ -67,6 +67,7 @@ function SetupIndexArray() {
 function SetupJSTheme() {
     var th = document.getElementById("theme")
     th.href = "#"
+    new Image().src = MoonImageURL //Preload I hope
     if (document.addEventListener) {
         th.addEventListener("click", ToggleTheme)
     } else {

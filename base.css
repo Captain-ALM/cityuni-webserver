@@ -273,7 +273,7 @@ main{
     overflow: hidden;
 }
 .item-table > div > div > div{
-    padding: 2px;
+    padding: 4px;
 }
 .item-table-caption, .so-pane-caption{
     display: table-caption !important;

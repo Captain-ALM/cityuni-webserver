@@ -51,6 +51,9 @@ about:
     I used to do Karate (Kyokushin Brown Belt) and I wish I could still fit my bike.
     Here is my <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
     </p>
+    <p>
+    My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2022.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2022.pdf">PDF</a> )
+    </p>
   thumbnailLocation: "resources/assets/imageofyou_t.jpg"
   imageLocation: "resources/assets/imageofyou.jpg"
   imageAltText: "Image of me."
@@ -213,6 +216,6 @@ entries:
       Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
       </p>
       <p>
-      Find the source code here: <a href="https://code.mrmelon54.xyz/alfred/cityuni-webserver">https://code.mrmelon54.xyz/alfred/cityuni-webserver</a>
+      Find the source code here: <a href="https://code.mrmelon54.com/alfred/cityuni-webserver">https://code.mrmelon54.com/alfred/cityuni-webserver</a>
       </p>
     startDate: "13/07/2022"
