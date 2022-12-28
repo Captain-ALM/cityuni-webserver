@@ -195,9 +195,9 @@ func (p *Page) getPageData() (*DataYaml, error) {
 }
 
 func getSortValue(toCheckIn string) int8 {
-	if toCheckIn == "desc" || toCheckIn == "descending" {
-		return -1
-	} else {
+	if toCheckIn == "asc" || toCheckIn == "ascending" {
 		return 1
+	} else {
+		return -1
 	}
 }
