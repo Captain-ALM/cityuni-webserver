@@ -13,7 +13,7 @@ sortImageLocation: "resources/assets/sort.png"
 headerLinks:
   Main Portfolio: "https://portfolio.captainalm.com/"
   Root Site Home: "https://www.captainalm.com/"
-  Github: "https://github.com/Captain-ALM/"
+  LinkedIn: "https://www.linkedin.com/in/alfred-manville/"
 about:
   title: "Alfred Manville (Captain ALM)"
   content: >
@@ -24,12 +24,16 @@ about:
     I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
     </p>
     <p>
-    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript (Circa. 2000 ECMAScript although I am learning the latest version of the language),
-    Processing and Microsoft Smallbasic (I have also dabbled in C++, Python and Bash/Batch).
+    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript, C++, Python,
+    Processing and Microsoft Smallbasic (I have also dabbled in Bash/Batch).
     I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a <a href="https://github.com/Captain-ALM/CALM-Console">command console</a>
     in VB .net for my own pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some <a href="https://github.com/Captain-ALM/CALMNetLibSamples">
     network communication applications</a> (Including a peer-to-peer <a href="https://github.com/Captain-ALM/C-ALM-VOIP">VOIP client</a>
     using NAudio as the audio library and my own network wrapper library, however, it is in need of bug-fixing at the moment).
+    </p>
+    <p>
+    My github username is <a href="https://github.com/Captain-ALM">Captain-ALM</a> and has half my public programming projects,
+    the other half is located at: <a href="https://code.mrmelon54.com/alfred">https://code.mrmelon54.com/alfred</a>
     </p>
     <p>
     On the cracking / hacking side, I've used virtual machines a lot (Mainly infrastructure testing
@@ -219,3 +223,37 @@ entries:
       Find the source code here: <a href="https://code.mrmelon54.com/alfred/cityuni-webserver">https://code.mrmelon54.com/alfred/cityuni-webserver</a>
       </p>
     startDate: "13/07/2022"
+  - name: "Python Communicator"
+    content: >
+      <p>
+      After learning python for my portfolio development option, I wanted to showcase what I knew in python.
+      I usually make a network application in each of the new programming languages that I learn.
+      For the repo showing me learning python please go to: <a href="https://code.mrmelon54.com/alfred/LearningPy">https://code.mrmelon54.com/alfred/LearningPy</a>
+      </p>
+      <p>
+      This project is a message based network communicator written in python and has a module for networking.
+      The project allows the sending of text messages and files over a network.
+      It also comes with a nice twist, in that if you select the pickle protocol, you can inject code into another client by sending a specially crafted message!
+      </p>
+      <p>
+      Find the source code here: <a href="https://github.com/Captain-ALM/CALMPyNetworker">https://github.com/Captain-ALM/CALMPyNetworker</a>
+      </p>
+    startDate: "10/12/2022"
+    endDate: "10/12/2022"
+    videoLocation: "resources/stream/vid-pycom.mp4"
+    videoContentType: "video/mp4"
+    thumbnailLocations:
+      - "resources/assets/pycom-1_t.jpg"
+      - "resources/assets/pycom-2_t.jpg"
+      - "resources/assets/pycom-3_t.jpg"
+      - "resources/assets/pycom-4_t.jpg"
+    imageLocations:
+      - "resources/assets/pycom-1.jpg"
+      - "resources/assets/pycom-2.jpg"
+      - "resources/assets/pycom-3.jpg"
+      - "resources/assets/pycom-4.jpg"
+    imageAltTexts:
+      - "Text Messaging."
+      - "File Messaging."
+      - "Exploit Testing."
+      - "Failed Exploit Testing."

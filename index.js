@@ -186,10 +186,10 @@ function EntrySort(o, s) {
         SortValue = s
     }
     if (chg || OrderValue !== o) {
-        if (ts === "desc" || ts === "descending") {
-            ts = -1
-        } else {
+        if (ts === "asc" || ts === "ascending") {
             ts = 1
+        } else {
+            ts = -1
         }
         var to = o.toString().toLowerCase()
         if (to === "start") {
