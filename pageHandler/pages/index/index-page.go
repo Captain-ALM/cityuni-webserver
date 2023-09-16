@@ -1,6 +1,7 @@
 package index
 
 import (
+	"errors"
 	"golang.captainalm.com/cityuni-webserver/utils/io"
 	"gopkg.in/yaml.v3"
 	"html/template"
@@ -12,10 +13,10 @@ import (
 	"time"
 )
 
+const PageName = "index"
 const templateName = "index.go.html"
-const yamlName = "index.go.yml"
 
-func NewPage(dataStore string, cacheTemplates bool) *Page {
+func NewPage(dataStore string, cacheTemplates bool, templateStore string, pagePath string, ymlDataFallback bool) *Page {
 	var ptm *sync.Mutex
 	var sdm *sync.Mutex
 	if cacheTemplates {
@@ -23,7 +24,10 @@ func NewPage(dataStore string, cacheTemplates bool) *Page {
 		sdm = &sync.Mutex{}
 	}
 	pageToReturn := &Page{
-		DataStore:         dataStore,
+		YMLDataFallback:   ymlDataFallback,
+		PagePath:          pagePath,
+		DataPath:          path.Join(dataStore, pagePath),
+		TemplatePath:      path.Join(templateStore, templateName),
 		StoredDataMutex:   sdm,
 		PageTemplateMutex: ptm,
 	}
@@ -31,7 +35,10 @@ func NewPage(dataStore string, cacheTemplates bool) *Page {
 }
 
 type Page struct {
-	DataStore            string
+	YMLDataFallback      bool
+	PagePath             string
+	DataPath             string
+	TemplatePath         string
 	StoredDataMutex      *sync.Mutex
 	StoredData           *DataYaml
 	LastModifiedData     time.Time
@@ -41,7 +48,7 @@ type Page struct {
 }
 
 func (p *Page) GetPath() string {
-	return "/index.go"
+	return p.PagePath
 }
 
 func (p *Page) GetLastModified() time.Time {
@@ -129,16 +136,12 @@ func (p *Page) getPageTemplate() (*template.Template, error) {
 		defer p.PageTemplateMutex.Unlock()
 	}
 	if p.PageTemplate == nil {
-		thePath := templateName
-		if p.DataStore != "" {
-			thePath = path.Join(p.DataStore, thePath)
-		}
-		stat, err := os.Stat(thePath)
+		stat, err := os.Stat(p.TemplatePath)
 		if err != nil {
 			return nil, err
 		}
 		p.LastModifiedTemplate = stat.ModTime()
-		loadedData, err := os.ReadFile(thePath)
+		loadedData, err := os.ReadFile(p.TemplatePath)
 		if err != nil {
 			return nil, err
 		}
@@ -161,13 +164,18 @@ func (p *Page) getPageData() (*DataYaml, error) {
 		defer p.StoredDataMutex.Unlock()
 	}
 	if p.StoredData == nil {
-		thePath := yamlName
-		if p.DataStore != "" {
-			thePath = path.Join(p.DataStore, thePath)
-		}
+		thePath := p.DataPath
 		stat, err := os.Stat(thePath)
 		if err != nil {
-			return nil, err
+			if p.YMLDataFallback && errors.Is(err, os.ErrNotExist) {
+				thePath += ".yml"
+				stat, err = os.Stat(thePath)
+				if err != nil {
+					return nil, err
+				}
+			} else {
+				return nil, err
+			}
 		}
 		p.LastModifiedData = stat.ModTime()
 		fileHandle, err := os.Open(thePath)
@@ -189,6 +197,7 @@ func (p *Page) getPageData() (*DataYaml, error) {
 			p.StoredData = dataYaml
 		}
 		return dataYaml, nil
+
 	} else {
 		return p.StoredData, nil
 	}

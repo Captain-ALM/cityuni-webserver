@@ -43,9 +43,9 @@ func NewPageHandler(config conf.ServeYaml) *PageHandler {
 		CacheSettings:            config.CacheSettings,
 	}
 	if config.EnableGoInfoPage {
-		toReturn.PageProviders = GetProviders(config.CacheSettings.EnableTemplateCaching, config.DataStorage, toReturn)
+		toReturn.PageProviders = GetProviders(config.CacheSettings.EnableTemplateCaching, config.GetDataStoragePath(), toReturn, config.GetTemplateStoragePath(), config.PageSettings, config.YmlDataFallback)
 	} else {
-		toReturn.PageProviders = GetProviders(config.CacheSettings.EnableTemplateCaching, config.DataStorage, nil)
+		toReturn.PageProviders = GetProviders(config.CacheSettings.EnableTemplateCaching, config.GetDataStoragePath(), nil, config.GetTemplateStoragePath(), config.PageSettings, config.YmlDataFallback)
 	}
 	return toReturn
 }
@@ -286,6 +286,9 @@ func (ph *PageHandler) GetRegisteredPages() []string {
 }
 
 func (ph *PageHandler) GetCachedPages() []string {
+	if ph.pageContentsCacheRWMutex == nil {
+		return make([]string, 0)
+	}
 	ph.pageContentsCacheRWMutex.RLock()
 	defer ph.pageContentsCacheRWMutex.RUnlock()
 	pages := make([]string, len(ph.PageContentsCache))
@@ -298,6 +301,9 @@ func (ph *PageHandler) GetCachedPages() []string {
 }
 
 func (ph *PageHandler) GetNumberOfCachedPages() int {
+	if ph.pageContentsCacheRWMutex == nil {
+		return 0
+	}
 	ph.pageContentsCacheRWMutex.RLock()
 	defer ph.pageContentsCacheRWMutex.RUnlock()
 	return len(ph.PageContentsCache)

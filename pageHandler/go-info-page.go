@@ -45,6 +45,7 @@ func (gipg *goInfoPage) GetCacheIDExtension(urlParameters url.Values) string {
 
 type goInfoTemplateMarshal struct {
 	FullOutput         bool
+	CurrentTime        time.Time
 	RegisteredPages    []string
 	CachedPages        []string
 	ProcessID          int
@@ -98,6 +99,7 @@ func (gipg *goInfoPage) GetContents(urlParameters url.Values) (contentType strin
 	theBuffer := &io.BufferedWriter{}
 	err = theTemplate.ExecuteTemplate(theBuffer, templateName, &goInfoTemplateMarshal{
 		FullOutput:         urlParameters.Has("full"),
+		CurrentTime:        time.Now(),
 		RegisteredPages:    regPages,
 		CachedPages:        cacPages,
 		ProcessID:          os.Getpid(),
