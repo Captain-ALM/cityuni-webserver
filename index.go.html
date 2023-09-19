@@ -19,7 +19,6 @@
         var CssDarkURL = "{{ .Data.CSSDarkURL }}"
         var SunImageURL = "{{ .Data.SunImageLocation }}"
         var MoonImageURL = "{{ .Data.MoonImageLocation }}"
-        var PlayImageURL = "{{ .Data.PlayVideoImageLocation }}"
     </script>
     <script type="application/javascript" src="{{ .Data.JScriptURL }}"></script>
 </head>
@@ -155,7 +154,7 @@
                 <div class="item-table-360">
                     <div id="video-{{ $c }}">
                     {{ if eq .VideoLocation "" }}
-                        <img src="{{.GetVideoThumbnail $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
+                        <img src="{{ .GetVideoThumbnail $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
                     {{ else }}
                         {{ if .IsVideoLink }}
                         <a href="{{ .VideoLocation }}">
@@ -163,7 +162,7 @@
                         </a>
                         {{ else }}
                         <script type="application/javascript">
-                            CreateVideoPlaceholder({{ $c }})
+                            CreateVideoPlaceholder({{ $c }}, "{{ .GetVideoThumbnail $.Data.PlayVideoImageLocation }}")
                         </script>
                         <noscript>
                             <video controls width="360px">

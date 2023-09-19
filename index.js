@@ -26,9 +26,9 @@ function CreateEntry(id, name, videourl, videotype, start, end, duration) {
         duration : parseInt(duration, 10)
     };
 }
-function CreateVideoPlaceholder(id) {
+function CreateVideoPlaceholder(id,phImageURL) {
     var imgPH = document.createElement("img")
-    imgPH.src = PlayImageURL
+    imgPH.src = phImageURL
     imgPH.id = "play-"+id
     imgPH.alt = "Play Video"
     imgPH.title = "Play"
