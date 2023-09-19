@@ -18,7 +18,7 @@ about:
   title: "Alfred Manville (Captain ALM)"
   content: >
     <p>
-    Hello, I'm Alfred Manville (#age# Years Old).
+    Hello, I'm Alfred Manville (#age# Years Old) and a third year student at City, University of London.
     I'm a free and open-source developer who enjoys networking my laptops together,
     writes network software to communicate between them and then tries to break said software.
     I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
@@ -56,7 +56,7 @@ about:
     Here is my <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
     </p>
     <p>
-    My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2022.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2022.pdf">PDF</a> )
+    My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2023.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2023.pdf">PDF</a> )
     </p>
   thumbnailLocation: "resources/assets/imageofyou_t.jpg"
   imageLocation: "resources/assets/imageofyou.jpg"
@@ -89,6 +89,7 @@ entries:
     endDate: "31/10/2021"
     videoLocation: "resources/stream/vid-bootcamp.mp4"
     videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/bootcamp-vid.png"
     thumbnailLocations:
       - "resources/assets/pic1_t.jpg"
       - "resources/assets/pic2_t.jpg"
@@ -148,6 +149,7 @@ entries:
     endDate: "08/05/2022"
     videoLocation: "resources/stream/vid-ninjaformer-2022.mp4"
     videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/ninjaformer-vid.png"
     thumbnailLocations:
       - "resources/assets/pic4_t.jpg"
       - "resources/assets/pic5_t.jpg"
@@ -188,6 +190,7 @@ entries:
     endDate: "30/01/2022"
     videoLocation: "resources/stream/vid-shadowwork.mp4"
     videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/shadowwork-vid.png"
     thumbnailLocations:
       - "resources/assets/shadowwork-2_t.jpg"
       - "resources/assets/shadowwork-3_t.jpg"
@@ -242,6 +245,7 @@ entries:
     endDate: "10/12/2022"
     videoLocation: "resources/stream/vid-pycom.mp4"
     videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/pycom-vid.png"
     thumbnailLocations:
       - "resources/assets/pycom-1_t.jpg"
       - "resources/assets/pycom-2_t.jpg"
@@ -257,3 +261,81 @@ entries:
       - "File Messaging."
       - "Exploit Testing."
       - "Failed Exploit Testing."
+  - name: "Group Project - AirVia ATS (AirTicket Sales)"
+    content: >
+      <p>
+      This group project was creating a Ticket Sales system for the fictional company AirVia LTD, for this the group had to both design the implementation and then write the code for it.
+      Unfortunately, the project was not finished to a state where all the required features were added in and while all of the backend functionality except for the reports existed,
+      the GUIs to view and control those backends was not available.
+      Examples of this include: Sales, Transactions, Discounts and Reports where no GUIs were created or finished for any of these components.
+      The design of the program was followed with a lot of adaptations (Rather than not being followed at all) and it architecturally made sense with the use of facade implementations;
+      The use of facade allowed for other people to code against an interface while waiting for a controller to be finished which extended the interface.
+      </p>
+      <p>
+      The database system was handled via an abstraction layer I designed and wrote myself which supports 'locking' a record for keeping consistency when multiple instances of the program are running.
+      This system uses an auxiliary table that has only the primary key column, a record is locked if it does not exist in the auxiliary table (Cannot delete) and is not locked if it does (Cannot insert);
+      This allows for atomic locking and unlocking of the record.
+      The implementation requires the record locked for safe access (Loading, Storing).
+      The abstraction layer makes use of two base classes, one for a single record and one for a table; with tha table one allowing the creation and deletion of the extending table via a schema and name being provided (As seen in the source code).
+      I also developed a backup system for the database that supports any table with the specifically supported data types used in the tables defined in the schema - removing the need to use third-party programs like SQLDump.
+      </p>
+      <p>
+      In the end, the following features were implemented: Login, Help / Error / Status Bar, Account System + GUI, Blank Types + GUI, Blanks + GUI, Customers + GUI, Discounts, Flexible Discounts, Sales, Transactions, Refunds, Dashboard + Notifications, Database Interfacing + Backup and Rates + GUI.
+      </p>
+      <p>
+      Find the source code here: <a href="https://github.com/karansambee/IN2018-Team-Project/tree/master">https://github.com/karansambee/IN2018-Team-Project/tree/master</a>
+      </p>
+    startDate: "01/02/2023"
+    endDate: "30/04/2023"
+    videoLocation: "resources/stream/vid-groupproject-2023.mp4"
+    videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/groupproject-vid.png"
+    thumbnailLocations:
+      - "resources/assets/groupproject-1_t.jpg"
+      - "resources/assets/groupproject-2_t.jpg"
+      - "resources/assets/groupproject-3_t.jpg"
+      - "resources/assets/groupproject-4_t.jpg"
+      - "resources/assets/groupproject-5_t.jpg"
+      - "resources/assets/groupproject-6_t.jpg"
+      - "resources/assets/groupproject-7_t.jpg"
+      - "resources/assets/groupproject-8_t.jpg"
+      - "resources/assets/groupproject-9_t.jpg"
+      - "resources/assets/groupproject-10_t.jpg"
+    imageLocations:
+      - "resources/assets/groupproject-1.png"
+      - "resources/assets/groupproject-2.png"
+      - "resources/assets/groupproject-3.png"
+      - "resources/assets/groupproject-4.png"
+      - "resources/assets/groupproject-5.png"
+      - "resources/assets/groupproject-6.png"
+      - "resources/assets/groupproject-7.png"
+      - "resources/assets/groupproject-8.png"
+      - "resources/assets/groupproject-9.png"
+      - "resources/assets/groupproject-10.png"
+    imageAltTexts:
+      - "Logon Interface."
+      - "Administrator Dashboard Interface."
+      - "Blank Modifier."
+      - "Customer Creator."
+      - "Disabling an Account."
+      - "Rate Creator."
+      - "Blank Type Editor."
+      - "Help on Force Unlocking (Database Manager Interface)."
+      - "Account Editor on a Manager within The Dashboard Interface."
+      - "Part of the Main.java source code Screenshot."
+  - name: "City-University Promotional Video"
+    content: >
+      <p>
+      Here, I star in an interview for City, University of London's Promotional Marketing Campaign. Join <a href="https://www.city.ac.uk/">City</a>!
+      </p>
+      <p>
+      Find the video here: <a href="https://www.youtube.com/watch?v=tOccImgskec">https://www.youtube.com/watch?v=tOccImgskec</a>
+      </p>
+      <p>
+      Find the general School of Science and Technology video here: <a href="https://www.youtube.com/watch?v=pkTCf4CWFSY">https://www.youtube.com/watch?v=pkTCf4CWFSY</a>
+      </p>
+    startDate: "05/06/2023"
+    endDate: "05/06/2023"
+    videoLocation: "https://www.youtube.com/watch?v=tOccImgskec"
+    videoContentType: "text/uri-list"
+    videoThumbnailLocation: "resources/assets/citypromo-vid.png"

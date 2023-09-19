@@ -5,27 +5,41 @@ import (
 	"html/template"
 	"math"
 	"net/http"
+	"strings"
 	"time"
 )
 
 const dateFormat = "01/2006"
 
 type EntryYaml struct {
-	Name               string         `yaml:"name"`
-	Content            string         `yaml:"content"`
-	StartDate          yaml.DateType  `yaml:"startDate"`
-	EndDate            yaml.DateType  `yaml:"endDate"`
-	VideoLocation      template.URL   `yaml:"videoLocation"`
-	VideoContentType   string         `yaml:"videoContentType"`
-	ThumbnailLocations []template.URL `yaml:"thumbnailLocations"`
-	ImageLocations     []template.URL `yaml:"imageLocations"`
-	ImageAltTexts      []string       `yaml:"imageAltTexts"`
+	Name                   string         `yaml:"name"`
+	Content                string         `yaml:"content"`
+	StartDate              yaml.DateType  `yaml:"startDate"`
+	EndDate                yaml.DateType  `yaml:"endDate"`
+	VideoLocation          template.URL   `yaml:"videoLocation"`
+	VideoContentType       string         `yaml:"videoContentType"`
+	ThumbnailLocations     []template.URL `yaml:"thumbnailLocations"`
+	ImageLocations         []template.URL `yaml:"imageLocations"`
+	ImageAltTexts          []string       `yaml:"imageAltTexts"`
+	VideoThumbnailLocation template.URL   `yaml:"videoThumbnailLocation"`
 }
 
 type ImageReference struct {
 	ThumbnailLocation template.URL
 	ImageLocation     template.URL
 	ImageAltText      string
+}
+
+func (ey EntryYaml) GetVideoThumbnail(usual template.URL) template.URL {
+	if ey.VideoThumbnailLocation == "" {
+		return usual
+	} else {
+		return ey.VideoThumbnailLocation
+	}
+}
+
+func (ey EntryYaml) IsVideoLink() bool {
+	return strings.EqualFold(ey.VideoContentType, "text/uri-list")
 }
 
 func (ey EntryYaml) GetStartDate() string {

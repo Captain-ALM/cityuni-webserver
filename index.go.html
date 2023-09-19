@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="Captain ALM's City University Portfolio">
-    <meta name="keywords" content="CaptainALM Captain_ALM Captain ALM portfolio Alfred Manville projects programming hacking cracking">
+    <meta name="keywords" content="CaptainALM Captain_ALM Captain ALM portfolio Alfred Manville projects programming hacking cracking city uni cityuni cuol City University of London mycityuni">
     <title>City University Portfolio</title>
     <link rel="stylesheet" href="{{ .Data.CSSBaseURL }}"/>
     {{ if .Light }}
@@ -19,7 +19,6 @@
         var CssDarkURL = "{{ .Data.CSSDarkURL }}"
         var SunImageURL = "{{ .Data.SunImageLocation }}"
         var MoonImageURL = "{{ .Data.MoonImageLocation }}"
-        var PlayImageURL = "{{ .Data.PlayVideoImageLocation }}"
     </script>
     <script type="application/javascript" src="{{ .Data.JScriptURL }}"></script>
 </head>
@@ -155,10 +154,15 @@
                 <div class="item-table-360">
                     <div id="video-{{ $c }}">
                     {{ if eq .VideoLocation "" }}
-                        <img src="{{ $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
+                        <img src="{{ .GetVideoThumbnail $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
                     {{ else }}
+                        {{ if .IsVideoLink }}
+                        <a href="{{ .VideoLocation }}">
+                            <img src="{{ .GetVideoThumbnail $.Data.PlayVideoImageLocation }}" alt="Play Video" title="Play" width="360px">
+                        </a>
+                        {{ else }}
                         <script type="application/javascript">
-                            CreateVideoPlaceholder({{ $c }})
+                            CreateVideoPlaceholder({{ $c }}, "{{ .GetVideoThumbnail $.Data.PlayVideoImageLocation }}")
                         </script>
                         <noscript>
                             <video controls width="360px">
@@ -166,6 +170,7 @@
                                 <a href="{{ .VideoLocation }}">The Video</a>
                             </video>
                         </noscript>
+                        {{ end }}
                     {{ end }}
                     </div>
                 </div>
