@@ -24,8 +24,8 @@ about:
     I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
     </p>
     <p>
-    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript, C++, Python,
-    Processing and Microsoft Smallbasic (I have also dabbled in Bash/Batch).
+    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript, C++, Python, Bash,
+    Haskell, Processing and Microsoft Smallbasic (I have also dabbled in Batch).
     I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a <a href="https://github.com/Captain-ALM/CALM-Console">command console</a>
     in VB .net for my own pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some <a href="https://github.com/Captain-ALM/CALMNetLibSamples">
     network communication applications</a> (Including a peer-to-peer <a href="https://github.com/Captain-ALM/C-ALM-VOIP">VOIP client</a>
@@ -56,7 +56,7 @@ about:
     Here is my <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
     </p>
     <p>
-    My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2023.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2023.pdf">PDF</a> )
+    My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2024.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2024.pdf">PDF</a> )
     </p>
   thumbnailLocation: "resources/assets/imageofyou_t.jpg"
   imageLocation: "resources/assets/imageofyou.jpg"
@@ -339,3 +339,57 @@ entries:
     videoLocation: "https://www.youtube.com/watch?v=tOccImgskec"
     videoContentType: "text/uri-list"
     videoThumbnailLocation: "resources/assets/citypromo-vid.png"
+  - name: "Decide Quiz - GCloud City"
+    content: >
+      <p>
+      This project was designed to operate as a Kahoot clone although the front-end never got completed by the other member of the pair (This was written in React).
+      </p>
+      <p>
+      This was created in a pair as part of the Cloud Computing module at City, University of London. It was built for use using google cloud and therefore
+      uses many Google Cloud Platform Technologies including:
+      <ul>
+      <li>Compute Engine - For VM runners with master or application servers (And a relay to a database instance).</li>
+      <li>Instance Groups - Contain 1 instance each and allow for use within a load-balancer.</li>
+      <li>Health Checks - Used to check the status of the servers on each VM for load-balancer routing management.</li>
+      <li>Firewall Rules - Secure compute instance ports via the use of tags.</li>
+      <li>VPC Subnets - Reduced to 1 as no other regions needed.</li>
+      <li>VPC Network Peering - Connects to another VPC that has a relay VM that connects to a Cloud SQL database - allows for funding to be shared by both members of the pair.</li>
+      <li>Extra Service Account - Used by the master server to check instance status and manage running state spinning down VMs when un-needed and therefore saving money.</li>
+      <li>OAuth Consent for Google Sign-in - Allows for Google Accounts to be used for authentication.</li>
+      <li>Cloud Storage Bucket - Accessible by the public and is used for the static resources of the front-end.</li>
+      <li>Load Balancer - Muxes connections for the backend instances against access from the rest of the internet.</li>
+      <li>SSL Certificate - Used for the load balancer to allow for secure connections by users.</li>
+      <li>Cloud SQL - MariaDB is used and is fully managed by the Google Cloud Platform.</li>
+      </ul>
+      </p>
+      <p>
+      The communication protocol uses JSON packets passed either through a WebSocket connection or a REST based protocol that polls the server for data while sending the queued packets.
+      The REST connection is used as a fallback system where WebSockets do not work; in addition, a REST connection is made to the master server to first work out which app server has
+      the least load, once found, this is sent back to the client where the client will then attempt a WebSocket connection and, on failure, a REST session is created (A key is returned
+      which is then used as a parameter in subsequent communications). In the event there is no more capacity, a service unavailable error is sent and a new VM will be spun up, in the case
+      that any are left. The source code for this library can be found at <a href="https://github.com/Captain-ALM/gc-c-com">https://github.com/Captain-ALM/gc-c-com</a> and the master server source
+      code can be found at <a href="https://github.com/Captain-ALM/gc-c-master-srv">https://github.com/Captain-ALM/gc-c-master-srv</a>.
+      </p>
+      <p>
+      The main game loop was supposed to allow user generated quizzes once logged in along-side allowing for public quizzes that could be used and copied by other users.
+      Only logged in users could start games where any user - both logged in or not - could join and answer questions within a set amount of time, with the person answering
+      the fastest getting more points than people who answer later. The system would also have a leaderboard shown at the end of each question; it was also designed to recover
+      from crashes and resume from the last question executed. The source code for the app server can be found at <a href="https://github.com/Captain-ALM/gc-c-app-srv">
+      https://github.com/Captain-ALM/gc-c-app-srv</a> where all this functionality does exist in the backend.
+      </p>
+      <p>
+      The database system contains tables including:
+      <ul>
+      <li>Servers - Contains App-Server sub-URLs and the time of the last successful uptime check by the master server.</li>
+      <li>Game - Contains a list of active games which are associated with a specific App-Server and Quiz.</li>
+      <li>Guest - Contains a list of guests against the game they are connected with along side their nickname</li>
+      <li>Quiz - Contains the quiz data, associated with a user who is the owner.</li>
+      <li>User - Contains the user email and token hash for login, null when no active session is available.</li>
+      </ul>
+      More metadata of other required fields in each table also exists but has not been stated here; the source code is available at <a href="https://github.com/Captain-ALM/gc-c-db">https://github.com/Captain-ALM/gc-c-db</a>.
+      </p>
+    startDate: "27/11/2023"
+    endDate: "14/01/2024"
+    videoLocation: "resources/stream/vid-gc-c-v2.mp4"
+    videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/vid-gc-c-v2.png"
