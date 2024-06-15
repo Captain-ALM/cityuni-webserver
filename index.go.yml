@@ -346,21 +346,7 @@ entries:
       </p>
       <p>
       This was created in a pair as part of the Cloud Computing module at City, University of London. It was built for use using google cloud and therefore
-      uses many Google Cloud Platform Technologies including:
-      <ul>
-      <li>Compute Engine - For VM runners with master or application servers (And a relay to a database instance).</li>
-      <li>Instance Groups - Contain 1 instance each and allow for use within a load-balancer.</li>
-      <li>Health Checks - Used to check the status of the servers on each VM for load-balancer routing management.</li>
-      <li>Firewall Rules - Secure compute instance ports via the use of tags.</li>
-      <li>VPC Subnets - Reduced to 1 as no other regions needed.</li>
-      <li>VPC Network Peering - Connects to another VPC that has a relay VM that connects to a Cloud SQL database - allows for funding to be shared by both members of the pair.</li>
-      <li>Extra Service Account - Used by the master server to check instance status and manage running state spinning down VMs when un-needed and therefore saving money.</li>
-      <li>OAuth Consent for Google Sign-in - Allows for Google Accounts to be used for authentication.</li>
-      <li>Cloud Storage Bucket - Accessible by the public and is used for the static resources of the front-end.</li>
-      <li>Load Balancer - Muxes connections for the backend instances against access from the rest of the internet.</li>
-      <li>SSL Certificate - Used for the load balancer to allow for secure connections by users.</li>
-      <li>Cloud SQL - MariaDB is used and is fully managed by the Google Cloud Platform.</li>
-      </ul>
+      uses many Google Cloud Platform Technologies which are listed and shown off in the video.
       </p>
       <p>
       The communication protocol uses JSON packets passed either through a WebSocket connection or a REST based protocol that polls the server for data while sending the queued packets.
@@ -375,18 +361,7 @@ entries:
       Only logged in users could start games where any user - both logged in or not - could join and answer questions within a set amount of time, with the person answering
       the fastest getting more points than people who answer later. The system would also have a leaderboard shown at the end of each question; it was also designed to recover
       from crashes and resume from the last question executed. The source code for the app server can be found at <a href="https://github.com/Captain-ALM/gc-c-app-srv">
-      https://github.com/Captain-ALM/gc-c-app-srv</a> where all this functionality does exist in the backend.
-      </p>
-      <p>
-      The database system contains tables including:
-      <ul>
-      <li>Servers - Contains App-Server sub-URLs and the time of the last successful uptime check by the master server.</li>
-      <li>Game - Contains a list of active games which are associated with a specific App-Server and Quiz.</li>
-      <li>Guest - Contains a list of guests against the game they are connected with along side their nickname</li>
-      <li>Quiz - Contains the quiz data, associated with a user who is the owner.</li>
-      <li>User - Contains the user email and token hash for login, null when no active session is available.</li>
-      </ul>
-      More metadata of other required fields in each table also exists but has not been stated here; the source code is available at <a href="https://github.com/Captain-ALM/gc-c-db">https://github.com/Captain-ALM/gc-c-db</a>.
+      https://github.com/Captain-ALM/gc-c-app-srv</a> where all this functionality does exist in the backend; the database source code can be found at <a href="https://github.com/Captain-ALM/gc-c-db">https://github.com/Captain-ALM/gc-c-db</a>.
       </p>
     startDate: "27/11/2023"
     endDate: "14/01/2024"
