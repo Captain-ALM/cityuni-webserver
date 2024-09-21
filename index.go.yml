@@ -342,7 +342,7 @@ entries:
   - name: "Decide Quiz - GCloud City"
     content: >
       <p>
-      This project was designed to operate as a Kahoot clone although the front-end never got completed by the other member of the pair (This was written in React).
+      This project was <a href="https://cdn.captainalm.com/download/gcloudcity/CloudApplicationSpecification-AlfredManville-MohammadMasood.docx">designed</a> <a href="https://cdn.captainalm.com/download/gcloudcity/CloudPresentation-AlfredManville-MohammadMasood.pptx">to</a> operate as a Kahoot clone although the front-end never got completed by the other member of the pair (This was written in React).
       </p>
       <p>
       This was created in a pair as part of the Cloud Computing module at City, University of London. It was built for use using google cloud and therefore
