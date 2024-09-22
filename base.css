@@ -6,6 +6,7 @@ Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internati
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Times New Roman", Times, serif;
 }
 #st{
     position: absolute;
