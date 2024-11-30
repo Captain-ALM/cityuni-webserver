@@ -18,7 +18,7 @@ about:
   title: "Alfred Manville (Captain ALM)"
   content: >
     <p>
-    Hello, I'm Alfred Manville (#age# Years Old) and a third year student at City, University of London.
+    Hello, I'm Alfred Manville (#age# Years Old) and a final year student at City, University of London.
     I'm a free and open-source developer who enjoys networking my laptops together,
     writes network software to communicate between them and then tries to break said software.
     I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
@@ -306,7 +306,7 @@ entries:
       - "resources/assets/groupproject-2.png"
       - "resources/assets/groupproject-3.png"
       - "resources/assets/groupproject-4.png"
-      - "resources/assets/groupproject-5.png"
+      - "resources/assets/groupproject-5.png"ign-up
       - "resources/assets/groupproject-6.png"
       - "resources/assets/groupproject-7.png"
       - "resources/assets/groupproject-8.png"
