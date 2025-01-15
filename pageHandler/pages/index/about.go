@@ -18,7 +18,8 @@ type AboutYaml struct {
 }
 
 func (ay AboutYaml) GetContent() template.HTML {
-	return template.HTML(strings.ReplaceAll(strings.ReplaceAll(ay.Content, "#age#", strconv.Itoa(ay.GetAge())), "#birth#", strconv.Itoa(ay.BirthYear)))
+	r := strings.NewReplacer("#age#", strconv.Itoa(ay.GetAge()), "#birth#", strconv.Itoa(ay.BirthYear), "#year#", strconv.Itoa(time.Now().Year()))
+	return template.HTML(r.Replace(ay.Content))
 }
 
 func (ay AboutYaml) GetAge() int {
