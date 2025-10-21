@@ -19,13 +19,9 @@ type AboutYaml struct {
 }
 
 type ContactEmailYaml struct {
-	Email  string       `yaml:"email"`
-	GPGUrl template.URL `yaml:"gpgURL"`
-}
-
-type ExtraLinksYaml struct {
-	Caption string       `yaml:"caption"`
-	Url     template.URL `yaml:"url"`
+	Email      string       `yaml:"email"`
+	GPGUrl     template.URL `yaml:"gpgURL"`
+	Thumbprint string       `yaml:"thumbprint"`
 }
 
 func (ay AboutYaml) GetContent() template.HTML {

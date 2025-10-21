@@ -63,7 +63,6 @@ about:
     <p>
     My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-#year#.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-#year#.pdf">PDF</a> )
     </p>
-    <p>I am a also, half British, half Filipino</p>
     <p>And I do a bit of <a href="heavens.captainalm.com">stargazing</a>.</p>
   thumbnailLocation: "resources/assets/imageofyou_t.jpg"
   imageLocation: "resources/assets/imageofyou.jpg"
@@ -71,9 +70,11 @@ about:
   birthYear: 2002
   contactEmails:
     - email: "alfred@captainalm.com"
-      gpgUrl: "https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc"
+      gpgURL: "https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc"
+      thumbprint: "877808EEF6C51B0C975B0EFB9DEA8002A644A39A"
     - email: "alm00000@outlook.com"
-      gpgUrl: "https://cdn.captainalm.com/download/keys/alm00000@outlook.com.asc"
+      gpgURL: "https://cdn.captainalm.com/download/keys/alm00000@outlook.com.asc"
+      thumbprint: "83E8952F67FB6B085289BB7E687D0B6568E74559"
 entries:
   - name: "Bootcamp 2021: Ninjaformer GUI"
     content: >
