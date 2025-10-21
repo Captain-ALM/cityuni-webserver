@@ -21,35 +21,43 @@ type DataYaml struct {
 	Entries                []EntryYaml             `yaml:"entries"`
 }
 
-func (dy DataYaml) GetHeaderLabels() []string {
+func (dy DataYaml) GetAllHeaderLabels() []string {
 	if dy.HeaderLinks == nil {
 		return []string{}
 	}
-	toReturn := make([]string, min(len(dy.HeaderLinks), 3))
+	toReturn := make([]string, len(dy.HeaderLinks))
 	i := 0
 	for key := range dy.HeaderLinks {
 		toReturn[i] = key
 		i++
-		if i > 2 {
-			break
-		}
 	}
 	return toReturn
 }
 
-func (dy DataYaml) GetHeaderLabelsExtra() []string {
-	if len(dy.HeaderLinks) < 4 {
+func (DataYaml) GetHeaderLabels(labels []string) []string {
+	if labels == nil {
 		return []string{}
 	}
-	toReturn := make([]string, len(dy.HeaderLinks)-3)
-	i := 0
-	for key := range dy.HeaderLinks {
+	toReturn := make([]string, min(len(labels), 3))
+	for i, key := range labels {
+		if i > 2 {
+			break
+		}
+		toReturn[i] = key
+	}
+	return toReturn
+}
+
+func (DataYaml) GetHeaderLabelsExtra(labels []string) []string {
+	if len(labels) < 4 {
+		return []string{}
+	}
+	toReturn := make([]string, len(labels)-3)
+	for i, key := range labels {
 		if i < 3 {
-			i++
 			continue
 		}
 		toReturn[i-3] = key
-		i++
 	}
 	return toReturn
 }
