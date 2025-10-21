@@ -9,11 +9,12 @@
     <title>City University Portfolio</title>
     <link rel="stylesheet" href="{{ .Data.CSSBaseURL }}"/>
     {{ if gt .Data.GetHeaderCount 0 }}
-    <link rel="stylesheet" href="{{ .Data.CSSHeadersBaseURL }}"/>
     {{ if lt .Data.GetHeaderCount 4 }}
+    <link rel="stylesheet" href="{{ .Data.CSSHeadersBaseURL }}"/>
     <link rel="stylesheet" href="{{ .Data.CSSMax3HeadersURL }}"/>
     {{ else }}
     <link rel="stylesheet" href="{{ .Data.CSSOver3HeadersURL }}"/>
+    <link rel="stylesheet" href="{{ .Data.CSSHeadersBaseURL }}"/>
     {{ end }}
     {{ end }}
     {{ if .Light }}
@@ -172,7 +173,7 @@
             </div>
             {{ if not (eq .Data.About.GetExtraLinkCount 0) }}
             <div class="item-table-caption">
-                <div class="extras-box flex-row">
+                <div class="extras-box flex-row centered">
                     {{ range .Data.About.GetExtraLinkLabels }}
                     <a href="{{ $.Data.About.GetExtraLinkLink . }}" title="{{ . }}">{{ . }}</a>
                     {{ end }}

@@ -1,4 +1,4 @@
-.nav-menu{
+.nav-menu, .h{
     display: none;
 }
 .nav-menu:checked ~ #nav, .nav-menu:checked ~ #enav, .nav-open{
