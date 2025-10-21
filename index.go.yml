@@ -13,11 +13,11 @@ logoImageLocation: "resources/assets/logo.png"
 moonImageLocation: "resources/assets/moon.png"
 sunImageLocation: "resources/assets/sun.png"
 sortImageLocation: "resources/assets/sort.png"
-headerLinks:
-  Main Portfolio: "https://portfolio.captainalm.com/"
-  Root Site Home: "https://www.captainalm.com/"
-  LinkedIn: "https://www.linkedin.com/in/alfred-manville/"
-  GitHub: "https://github.com/Captain-ALM"
+#headerLinks:
+#  Main Portfolio: "https://portfolio.captainalm.com/"
+#  Root Site Home: "https://www.captainalm.com/"
+#  LinkedIn: "https://www.linkedin.com/in/alfred-manville/"
+#  GitHub: "https://github.com/Captain-ALM"
 about:
   title: "Alfred Manville (Captain ALM)"
   content: >
