@@ -142,7 +142,7 @@
                                 {{ if eq .Data.About.GetContactEmail.GPGUrl "" }}
                                 <s>[GPG]</s>
                                 {{ else }}
-                                [<a href="{{ .Data.About.GetContactEmail.GPGUrl }} title="{{ .Data.About.GetContactEmail.Thumbprint }}">GPG</a>]
+                                [<a href="{{ .Data.About.GetContactEmail.GPGUrl }}" title="{{ .Data.About.GetContactEmail.Thumbprint }}">GPG</a>]
                                 {{ end }}
                             </h4>
                         </div>
