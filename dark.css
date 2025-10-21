@@ -13,10 +13,10 @@ a{
 .header, nav, footer, .so-pane{
 	background-color: #1d1d1e;
 }
-.home-button > div, .sort-button > div, .menu a, .vmenu a, .so-pane > form > div > * > *{
+.home-button > div, .sort-button > div, .menu a, .vmenu a, .emenu a, .so-pane > form > div > * > *{
 	color: #e0e0e0;
 }
-.home-button:hover, .menu a:hover, .vmenu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .sort-button-active, .so-pane > form > div > span > input, .so-pane > form > div > div > select{
+.home-button:hover, .menu a:hover, .vmenu a:hover, .emenu a:hover, .hmb:hover, .sort-button:hover, .sort-menu:checked ~ .sort-button, .sort-button-active, .so-pane > form > div > span > input, .so-pane > form > div > div > select{
 	background-color: #606061;
 }
 .hmb-line, .hmb-line::before, .hmb-line::after{
@@ -32,7 +32,7 @@ a{
 .so-pane, .header{
 	border-color: #6f6f6f;
 }
-.image-box, .item-heading{
+.image-box, .item-heading, .extras-box{
 	background-color: #4f4f4f;
 }
 .image-box > a{

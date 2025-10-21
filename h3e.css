@@ -1,0 +1,18 @@
+@media (min-width: 680px){
+    .hmb{
+        display: none;
+    }
+    .nav{
+        max-height: none;
+        top: 0;
+        position: relative;
+        float: right;
+        width: auto;
+    }
+    .menu li{
+        float: left;
+    }
+    .menu a:hover{
+        background-color: transparent;
+    }
+}

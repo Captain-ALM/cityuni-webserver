@@ -300,7 +300,16 @@ function SetupJSRSN() {
         window.setAttribute("onresize", "PerformNavResize();")
         window.onresize = PerformNavResize
     }
+    if (document.getElementById("emenu"))
+        PerformNavMove()
     PerformNavResize()
+}
+function PerformNavMove() {
+    var men2 = document.getElementById("menu")
+    var emen2 = document.getElementById("emenu")
+    if (men2) {
+        while (men2.childNodes.length > 0) {InsertBefore(emen2, men2.removeChild(men2.childNodes[men2.childNodes.length - 1]));}
+    }
 }
 function PerformNavResize() {
     var ww = 0
@@ -314,9 +323,11 @@ function PerformNavResize() {
         var maxbarsz = ww - 342;
         var men = document.getElementById("menu")
         var vmen = document.getElementById("vmenu")
-        if (men && vmen) {
-            if (ww > 679) {
-                while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
+        var emen = document.getElementById("emenu")
+        var cmen = (emen) ? emen : men;
+        if (cmen && vmen) {
+            if (ww > 679 && emen == null) {
+                while (vmen.childNodes.length > 0) {InsertBefore(cmen, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
             } else {
                 var vmeni
                 var mensz = 0
@@ -330,17 +341,17 @@ function PerformNavResize() {
                 }
                 if (menc.length > 0) {
                     for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.removeChild(menc[vmeni]);}
-                    for (vmeni = menc.length - 1; vmeni >= 0; vmeni--) {InsertBefore(men, menc[vmeni]);}
+                    for (vmeni = menc.length - 1; vmeni >= 0; vmeni--) {InsertBefore(cmen, menc[vmeni]);}
                 } else {
-                    for (vmeni = 0; vmeni < men.childNodes.length; vmeni++) {
-                        if (men.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
-                            var mena = GetFirstSubElement(men.childNodes[vmeni], 0)
+                    for (vmeni = 0; vmeni < cmen.childNodes.length; vmeni++) {
+                        if (cmen.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
+                            var mena = GetFirstSubElement(cmen.childNodes[vmeni], 0)
                             var menaw = GetNavTextWidth(mena.textContent)
-                            if (mensz+menaw <= maxbarsz) {menc[imenc] = men.childNodes[vmeni]; imenc++;}
+                            if (mensz+menaw <= maxbarsz) {menc[imenc] = cmen.childNodes[vmeni]; imenc++;}
                             mensz += menaw
                         }
                     }
-                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.appendChild(men.removeChild(menc[vmeni]));}
+                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.appendChild(cmen.removeChild(menc[vmeni]));}
                 }
             }
         }
