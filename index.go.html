@@ -112,17 +112,17 @@
     {{ $ent := .Data.GetAllHeaderLabels }}
     <nav class="nav" id="nav">
         <ul class="menu no-lst-style" id="menu">
-            {{ range (.Data.GetHeaderLabels $ent) }}
+{{ range (.Data.GetHeaderLabels $ent) }}
             <li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>
-            {{ end }}
+{{ end }}
         </ul>
     </nav>
     {{ if gt .Data.GetHeaderCount 3 }}
     <nav class="enav" id="enav">
         <ul class="emenu no-lst-style" id="emenu">
-            {{ range (.Data.GetHeaderLabelsExtra $ent) }}
+{{ range (.Data.GetHeaderLabelsExtra $ent) }}
             <li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>
-            {{ end }}
+{{ end }}
         </ul>
     </nav>
     {{ end }}
@@ -248,13 +248,13 @@
     SetupJS()
 </script>
 <footer>
+  <p>
+      Looking for the old static HTML page, here's the <a href="index.html">link</a>.
+  </p>
     <p>
-        Looking for the old static HTML page, here's the <a href="index.html">link</a>.
-    </p>
-	<p>
-	    This page's content is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
-        <img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/png/by-nc-nd.png" alt="License" title="License" height="16"></a>.
-	</p>
+    This page's content is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+    <img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/png/by-nc-nd.png" alt="License" title="License" height="16"></a>.
+  </p>
 </footer>
 <div id="st"></div>
 </body>
