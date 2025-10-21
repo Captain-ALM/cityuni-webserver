@@ -106,24 +106,23 @@
     <input class="nav-menu" type="checkbox" id="nav-menu"/>
     <label class="hmb" for="nav-menu" id="hmb" title="Navigation Links"><span class="hmb-line"></span></label>
     <nav class="vnav" id="vnav">
-        <ul class="vmenu no-lst-style" id="vmenu">
-        </ul>
+        <ul class="vmenu no-lst-style" id="vmenu"></ul>
     </nav>
     {{ $ent := .Data.GetAllHeaderLabels }}
     <nav class="nav" id="nav">
         <ul class="menu no-lst-style" id="menu">
 {{ range (.Data.GetHeaderLabels $ent) }}
-            <li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>
+<li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>
 {{ end }}
-        </ul>
+</ul>
     </nav>
     {{ if gt .Data.GetHeaderCount 3 }}
     <nav class="enav" id="enav">
         <ul class="emenu no-lst-style" id="emenu">
 {{ range (.Data.GetHeaderLabelsExtra $ent) }}
-            <li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>
+<li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>
 {{ end }}
-        </ul>
+</ul>
     </nav>
     {{ end }}
     {{ end }}
