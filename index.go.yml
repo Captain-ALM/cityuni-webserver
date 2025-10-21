@@ -17,6 +17,7 @@ headerLinks:
   Main Portfolio: "https://portfolio.captainalm.com/"
   Root Site Home: "https://www.captainalm.com/"
   LinkedIn: "https://www.linkedin.com/in/alfred-manville/"
+  GitHub: "https://github.com/Captain-ALM"
 about:
   title: "Alfred Manville (Captain ALM)"
   content: >
@@ -58,10 +59,6 @@ about:
     </p>
     <p>
     I used to do Karate (Kyokushin Brown Belt) and I wish I could still fit my bike.
-    Here is my <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
-    </p>
-    <p>
-    My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-#year#.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-#year#.pdf">PDF</a> )
     </p>
     <p>And I do a bit of <a href="heavens.captainalm.com">stargazing</a>.</p>
   thumbnailLocation: "resources/assets/imageofyou_t.jpg"
@@ -75,6 +72,9 @@ about:
     - email: "alm00000@outlook.com"
       gpgURL: "https://cdn.captainalm.com/download/keys/alm00000@outlook.com.asc"
       thumbprint: "83E8952F67FB6B085289BB7E687D0B6568E74559"
+  extraLinks:
+    CV (docx): "https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2025.docx"
+    CV (pdf): "https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2025.pdf"
 entries:
   - name: "Bootcamp 2021: Ninjaformer GUI"
     content: >
