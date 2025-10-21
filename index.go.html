@@ -115,7 +115,7 @@
             {{ end }}
         </ul>
     </nav>
-    <!-- NEEDS CSS + SPLIT HAMBURGER CODE AND CSS -->
+    {{ if gt .Data.GetHeaderCount 3 }}
     <nav class="enav" id="enav">
         <ul class="emenu no-lst-style" id="emenu">
             {{ range .Data.GetHeaderLabelsExtra }}
@@ -123,6 +123,7 @@
             {{ end }}
         </ul>
     </nav>
+    {{ end }}
     {{ end }}
 </header>
 <main class="main-box flex-col">

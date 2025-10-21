@@ -1,7 +1,7 @@
 .nav-menu{
     display: none;
 }
-.nav-menu:checked ~ #nav, .nav-open{
+.nav-menu:checked ~ #nav, .nav-menu:checked ~ #enav, .nav-open{
     max-height: 100%;
 }
 .nav-menu:checked ~ .hmb .hmb-line, .nav-open-hmb .hmb-line{
