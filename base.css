@@ -262,6 +262,7 @@ main{
 .extras-box > a {
     margin: 2px;
     min-width: 240px;
+    font-weight: bold;
 }
 @media (min-width: 600px){
     .main-box > div{

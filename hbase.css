@@ -1,6 +1,3 @@
-.nav-menu, .h{
-    display: none;
-}
 .nav-menu:checked ~ #nav, .nav-menu:checked ~ #enav, .nav-open{
     max-height: 100%;
 }
@@ -68,4 +65,7 @@
 }
 .vmenu a:hover{
     background-color: transparent;
+}
+.nav-menu, .h{
+    display: none;
 }

@@ -9,6 +9,7 @@ var SortOrderBStateI = true
 var SortOrderEnabled = false
 var SortValue = ""
 var OrderValue = ""
+var HState = true
 function SetupJS() {
     SetupIndexArray()
     SetupJSTheme()
@@ -307,9 +308,9 @@ function SetupJSRSN() {
 function PerformNavMove() {
     var men2 = document.getElementById("menu")
     var emen2 = document.getElementById("emenu")
-    if (men2) {
-        while (men2.childNodes.length > 0) {InsertBefore(emen2, men2.removeChild(men2.childNodes[men2.childNodes.length - 1]));}
-    }
+    var nav2 = document.getElementById("nav")
+    if (men2) while (men2.childNodes.length > 0) {InsertBefore(emen2, men2.removeChild(men2.childNodes[men2.childNodes.length - 1]));}
+    AddClass(nav2, "h")
 }
 function PerformNavResize() {
     var ww = 0
@@ -326,7 +327,7 @@ function PerformNavResize() {
         var emen = document.getElementById("emenu")
         var cmen = (emen) ? emen : men;
         if (cmen && vmen) {
-            if (ww > 679 && emen == null) {
+            if (ww > 679 && emen === null) {
                 while (vmen.childNodes.length > 0) {InsertBefore(cmen, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
             } else {
                 var vmeni
@@ -353,6 +354,25 @@ function PerformNavResize() {
                     }
                     for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.appendChild(cmen.removeChild(menc[vmeni]));}
                 }
+                if (emen !== null) {
+                    if (men.childNodes.length > 0 || (emen && emen.childNodes.length > 0)) {
+                        if (!HState) {
+                            var ham = document.getElementById("hmb")
+                            if (ham) {
+                                HasClassThenRemove(ham,"h",true)
+                                HState = true
+                            }
+                        }
+                    } else {
+                        if (HState) {
+                            var ham2 = document.getElementById("hmb")
+                            if (ham2) {
+                                AddClass(ham2,"h")
+                                HState = false
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -377,4 +397,43 @@ function GetNavTextWidth(s) {
         return trw
     }
     return 8 * s.length + 32
+}
+function HasClassThenRemove(e,c,r) {
+    if (e && c) {
+        if (e.classList) {
+            var hres = e.classList.contains(c)
+            if (r) e.classList.remove(c)
+            return hres
+        } else {
+            if (e.className === c) {
+                if (r) e.className = ""
+                return true
+            }
+            var sidx = e.className.indexOf(c+" ")
+            if (sidx === 0) {
+                if (r) e.className = e.className.substring(c.length+1)
+                return true
+            }
+            var midx = e.className.indexOf(" "+c+" ")
+            if (midx > -1) {
+                if (r) e.className = e.className.substring(0, midx)+e.className.substring(midx+c.length+2)
+                return true
+            }
+            var eidx = e.className.lastIndexOf(" "+c)
+            if (eidx === e.className.length-1-c.length) {
+                if (r) e.className = e.className.substring(0,e.className.length-1-c.length)
+                return true
+            }
+        }
+    }
+    return false
+}
+function AddClass(e,c) {
+    if (e && c) {
+        if (e.classList) {
+            e.classList.add(c)
+        } else if (!HasClassThenRemove(e, c, false)) {
+            e.className += " "+c
+        }
+    }
 }
