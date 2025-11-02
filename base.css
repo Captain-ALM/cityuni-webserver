@@ -159,11 +159,16 @@ main{
     padding: 2px;
     box-sizing: content-box;
 }
+.email-table-holder{
+    min-width: 360px;
+    vertical-align: middle;
+}
 .email-table{
     display: table;
     box-sizing: content-box;
     background-color: transparent;
-    min-width: 360px;
+    max-width: 100%;
+    width: 100%;
     border-width: 0;
 }
 .email-table > div{
