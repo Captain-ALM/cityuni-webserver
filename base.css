@@ -38,9 +38,6 @@ main{
 .centered{
     text-align: center;
 }
-.right{
-    text-align: right;
-}
 .content, .content > *{
     word-break: break-word;
     -ms-word-wrap: break-word;
@@ -182,7 +179,7 @@ main{
     background-color: transparent;
     vertical-align: middle;
     overflow: hidden;
-    text-align: right   ;
+    text-align: center;
 }
 .item-table{
     display: table;
