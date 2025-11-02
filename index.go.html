@@ -180,8 +180,8 @@
     {{ $c := 0 }}
     {{ range .GetEntries }}
     {{ $c = $.CounterPlusPlus }}
+    <a class="a" id="{{ .GetEntryAnchor }}"></a>
     <div id="entry-{{ $c }}">
-        <a class="a" id="{{ .GetEntryAnchor }}"></a>
         <script type="application/javascript">
             CreateEntry({{ $c }}, "{{ .Name }}", "{{ .VideoLocation }}", "{{ .VideoContentType }}", "{{ .GetStartDateHTML }}", "{{ .GetEndDateHTML }}", {{ .GetInt64Duration }})
         </script>

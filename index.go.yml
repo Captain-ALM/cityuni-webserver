@@ -28,10 +28,6 @@ navigationEntries:
     url: "https://code.mrmelon54.com/alfred"
   - label: "YouTube"
     url: "https://www.youtube.com/c/CaptainALM"
-  - label: "Subsection"
-    url: "https://subsection.captainalm.com"
-  - label: "Heavens"
-    url: "https://heavens.captainalm.com"
 about:
   title: "Alfred Manville (Captain ALM)"
   content: >

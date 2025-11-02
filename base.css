@@ -182,7 +182,7 @@ main{
     background-color: transparent;
     vertical-align: middle;
     overflow: hidden;
-    text-align: center;
+    text-align: right   ;
 }
 .item-table{
     display: table;
