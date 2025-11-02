@@ -166,13 +166,15 @@ main{
 }
 .email-table-c{
     display: table-cell;
-    padding-left: 25px;
+    padding-left: 30px;
     vertical-align: middle;
+    font-weight: bold;
 }
 .email-table-t{
     display: table-cell;
     max-width: 100%;
     width: 100%;
+    padding-right: 10px;
 }
 .email-table{
     display: table;
