@@ -131,7 +131,7 @@
                 <div class="item-table-360">
                     <div class="email-table">
                         {{ if not (eq .Data.About.GetContactEmail.Email "" )}}
-                        <div class="centered">
+                        <div class="right">
                             <h4>
                                 <a href="mailto:{{ .Data.About.GetContactEmail.Email }}" title="Email">{{ .Data.About.GetContactEmail.Email }}</a>
                                 {{ if eq .Data.About.GetContactEmail.GPGUrl "" }}
@@ -143,7 +143,7 @@
                         </div>
                         {{ end }}
                         {{ if not (eq .Data.About.GetAlternateContactEmail.Email "" )}}
-                        <div class="centered">
+                        <div class="right">
                             <h4>
                                 <a href="mailto:{{ .Data.About.GetAlternateContactEmail.Email }}" title="Alternate Email">{{ .Data.About.GetAlternateContactEmail.Email }}</a>
                                 {{ if eq .Data.About.GetAlternateContactEmail.GPGUrl "" }}
