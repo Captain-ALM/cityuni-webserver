@@ -129,33 +129,35 @@
                     <div class="centered"><h1>{{ .Data.About.Title }}</h1></div>
                 </div>
                 <div class="item-table-360">
-                    <div class="centered">
-                        Email:
-                        <div class="email-table">
-                            {{ if not (eq .Data.About.GetContactEmail.Email "" )}}
-                            <div class="right">
-                                <h4>
-                                    <a href="mailto:{{ .Data.About.GetContactEmail.Email }}" title="Email">{{ .Data.About.GetContactEmail.Email }}</a>
-                                    {{ if eq .Data.About.GetContactEmail.GPGUrl "" }}
-                                    <s>[GPG]</s>
-                                    {{ else }}
-                                    [<a href="{{ .Data.About.GetContactEmail.GPGUrl }}" title="{{ .Data.About.GetContactEmail.Thumbprint }}">GPG</a>]
-                                    {{ end }}
-                                </h4>
+                    <div class="email-table-holder">
+                        <div class="email-table-c">Email:</div>
+                        <div class="email-table-t">
+                            <div class="email-table">
+                                {{ if not (eq .Data.About.GetContactEmail.Email "" )}}
+                                <div class="right">
+                                    <h4>
+                                        <a href="mailto:{{ .Data.About.GetContactEmail.Email }}" title="Email">{{ .Data.About.GetContactEmail.Email }}</a>
+                                        {{ if eq .Data.About.GetContactEmail.GPGUrl "" }}
+                                        <s>[GPG]</s>
+                                        {{ else }}
+                                        [<a href="{{ .Data.About.GetContactEmail.GPGUrl }}" title="{{ .Data.About.GetContactEmail.Thumbprint }}">GPG</a>]
+                                        {{ end }}
+                                    </h4>
+                                </div>
+                                {{ end }}
+                                {{ if not (eq .Data.About.GetAlternateContactEmail.Email "" )}}
+                                <div class="right">
+                                    <h4>
+                                        <a href="mailto:{{ .Data.About.GetAlternateContactEmail.Email }}" title="Alternate Email">{{ .Data.About.GetAlternateContactEmail.Email }}</a>
+                                        {{ if eq .Data.About.GetAlternateContactEmail.GPGUrl "" }}
+                                        <s>[GPG]</s>
+                                        {{ else }}
+                                        [<a href="{{ .Data.About.GetAlternateContactEmail.GPGUrl }}" title="{{ .Data.About.GetAlternateContactEmail.Thumbprint }}">GPG</a>]
+                                        {{ end }}
+                                    </h4>
+                                </div>
+                                {{ end }}
                             </div>
-                            {{ end }}
-                            {{ if not (eq .Data.About.GetAlternateContactEmail.Email "" )}}
-                            <div class="right">
-                                <h4>
-                                    <a href="mailto:{{ .Data.About.GetAlternateContactEmail.Email }}" title="Alternate Email">{{ .Data.About.GetAlternateContactEmail.Email }}</a>
-                                    {{ if eq .Data.About.GetAlternateContactEmail.GPGUrl "" }}
-                                    <s>[GPG]</s>
-                                    {{ else }}
-                                    [<a href="{{ .Data.About.GetAlternateContactEmail.GPGUrl }}" title="{{ .Data.About.GetAlternateContactEmail.Thumbprint }}">GPG</a>]
-                                    {{ end }}
-                                </h4>
-                            </div>
-                            {{ end }}
                         </div>
                     </div>
                 </div>

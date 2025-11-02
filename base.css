@@ -163,6 +163,15 @@ main{
     min-width: 360px;
     vertical-align: middle;
 }
+.email-table-c{
+    display: inline;
+    float: left;
+}
+.email-table-t{
+    display: inline-block;
+    max-width: 100%;
+    width: 100%;
+}
 .email-table{
     display: table;
     box-sizing: content-box;
