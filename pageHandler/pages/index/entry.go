@@ -1,6 +1,8 @@
 package index
 
 import (
+	"crypto/sha256"
+	"encoding/hex"
 	"golang.captainalm.com/cityuni-webserver/utils/yaml"
 	"html/template"
 	"math"
@@ -10,6 +12,8 @@ import (
 )
 
 const dateFormat = "01/2006"
+
+var hash = sha256.New
 
 type EntryYaml struct {
 	Name                   string         `yaml:"name"`
@@ -28,6 +32,12 @@ type ImageReference struct {
 	ThumbnailLocation template.URL
 	ImageLocation     template.URL
 	ImageAltText      string
+}
+
+func (ey EntryYaml) GetEntryAnchor() string {
+	h := hash()
+	h.Write([]byte(ey.Name))
+	return "entry_" + hex.EncodeToString(h.Sum(nil))
 }
 
 func (ey EntryYaml) GetVideoThumbnail(usual template.URL) template.URL {

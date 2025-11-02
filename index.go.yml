@@ -13,31 +13,37 @@ logoImageLocation: "resources/assets/logo.png"
 moonImageLocation: "resources/assets/moon.png"
 sunImageLocation: "resources/assets/sun.png"
 sortImageLocation: "resources/assets/sort.png"
-#headerLinks:
-#  Main Portfolio: "https://portfolio.captainalm.com/"
-#  Root Site Home: "https://www.captainalm.com/"
-#  LinkedIn: "https://www.linkedin.com/in/alfred-manville/"
-#  GitHub: "https://github.com/Captain-ALM"
+headerLinks:
+  Main Portfolio: "https://portfolio.captainalm.com/"
+  Root Site Home: "https://www.captainalm.com/"
+  LinkedIn: "https://www.linkedin.com/in/alfred-manville/"
+  GitHub: "https://github.com/Captain-ALM"
+  GitCove: "https://gitcove.com/alfred"
+  Melon Code: "https://code.mrmelon54.com/alfred"
+  YouTube: "https://www.youtube.com/c/CaptainALM"
+  Subsection: "https://subsection.captainalm.com"
+  Heavens: "https://heavens.captainalm.com"
 about:
   title: "Alfred Manville (Captain ALM)"
   content: >
     <p>
-    Hello, I'm Alfred Manville (#age# Years Old; 🇬🇧🇵🇭) and a 1st class Masters Graduate in MSci Computer Science with Cyber Security from City, University of London.
+    Hello, I'm Alfred Manville (#age# Years Old; 🇬🇧🇵🇭) and a 1st class Masters Graduate in MSci Computer Science with Cyber Security from City St George's, University of London.
     I'm a also a free and open-source developer who enjoys networking my laptops together,
     writes network software to communicate between them and then tries to break said software; which is shown in my <a href="https://github.com/Captain-ALM/alm-mesh-net-android">dissertation project</a>.
+    
     I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
     </p>
     <p>
-    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript, C++, Python, Bash,
-    Haskell, Processing and Microsoft Smallbasic (I have also dabbled in Batch).
+    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, JavaScript, C++, Python, Bash,
+    Haskell, Processing and Microsoft Smallbasic (I have also dabbled in Batch and PHP).
     I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a <a href="https://github.com/Captain-ALM/CALM-Console">command console</a>
     in VB .net for my own pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some <a href="https://github.com/Captain-ALM/CALMNetLibSamples">
     network communication applications</a> (Including a peer-to-peer <a href="https://github.com/Captain-ALM/C-ALM-VOIP">VOIP client</a>
     using NAudio as the audio library and my own network wrapper library, however, it is in need of bug-fixing at the moment).
-    The final major current project is completeing my mesh networking project that fixes and extends my dissertation project.
+    The final major current project is completing my mesh networking project that fixes and extends my dissertation project.
     </p>
     <p>
-    My github username is <a href="https://github.com/Captain-ALM">Captain-ALM</a> and has half my public programming projects,
+    My github username is <a href="https://github.com/Captain-ALM">Captain-ALM</a> and has half my public programming projects, 
     the other half is located at: <a href="https://gitcove.com/alfred">https://gitcove.com/alfred</a>
     </p>
     <p>
@@ -60,7 +66,7 @@ about:
     <p>
     I used to do Karate (Kyokushin Brown Belt) and I wish I could still fit my bike.
     </p>
-    <p>And I do a bit of <a href="heavens.captainalm.com">stargazing</a>.</p>
+    <p>And I do a bit of <a href="https://heavens.captainalm.com">stargazing</a>.</p>
   thumbnailLocation: "resources/assets/imageofyou_t.jpg"
   imageLocation: "resources/assets/imageofyou.jpg"
   imageAltText: "Image of me."

@@ -4,9 +4,9 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Captain ALM's City University Portfolio">
-    <meta name="keywords" content="CaptainALM Captain_ALM Captain ALM portfolio Alfred Manville projects programming hacking cracking city uni cityuni cuol City University of London mycityuni">
-    <title>City University Portfolio</title>
+    <meta name="description" content="Captain ALM's City St. George's University Portfolio">
+    <meta name="keywords" content="CaptainALM,Captain_ALM,Captain ALM,portfolio,Alfred Manville,projects,programming,hacking,cracking,city uni,cityuni,cuol,City University of London,mycityuni,cstguol,csguol,csuol,City St. George's University of London,masters graduate,MSci,Computer Science with Cyber Security,cyber,cybersecurity">
+    <title>Captain ALM's  City St. George's University Portfolio</title>
     <link rel="stylesheet" href="{{ .Data.CSSBaseURL }}"/>
     {{ if gt .Data.GetHeaderCount 0 }}
     {{ if lt .Data.GetHeaderCount 4 }}
@@ -120,6 +120,8 @@
     {{ end }}
 </header>
 <main class="main-box flex-col">
+    <a class="a" id="top"></a>
+    <a class="a" name="about"></a>
     <div id="about">
         <div class="item-table flex-col">
             <div class="item-heading">
@@ -129,9 +131,9 @@
                 <div class="item-table-360">
                     <div class="email-table">
                         {{ if not (eq .Data.About.GetContactEmail.Email "" )}}
-                        <div class="centered">
+                        <div class="right">
                             <h4>
-                                Email: <a href="mailto:{{ .Data.About.GetContactEmail.Email }}">{{ .Data.About.GetContactEmail.Email }}</a>
+                                <a href="mailto:{{ .Data.About.GetContactEmail.Email }}" title="Email">{{ .Data.About.GetContactEmail.Email }}</a>
                                 {{ if eq .Data.About.GetContactEmail.GPGUrl "" }}
                                 <s>[GPG]</s>
                                 {{ else }}
@@ -141,9 +143,9 @@
                         </div>
                         {{ end }}
                         {{ if not (eq .Data.About.GetAlternateContactEmail.Email "" )}}
-                        <div class="centered">
+                        <div class="right">
                             <h4>
-                                Alternate Email: <a href="mailto:{{ .Data.About.GetAlternateContactEmail.Email }}">{{ .Data.About.GetAlternateContactEmail.Email }}</a>
+                                <a href="mailto:{{ .Data.About.GetAlternateContactEmail.Email }}" title="Alternate Email">{{ .Data.About.GetAlternateContactEmail.Email }}</a>
                                 {{ if eq .Data.About.GetAlternateContactEmail.GPGUrl "" }}
                                 <s>[GPG]</s>
                                 {{ else }}
@@ -174,10 +176,12 @@
             {{ end }}
         </div>
     </div>
+    <a class="a" name="entries"></a>
     {{ $c := 0 }}
     {{ range .GetEntries }}
     {{ $c = $.CounterPlusPlus }}
     <div id="entry-{{ $c }}">
+        <a class="a" id="{{ .GetEntryAnchor }}"></a>
         <script type="application/javascript">
             CreateEntry({{ $c }}, "{{ .Name }}", "{{ .VideoLocation }}", "{{ .VideoContentType }}", "{{ .GetStartDateHTML }}", "{{ .GetEndDateHTML }}", {{ .GetInt64Duration }})
         </script>

@@ -2,6 +2,9 @@
 This file is (C) Captain ALM
 Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
 */
+html,body{
+    overflow: auto;
+}
 *{
     margin: 0;
     padding: 0;
@@ -16,6 +19,11 @@ Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internati
     visibility: hidden;
     white-space: nowrap;
 }
+.a{
+    z-index: -100;
+    padding-top: 70px;
+    margin-top: -70px;
+}
 main{
     display: block;
 	padding-top: 70px;
@@ -29,6 +37,9 @@ main{
 }
 .centered{
     text-align: center;
+}
+.right{
+    text-align: right;
 }
 .content, .content > *{
     word-break: break-word;
