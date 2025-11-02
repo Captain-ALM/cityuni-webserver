@@ -130,7 +130,11 @@
                 </div>
                 <div class="item-table-360">
                     <div class="email-table-holder">
-                        <div class="email-table-c">Email:</div>
+                        {{ if eq .Data.About.GetAlternateContactEmail.Email "" }}
+                        <h4 class="email-table-c">Email:</h4>
+                        {{ else }}
+                        <h4 class="email-table-c">Emails:</h4>
+                        {{ end }}
                         <div class="email-table-t">
                             <div class="email-table">
                                 {{ if not (eq .Data.About.GetContactEmail.Email "" )}}
@@ -144,7 +148,6 @@
                                         {{ end }}
                                     </h4>
                                 </div>
-                                {{ end }}
                                 {{ if not (eq .Data.About.GetAlternateContactEmail.Email "" )}}
                                 <div class="right">
                                     <h4>
@@ -155,6 +158,11 @@
                                         [<a href="{{ .Data.About.GetAlternateContactEmail.GPGUrl }}" title="{{ .Data.About.GetAlternateContactEmail.Thumbprint }}">GPG</a>]
                                         {{ end }}
                                     </h4>
+                                </div>
+                                {{ end }}
+                                {{ else }}
+                                <div class="right">
+                                    <h4>N/A</h4>
                                 </div>
                                 {{ end }}
                             </div>
