@@ -160,15 +160,17 @@ main{
     box-sizing: content-box;
 }
 .email-table-holder{
+    display: table-cell;
     min-width: 360px;
     vertical-align: middle;
 }
 .email-table-c{
-    display: inline;
-    float: left;
+    display: table-cell;
+    padding-left: 25px;
+    vertical-align: middle;
 }
 .email-table-t{
-    display: inline-block;
+    display: table-cell;
     max-width: 100%;
     width: 100%;
 }
