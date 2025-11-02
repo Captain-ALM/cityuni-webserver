@@ -1,7 +1,7 @@
 package index
 
 import (
-	"crypto/sha256"
+	"crypto/sha1"
 	"encoding/hex"
 	"golang.captainalm.com/cityuni-webserver/utils/yaml"
 	"html/template"
@@ -13,7 +13,7 @@ import (
 
 const dateFormat = "01/2006"
 
-var hash = sha256.New
+var hash = sha1.New
 
 type EntryYaml struct {
 	Name                   string         `yaml:"name"`

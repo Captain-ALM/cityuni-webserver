@@ -4,6 +4,7 @@ import "html/template"
 
 type DataYaml struct {
 	HeaderLinks            map[string]template.URL `yaml:"headerLinks"`
+	NavigationEntries      []HeaderEntry           `yaml:"navigationEntries"`
 	CSSBaseURL             template.URL            `yaml:"cssBaseURL"`
 	CSSHeadersBaseURL      template.URL            `yaml:"cssHeadersBaseURL"`
 	CSSMax3HeadersURL      template.URL            `yaml:"cssMax3HeadersURL"`
@@ -21,17 +22,29 @@ type DataYaml struct {
 	Entries                []EntryYaml             `yaml:"entries"`
 }
 
-func (dy DataYaml) GetAllHeaderLabels() []string {
-	if dy.HeaderLinks == nil {
-		return []string{}
+type HeaderEntry struct {
+	Label string       `yaml:"label"`
+	URL   template.URL `yaml:"url"`
+}
+
+func (dy DataYaml) GetAllHeaderLabels() (toReturn []string) {
+	if dy.HeaderLinks == nil || len(dy.HeaderLinks) < 1 {
+		if dy.NavigationEntries == nil {
+			return []string{}
+		}
+		toReturn = make([]string, len(dy.NavigationEntries))
+		for i, entry := range dy.NavigationEntries {
+			toReturn[i] = entry.Label
+		}
+		return
 	}
-	toReturn := make([]string, len(dy.HeaderLinks))
+	toReturn = make([]string, len(dy.HeaderLinks))
 	i := 0
 	for key := range dy.HeaderLinks {
 		toReturn[i] = key
 		i++
 	}
-	return toReturn
+	return
 }
 
 func (DataYaml) GetHeaderLabels(labels []string) []string {
@@ -64,13 +77,24 @@ func (DataYaml) GetHeaderLabelsExtra(labels []string) []string {
 
 func (dy DataYaml) GetHeaderLink(headerLabel string) template.URL {
 	if dy.HeaderLinks == nil {
+		if dy.NavigationEntries == nil {
+			return ""
+		}
+		for _, entry := range dy.NavigationEntries {
+			if entry.Label == headerLabel {
+				return entry.URL
+			}
+		}
 		return ""
 	}
 	return dy.HeaderLinks[headerLabel]
 }
 
 func (dy DataYaml) GetHeaderCount() int {
-	return len(dy.HeaderLinks)
+	if len(dy.HeaderLinks) > 0 {
+		return len(dy.HeaderLinks)
+	}
+	return len(dy.NavigationEntries)
 }
 
 func min(x, y int) int {
