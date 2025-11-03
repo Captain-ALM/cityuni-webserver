@@ -88,6 +88,7 @@ about:
     CV (pdf): "https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2025.pdf"
 entries:
   - name: "Bootcamp 2021: Ninjaformer GUI"
+    anchorSuffix: "ninjaformer_gui"
     content: >
       <p>
       My first programming task at City, concluding the 2 week 2021 Programming Bootcamp,
@@ -135,6 +136,7 @@ entries:
       - "Button image source code."
       - "Sprite world source code."
   - name: "City Game Project 2022: Ninjaformer (Alpha, Beta)"
+    anchorSuffix: "ninjaformer_alpha_beta"
     content: >
       <p>
       My first major project at City (A Java Game), concluding 2.2 Months of programming.
@@ -195,6 +197,7 @@ entries:
       - "Pause Menu screen."
       - "Audio Settings screen."
   - name: "Global Game Jam January 2022 : Shadow work"
+    anchorSuffix: "shadow_work"
     content: >
       <p>
       I may have not done any programming for this (Even though I know C#) but I helped write a good chunk of the background story
@@ -236,6 +239,7 @@ entries:
       - "Visualisation of in-game character split."
       - "End of the game area."
   - name: "City-University Portfolio"
+    anchorSuffix: "portfolio"
     content: >
       <p>
       This project is what's outputting this page at the moment! The backend is written in Go and there is both custom front-end Javascript and CSS!
@@ -250,6 +254,7 @@ entries:
       </p>
     startDate: "13/07/2022"
   - name: "Python Communicator"
+    anchorSuffix: "python_comm"
     content: >
       <p>
       After learning python for my portfolio development option, I wanted to showcase what I knew in python.
@@ -285,6 +290,7 @@ entries:
       - "Exploit Testing."
       - "Failed Exploit Testing."
   - name: "Group Project - AirVia ATS (AirTicket Sales)"
+    anchorSuffix: "airvia_team"
     content: >
       <p>
       This group project was creating a Ticket Sales system for the fictional company AirVia LTD, for this the group had to both design the implementation and then write the code for it.
@@ -346,23 +352,25 @@ entries:
       - "Help on Force Unlocking (Database Manager Interface)."
       - "Account Editor on a Manager within The Dashboard Interface."
       - "Part of the Main.java source code Screenshot."
-#  - name: "City-University Promotional Video"
-#    content: >
-#      <p>
-#      Here, I star in an interview for City, University of London's Promotional Marketing Campaign. Join <a href="https://www.city.ac.uk/">City</a>!
-#      </p>
-#      <p>
-#      Find the video here: <a href="https://www.youtube.com/watch?v=tOccImgskec">https://www.youtube.com/watch?v=tOccImgskec</a>
-#      </p>
-#      <p>
-#      Find the general School of Science and Technology video here: <a href="https://www.youtube.com/watch?v=pkTCf4CWFSY">https://www.youtube.com/watch?v=pkTCf4CWFSY</a>
-#      </p>
-#    startDate: "05/06/2023"
-#    endDate: "05/06/2023"
-#    videoLocation: "https://www.youtube.com/watch?v=tOccImgskec"
-#    videoContentType: "text/uri-list"
-#    videoThumbnailLocation: "resources/assets/citypromo-vid.png"
+  - name: "City-University Promotional Video"
+    anchorSuffix: "city_uni_promo"
+    content: >
+      <p>
+      Here, I star in an interview for City, University of London's Promotional Marketing Campaign. Join <a href="https://www.city.ac.uk/">City</a>!
+      </p>
+      <p>
+      Find the video here: <a href="https://www.youtube.com/watch?v=tOccImgskec">https://www.youtube.com/watch?v=tOccImgskec</a>
+      </p>
+      <p>
+      Find the general School of Science and Technology video here: <a href="https://www.youtube.com/watch?v=pkTCf4CWFSY">https://www.youtube.com/watch?v=pkTCf4CWFSY</a>
+      </p>
+    startDate: "05/06/2023"
+    endDate: "05/06/2023"
+    videoLocation: "https://www.youtube.com/watch?v=tOccImgskec"
+    videoContentType: "text/uri-list"
+    videoThumbnailLocation: "resources/assets/citypromo-vid.png"
   - name: "Decide Quiz - GCloud City"
+    anchorSuffix: "decide_quiz"
     content: >
       <p>
       This project was <a href="https://cdn.captainalm.com/download/gcloudcity/CloudApplicationSpecification-AlfredManville-MohammadMasood.docx">designed</a> <a href="https://cdn.captainalm.com/download/gcloudcity/CloudPresentation-AlfredManville-MohammadMasood.pptx">to</a> operate as a Kahoot clone although the front-end never got completed by the other member of the pair (This was written in React).
@@ -392,12 +400,14 @@ entries:
     videoContentType: "video/mp4"
     videoThumbnailLocation: "resources/assets/vid-gc-c-v2.png"
 #  - name: "Analysing UK Road Traffic Accident Data"
+#    anchorSuffix: "ai_intro"
 #    content: >
 #      <p>
 #      </p>
 #    startDate: "29/10/2024"
 #    endDate: "22/12/2024"
 #  - name: "Multi Transport Wireless Mesh VPN (Dissertation Project)"
+#    anchorSuffix: "final_project"
 #    content: >
 #      <p>
 #      </p>

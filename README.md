@@ -4,6 +4,8 @@ This provides my template and cache supporting web / application server for my c
 
 [Production Server](https://cityuni.captainalm.com/)
 
+[Test Server](https://cityuni.captainalm.xyz/)
+
 Maintainer: 
 [Captain ALM](https://code.mrmelon54.com/alfred)
 

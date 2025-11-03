@@ -26,6 +26,7 @@ type EntryYaml struct {
 	ImageLocations         []template.URL `yaml:"imageLocations"`
 	ImageAltTexts          []string       `yaml:"imageAltTexts"`
 	VideoThumbnailLocation template.URL   `yaml:"videoThumbnailLocation"`
+	AnchorSuffix           string         `yaml:"anchorSuffix"`
 }
 
 type ImageReference struct {
@@ -34,10 +35,16 @@ type ImageReference struct {
 	ImageAltText      string
 }
 
-func (ey EntryYaml) GetEntryAnchor() string {
-	h := hash()
-	h.Write([]byte(ey.Name))
-	return "entry_" + hex.EncodeToString(h.Sum(nil))
+func (ey EntryYaml) GetEntryAnchor() (toRet string) {
+	toRet = "entry_"
+	if ey.AnchorSuffix == "" {
+		h := hash()
+		h.Write([]byte(ey.Name))
+		toRet += hex.EncodeToString(h.Sum(nil))
+	} else {
+		toRet += ey.AnchorSuffix
+	}
+	return
 }
 
 func (ey EntryYaml) GetVideoThumbnail(usual template.URL) template.URL {
