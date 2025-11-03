@@ -195,7 +195,7 @@
     <a class="a" id="{{ .GetEntryAnchor }}"></a>
     <div id="entry-{{ $c }}">
         <script type="application/javascript">
-            CreateEntry({{ $c }}, "{{ .Name }}", "{{ .VideoLocation }}", "{{ .VideoContentType }}", "{{ .GetStartDateHTML }}", "{{ .GetEndDateHTML }}", {{ .GetInt64Duration }})
+            CreateEntry({{ $c }}, "{{ .Name }}", "{{ .VideoLocation }}", "{{ .VideoContentType }}", "{{ .GetStartDateHTML }}", "{{ .GetEndDateHTML }}", {{ .GetInt64Duration }}, "{{ .GetEntryAnchor }}")
         </script>
         <div class="item-table flex-col">
             <div class="item-heading">

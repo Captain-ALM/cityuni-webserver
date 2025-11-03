@@ -17,14 +17,15 @@ function SetupJS() {
     SetupJSSOI()
     SetupJSRSN()
 }
-function CreateEntry(id, name, videourl, videotype, start, end, duration) {
+function CreateEntry(id, name, videourl, videotype, start, end, duration, anchor) {
     EntryData[id] = {
         name: name,
         videourl: videourl,
         videotype: videotype,
         start: Date.parse(start),
         end: Date.parse(end),
-        duration : parseInt(duration, 10)
+        duration : parseInt(duration, 10),
+        anchor: anchor
     };
 }
 function CreateVideoPlaceholder(id,phImageURL) {
@@ -231,9 +232,12 @@ function EntrySort(o, s) {
             ReplaceHistory(url+"?"+TheParameters)
         }
         for (var i = 0; i < EntryIndices.length; i++) {
+            var aNode = document.getElementById(EntryData[EntryIndices[i]].anchor)
             var tNode = document.getElementById("entry-"+EntryIndices[i])
             var pNode = tNode.parentNode
             tNode = pNode.removeChild(tNode)
+            aNode = pNode.removeChild(aNode)
+            pNode.appendChild(aNode)
             pNode.appendChild(tNode)
         }
     }
