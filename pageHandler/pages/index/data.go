@@ -26,9 +26,9 @@ type DataYaml struct {
 }
 
 type HeaderEntry struct {
-	Label  string            `yaml:"label"`
-	URL    template.URL      `yaml:"url"`
-	target template.HTMLAttr `yaml:"target"`
+	Label  string       `yaml:"label"`
+	URL    template.URL `yaml:"url"`
+	Target string       `yaml:"target"`
 }
 
 func (dy DataYaml) GetAllHeaderLabels() (toReturn []string) {
@@ -94,17 +94,17 @@ func (dy DataYaml) GetHeaderLink(headerLabel string) template.URL {
 	return dy.HeaderLinks[headerLabel]
 }
 
-func (dy DataYaml) GetHeaderTarget(headerLabel string) template.HTMLAttr {
+func (dy DataYaml) GetHeaderTarget(headerLabel string) string {
 	if dy.HeaderLinks == nil {
 		if dy.NavigationEntries == nil {
 			return ""
 		}
 		for _, entry := range dy.NavigationEntries {
 			if entry.Label == headerLabel {
-				if strings.EqualFold(string(entry.target), "_self") {
+				if strings.EqualFold(entry.Target, "_self") {
 					return ""
 				}
-				return entry.target
+				return entry.Target
 			}
 		}
 		return ""
