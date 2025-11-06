@@ -110,10 +110,12 @@
     </nav>
     {{ $ent := .Data.GetAllHeaderLabels }}
     <nav class="nav" id="nav">
+        <span>{{ $.Data.GetHeaderTarget . }}</span>
         <ul class="menu no-lst-style" id="menu">{{ range (.Data.GetHeaderLabels $ent) }}<li>{{ if eq ($.Data.GetHeaderTarget .) "" }}<a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ else }}<a href="{{ $.Data.GetHeaderLink . }}" target="{{ $.Data.GetHeaderTarget . }}" class="no-dec" title="{{ . }}">{{ end }}{{ . }}</a></li>{{ end }}</ul>
     </nav>
     {{ if gt .Data.GetHeaderCount 3 }}
     <nav class="enav" id="enav">
+        <span>{{ $.Data.GetHeaderTarget . }}</span>
         <ul class="emenu no-lst-style" id="emenu">{{ range (.Data.GetHeaderLabelsExtra $ent) }}<li>{{ if eq ($.Data.GetHeaderTarget .) "" }}<a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ else }}<a href="{{ $.Data.GetHeaderLink . }}" target="{{ $.Data.GetHeaderTarget . }}" class="no-dec" title="{{ . }}">{{ end }}{{ . }}</a></li>{{ end }}</ul>
     </nav>
     {{ end }}
