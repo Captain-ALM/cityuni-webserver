@@ -110,11 +110,11 @@
     </nav>
     {{ $ent := .Data.GetAllHeaderLabels }}
     <nav class="nav" id="nav">
-        <ul class="menu no-lst-style" id="menu">{{ range (.Data.GetHeaderLabels $ent) }}<li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>{{ end }}</ul>
+        <ul class="menu no-lst-style" id="menu">{{ range (.Data.GetHeaderLabels $ent) }}<li>{{ if eq ($.Data.GetHeaderTarget .) "" }}<a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ else }}<a href="{{ $.Data.GetHeaderLink . }}" target="{{ $.Data.GetHeaderTarget . }}" class="no-dec" title="{{ . }}">{{ end }}{{ . }}</a></li>{{ end }}</ul>
     </nav>
     {{ if gt .Data.GetHeaderCount 3 }}
     <nav class="enav" id="enav">
-        <ul class="emenu no-lst-style" id="emenu">{{ range (.Data.GetHeaderLabelsExtra $ent) }}<li><a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ . }}</a></li>{{ end }}</ul>
+        <ul class="emenu no-lst-style" id="emenu">{{ range (.Data.GetHeaderLabelsExtra $ent) }}<li>{{ if eq ($.Data.GetHeaderTarget .) "" }}<a href="{{ $.Data.GetHeaderLink . }}" class="no-dec" title="{{ . }}">{{ else }}<a href="{{ $.Data.GetHeaderLink . }}" target="{{ $.Data.GetHeaderTarget . }}" class="no-dec" title="{{ . }}">{{ end }}{{ . }}</a></li>{{ end }}</ul>
     </nav>
     {{ end }}
     {{ end }}
@@ -174,14 +174,14 @@
                     <div class="content">{{ .Data.About.GetContent }}</div>
                 </div>
                 <div class="item-table-360">
-                    <div><a href="{{ .Data.About.ImageLocation }}"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
+                    <div><a href="{{ .Data.About.ImageLocation }}" target="_blank"><img src="{{ .Data.About.ThumbnailLocation }}" alt="{{ .Data.About.ImageAltText }}" title="{{ .Data.About.ImageAltText }}" width="360px"></a></div>
                 </div>
             </div>
             {{ if not (eq .Data.About.GetExtraLinkCount 0) }}
             <div class="item-table-caption">
                 <div class="extras-box flex-row centered">
                     {{ range .Data.About.GetExtraLinkLabels }}
-                    <a href="{{ $.Data.About.GetExtraLinkLink . }}" title="{{ . }}">{{ . }}</a>
+                    <a href="{{ $.Data.About.GetExtraLinkLink . }}" title="{{ . }}" target="_blank">{{ . }}</a>
                     {{ end }}
                 </div>
             </div>
@@ -220,8 +220,8 @@
                         <img src="{{ .GetVideoThumbnail $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
                     {{ else }}
                         {{ if .IsVideoLink }}
-                        <a href="{{ .VideoLocation }}">
-                            <img src="{{ .GetVideoThumbnail $.Data.PlayVideoImageLocation }}" alt="Play Video" title="Play" width="360px">
+                        <a href="{{ .VideoLocation }}" target="_blank">
+                            <img src="{{ .GetVideoThumbnail $.Data.PlayVideoImageLocation }}" alt="Launch Video" title="Launch" width="360px">
                         </a>
                         {{ else }}
                         <script type="application/javascript">
@@ -230,7 +230,7 @@
                         <noscript>
                             <video controls width="360px">
                                 <source src="{{ .VideoLocation }}" type="{{ .VideoContentType }}">
-                                <a href="{{ .VideoLocation }}">The Video</a>
+                                <a href="{{ .VideoLocation }}" target="_blank">Launch Video</a>
                             </video>
                         </noscript>
                         {{ end }}
@@ -242,7 +242,7 @@
             <div class="item-table-caption">
                 <div class="image-box flex-row">
                     {{ range .GetImages }}
-                    <a href="{{ .ImageLocation }}"><img src="{{ .ThumbnailLocation }}" alt="{{ .ImageAltText }}" title="{{ .ImageAltText }}" width="240px"></a>
+                    <a href="{{ .ImageLocation }}" target="_blank"><img src="{{ .ThumbnailLocation }}" alt="{{ .ImageAltText }}" title="{{ .ImageAltText }}" width="240px"></a>
                     {{ end }}
                 </div>
             </div>
@@ -259,7 +259,7 @@
       Looking for the old static HTML page, here's the <a href="index.html">link</a>.
   </p>
     <p>
-    This page's content is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">
+    This page's content is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
     <img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/png/by-nc-nd.png" alt="License" title="License" height="16"></a>.
   </p>
 </footer>

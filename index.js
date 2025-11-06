@@ -55,7 +55,8 @@ function ActivateVideo(id) {
     vids.type = EntryData[id].videotype
     var vida = document.createElement("a")
     vida.href = EntryData[id].videourl
-    vida.innerText = "The Video"
+    vida.innerText = "Launch Video"
+    vida.target = "_blank"
     vid.appendChild(vids)
     vid.appendChild(vida)
     holder.appendChild(vid)

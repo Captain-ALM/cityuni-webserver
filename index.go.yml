@@ -20,14 +20,19 @@ navigationEntries:
     url: "https://www.captainalm.com/"
   - label: "LinkedIn"
     url: "https://www.linkedin.com/in/alfred-manville/"
+    target: "_blank"
   - label: "GitHub"
     url: "https://github.com/Captain-ALM"
+    target: "_blank"
   - label: "GitCove"
     url: "https://gitcove.com/alfred"
+    target: "_blank"
   - label: "Melon Code"
     url: "https://code.mrmelon54.com/alfred"
+    target: "_blank"
   - label: "YouTube"
     url: "https://www.youtube.com/c/CaptainALM"
+    target: "_blank"
 about:
   title: "Alfred Manville (Captain ALM)"
   content: >
@@ -399,17 +404,24 @@ entries:
     videoLocation: "resources/stream/vid-gc-c-v2.mp4"
     videoContentType: "video/mp4"
     videoThumbnailLocation: "resources/assets/vid-gc-c-v2.png"
-#  - name: "Analysing UK Road Traffic Accident Data"
-#    anchorSuffix: "ai_intro"
-#    content: >
-#      <p>
-#      </p>
-#    startDate: "29/10/2024"
-#    endDate: "22/12/2024"
-#  - name: "Multi Transport Wireless Mesh VPN (Dissertation Project)"
-#    anchorSuffix: "final_project"
-#    content: >
-#      <p>
-#      </p>
-#    startDate: "03/02/2025"
-#    endDate: "06/06/2025"
+  - name: "Analysing UK Road Traffic Accident Data"
+    anchorSuffix: "ai_intro"
+    content: >
+      <p>
+      <a href="https://cdn.captainalm.com/download/university/INM701-Alfred-Manville-PRESENTATION.pptx">Findings Presentation</a>
+      </p>
+    startDate: "29/10/2024"
+    endDate: "22/12/2024"
+    videoLocation: "resources/stream/vid-ai-pres.mp4"
+    videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/vid-ai-pres.png"
+  - name: "Multi Transport Wireless Mesh VPN (Dissertation Project)"
+    anchorSuffix: "final_project"
+    content: >
+      <p>
+      </p>
+    startDate: "03/02/2025"
+    endDate: "06/06/2025"
+    videoLocation: "resources/stream/vid-dsrt.mp4"
+    videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/vid-dsrt.png"

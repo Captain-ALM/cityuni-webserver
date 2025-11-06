@@ -1,6 +1,9 @@
 package index
 
-import "html/template"
+import (
+	"html/template"
+	"strings"
+)
 
 type DataYaml struct {
 	HeaderLinks            map[string]template.URL `yaml:"headerLinks"`
@@ -23,8 +26,9 @@ type DataYaml struct {
 }
 
 type HeaderEntry struct {
-	Label string       `yaml:"label"`
-	URL   template.URL `yaml:"url"`
+	Label  string       `yaml:"label"`
+	URL    template.URL `yaml:"url"`
+	target string       `yaml:"target"`
 }
 
 func (dy DataYaml) GetAllHeaderLabels() (toReturn []string) {
@@ -88,6 +92,24 @@ func (dy DataYaml) GetHeaderLink(headerLabel string) template.URL {
 		return ""
 	}
 	return dy.HeaderLinks[headerLabel]
+}
+
+func (dy DataYaml) GetHeaderTarget(headerLabel string) string {
+	if dy.HeaderLinks == nil {
+		if dy.NavigationEntries == nil {
+			return ""
+		}
+		for _, entry := range dy.NavigationEntries {
+			if entry.Label == headerLabel {
+				if strings.EqualFold(entry.target, "_self") {
+					return ""
+				}
+				return entry.target
+			}
+		}
+		return ""
+	}
+	return ""
 }
 
 func (dy DataYaml) GetHeaderCount() int {
