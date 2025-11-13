@@ -337,6 +337,6 @@ main{
     top : 0;
     left : 0;
 }
-.vidt:hover ~ .vidt-playh{
+.vidt:hover > .vidt-playh{
     display: inline !important;
 }
