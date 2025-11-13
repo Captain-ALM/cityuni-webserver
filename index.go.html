@@ -227,10 +227,10 @@ Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 Internati
                         <img src="{{ .GetVideoThumbnail $.Data.ThumbnailNoVideoBackgroundImageLocation }}" alt="No Video" width="360px">
                     {{ else }}
                         {{ if .IsVideoLink }}
-                        <a class="vidt" href="{{ .VideoLocation }}" target="_blank">
+                        <a class="vidt" href="{{ .VideoLocation }}" target="_blank" title="Launch">
                             <img src="{{ .GetVideoThumbnail $.Data.ThumbnailNoVideoBackgroundImageLocation }}" alt="Launch Video" title="Launch" width="360px">
-                            <img class="vidt-play" src="{{ $.Data.ThumbnailPlayOverlayImageLocation }}" alt="Launch Video" title="Launch">
-                            <img class="vidt-playh" src="{{ $.Data.ThumbnailPlayHighlightImageLocation }}" alt="Launch Video" title="Launch">
+                            <img class="vidt-play" src="{{ $.Data.ThumbnailPlayOverlayImageLocation }}" title="Launch">
+                            <img class="vidt-playh" src="{{ $.Data.ThumbnailPlayHighlightImageLocation }}" title="Launch">
                         </a>
                         {{ else }}
                         <script type="application/javascript">

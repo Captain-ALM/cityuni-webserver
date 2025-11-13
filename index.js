@@ -33,6 +33,7 @@ function CreateVideoPlaceholder(id,phImageURL) {
     AddClass(imgPH,"vidt")
     imgPH.id = "play-"+id
     imgPH.style.width = "360px"
+    imgPH.title = "Play"
     var imgPHT = document.createElement("img")
     imgPHT.src = phImageURL
     imgPHT.alt = "Play Video"
@@ -41,12 +42,10 @@ function CreateVideoPlaceholder(id,phImageURL) {
     var imgPly = document.createElement("img")
     AddClass(imgPly,"vidt-play")
     imgPly.src = VPlayTURL
-    imgPly.alt = "Play Video"
     imgPly.title = "Play"
     var imgPlyH = document.createElement("img")
     AddClass(imgPlyH,"vidt-playh")
     imgPlyH.src = VPlayHTURL
-    imgPlyH.alt = "Play Video"
     imgPlyH.title = "Play"
     imgPH.appendChild(imgPly)
     imgPH.appendChild(imgPlyH)
