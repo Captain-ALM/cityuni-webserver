@@ -320,3 +320,23 @@ main{
         margin: 10px;
     }
 }
+.vidt{
+    display: block;
+    cursor: pointer;
+    position: relative;
+}
+.vidt *{
+    width: 100%;
+    height: 100%;
+}
+.vidt-playh{
+    display: none;
+}
+.vidt .vidt-play,.vidt .vidt-playh{
+    position: absolute;
+    top : 0;
+    left : 0;
+}
+.vidt:hover ~ .vidt-playh{
+    display: inline !important;
+}

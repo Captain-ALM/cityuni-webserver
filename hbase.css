@@ -1,3 +1,7 @@
+/*
+This file is (C) Captain ALM
+Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+*/
 .nav-menu:checked ~ #nav, .nav-menu:checked ~ #enav, .nav-open{
     max-height: 100%;
 }
@@ -5,10 +9,18 @@
     background: transparent;
 }
 .nav-menu:checked ~ .hmb .hmb-line::before, .nav-open-hmb .hmb-line::before{
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
     top:0;
 }
 .nav-menu:checked ~ .hmb .hmb-line::after, .nav-open-hmb .hmb-line::after{
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
     transform: rotate(45deg);
     top:0;
 }

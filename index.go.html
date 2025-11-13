@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+This file is (C) Captain ALM
+Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+-->
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="Captain ALM's City St. George's University Portfolio">
-    <meta name="keywords" content="CaptainALM,Captain_ALM,Captain ALM,portfolio,Alfred Manville,projects,programming,hacking,cracking,city uni,cityuni,cuol,City University of London,mycityuni,cstguol,csguol,csuol,City St. George's University of London,masters graduate,MSci,Computer Science with Cyber Security,cyber,cybersecurity">
-    <title>Captain ALM's  City St. George's University Portfolio</title>
+    <meta name="description" content="{{ .Data.Description }}">
+    <meta name="keywords" content="{{ .Data.Keywords }}">
+    <title>{{ .Data.Title }}</title>
     <link rel="stylesheet" href="{{ .Data.CSSBaseURL }}"/>
     {{ if gt .Data.GetHeaderCount 0 }}
     {{ if lt .Data.GetHeaderCount 4 }}
@@ -28,7 +32,10 @@
         var CssDarkURL = "{{ .Data.CSSDarkURL }}"
         var SunImageURL = "{{ .Data.SunImageLocation }}"
         var MoonImageURL = "{{ .Data.MoonImageLocation }}"
-        var PlayImageURL = "{{ .Data.PlayVideoImageLocation }}"
+        var VPlayURL = "{{ .Data.PlayOverlayImageLocation }}"
+        var VPlayHURL = "{{ .Data.PlayHighlightImageLocation }}"#
+        var VPlayTURL = "{{ .Data.ThumbnailPlayOverlayImageLocation }}"
+        var VPlayHTURL = "{{ .Data.ThumbnailPlayHighlightImageLocation }}"
     </script>
     <script type="application/javascript" src="{{ .Data.JScriptURL }}"></script>
 </head>
@@ -217,15 +224,17 @@
                 <div class="item-table-360">
                     <div id="video-{{ $c }}">
                     {{ if eq .VideoLocation "" }}
-                        <img src="{{ .GetVideoThumbnail $.Data.NoVideoImageLocation }}" alt="No Video" width="360px">
+                        <img src="{{ .GetVideoThumbnail $.Data.ThumbnailNoVideoBackgroundImageLocation }}" alt="No Video" width="360px">
                     {{ else }}
                         {{ if .IsVideoLink }}
-                        <a href="{{ .VideoLocation }}" target="_blank">
-                            <img src="{{ .GetVideoThumbnail $.Data.PlayVideoImageLocation }}" alt="Launch Video" title="Launch" width="360px">
+                        <a class="vidt" href="{{ .VideoLocation }}" target="_blank">
+                            <img src="{{ .GetVideoThumbnail $.Data.ThumbnailNoVideoBackgroundImageLocation }}" alt="Launch Video" title="Launch" width="360px">
+                            <img class="vidt-play" src="{{ $.Data.ThumbnailPlayOverlayImageLocation }}" alt="Launch Video" title="Launch">
+                            <img class="vidt-playh" src="{{ $.Data.ThumbnailPlayHighlightImageLocation }}" alt="Launch Video" title="Launch">
                         </a>
                         {{ else }}
                         <script type="application/javascript">
-                            CreateVideoPlaceholder({{ $c }}, "{{ .GetVideoThumbnail $.Data.PlayVideoImageLocation }}")
+                            CreateVideoPlaceholder({{ $c }}, "{{ .GetVideoThumbnail $.Data.ThumbnailNoVideoBackgroundImageLocation }}")
                         </script>
                         <noscript>
                             <video controls width="360px">
@@ -259,7 +268,7 @@
       Looking for the old static HTML page, here's the <a href="index.html">link</a>.
   </p>
     <p>
-    This page's content is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
+    {{ .Data.Copyright }} This page's content is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">
     <img src="https://mirrors.creativecommons.org/presskit/buttons/80x15/png/by-nc-nd.png" alt="License" title="License" height="16"></a>.
   </p>
 </footer>

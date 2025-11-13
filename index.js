@@ -29,13 +29,27 @@ function CreateEntry(id, name, videourl, videotype, start, end, duration, anchor
     };
 }
 function CreateVideoPlaceholder(id,phImageURL) {
-    var imgPH = document.createElement("img")
-    imgPH.src = phImageURL
+    var imgPH = document.createElement("div")
+    AddClass(imgPH,"vidt")
     imgPH.id = "play-"+id
-    imgPH.alt = "Play Video"
-    imgPH.title = "Play"
-    imgPH.width = 360
-    imgPH.style.cursor = "pointer"
+    imgPH.style.width = "360px"
+    var imgPHT = document.createElement("img")
+    imgPHT.src = phImageURL
+    imgPHT.alt = "Play Video"
+    imgPHT.title = "Play"
+    imgPH.appendChild(imgPHT)
+    var imgPly = document.createElement("img")
+    AddClass(imgPly,"vidt-play")
+    imgPly.src = VPlayTURL
+    imgPly.alt = "Play Video"
+    imgPly.title = "Play"
+    var imgPlyH = document.createElement("img")
+    AddClass(imgPlyH,"vidt-playh")
+    imgPlyH.src = VPlayHTURL
+    imgPlyH.alt = "Play Video"
+    imgPlyH.title = "Play"
+    imgPH.appendChild(imgPly)
+    imgPH.appendChild(imgPlyH)
     if (document.addEventListener) {
         imgPH.addEventListener("click", function () {ActivateVideo(id);})
     } else {

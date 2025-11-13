@@ -6,23 +6,31 @@ import (
 )
 
 type DataYaml struct {
-	HeaderLinks            map[string]template.URL `yaml:"headerLinks"`
-	NavigationEntries      []HeaderEntry           `yaml:"navigationEntries"`
-	CSSBaseURL             template.URL            `yaml:"cssBaseURL"`
-	CSSHeadersBaseURL      template.URL            `yaml:"cssHeadersBaseURL"`
-	CSSMax3HeadersURL      template.URL            `yaml:"cssMax3HeadersURL"`
-	CSSOver3HeadersURL     template.URL            `yaml:"cssOver3HeadersURL"`
-	CSSLightURL            template.URL            `yaml:"cssLightURL"`
-	CSSDarkURL             template.URL            `yaml:"cssDarkURL"`
-	JScriptURL             template.URL            `yaml:"jScriptURL"`
-	PlayVideoImageLocation template.URL            `yaml:"playVideoImageLocation"`
-	NoVideoImageLocation   template.URL            `yaml:"noVideoImageLocation"`
-	LogoImageLocation      template.URL            `yaml:"logoImageLocation"`
-	SunImageLocation       template.URL            `yaml:"sunImageLocation"`
-	MoonImageLocation      template.URL            `yaml:"moonImageLocation"`
-	SortImageLocation      template.URL            `yaml:"sortImageLocation"`
-	About                  AboutYaml               `yaml:"about"`
-	Entries                []EntryYaml             `yaml:"entries"`
+	HeaderLinks                             map[string]template.URL `yaml:"headerLinks"`
+	NavigationEntries                       []HeaderEntry           `yaml:"navigationEntries"`
+	CSSBaseURL                              template.URL            `yaml:"cssBaseURL"`
+	CSSHeadersBaseURL                       template.URL            `yaml:"cssHeadersBaseURL"`
+	CSSMax3HeadersURL                       template.URL            `yaml:"cssMax3HeadersURL"`
+	CSSOver3HeadersURL                      template.URL            `yaml:"cssOver3HeadersURL"`
+	CSSLightURL                             template.URL            `yaml:"cssLightURL"`
+	CSSDarkURL                              template.URL            `yaml:"cssDarkURL"`
+	JScriptURL                              template.URL            `yaml:"jScriptURL"`
+	NoVideoBackgroundImageLocation          template.URL            `yaml:"noVideoBackgroundImageLocation"`
+	PlayOverlayImageLocation                template.URL            `yaml:"playOverlayImageLocation"`
+	PlayHighlightImageLocation              template.URL            `yaml:"playHighlightImageLocation"`
+	ThumbnailNoVideoBackgroundImageLocation template.URL            `yaml:"thumbnailNoVideoBackgroundImageLocation"`
+	ThumbnailPlayOverlayImageLocation       template.URL            `yaml:"thumbnailPlayOverlayImageLocation"`
+	ThumbnailPlayHighlightImageLocation     template.URL            `yaml:"thumbnailPlayHighlightImageLocation"`
+	LogoImageLocation                       template.URL            `yaml:"logoImageLocation"`
+	SunImageLocation                        template.URL            `yaml:"sunImageLocation"`
+	MoonImageLocation                       template.URL            `yaml:"moonImageLocation"`
+	SortImageLocation                       template.URL            `yaml:"sortImageLocation"`
+	About                                   AboutYaml               `yaml:"about"`
+	Entries                                 []EntryYaml             `yaml:"entries"`
+	Title                                   string                  `yaml:"title"`
+	Description                             string                  `yaml:"description"`
+	Keywords                                string                  `yaml:"keywords"`
+	Copyright                               string                  `yaml:"copyright"`
 }
 
 type HeaderEntry struct {

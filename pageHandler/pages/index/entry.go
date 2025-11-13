@@ -16,17 +16,18 @@ const dateFormat = "01/2006"
 var hash = sha1.New
 
 type EntryYaml struct {
-	Name                   string         `yaml:"name"`
-	Content                string         `yaml:"content"`
-	StartDate              yaml.DateType  `yaml:"startDate"`
-	EndDate                yaml.DateType  `yaml:"endDate"`
-	VideoLocation          template.URL   `yaml:"videoLocation"`
-	VideoContentType       string         `yaml:"videoContentType"`
-	ThumbnailLocations     []template.URL `yaml:"thumbnailLocations"`
-	ImageLocations         []template.URL `yaml:"imageLocations"`
-	ImageAltTexts          []string       `yaml:"imageAltTexts"`
-	VideoThumbnailLocation template.URL   `yaml:"videoThumbnailLocation"`
-	AnchorSuffix           string         `yaml:"anchorSuffix"`
+	Name                           string         `yaml:"name"`
+	Content                        string         `yaml:"content"`
+	StartDate                      yaml.DateType  `yaml:"startDate"`
+	EndDate                        yaml.DateType  `yaml:"endDate"`
+	VideoLocation                  template.URL   `yaml:"videoLocation"`
+	VideoContentType               string         `yaml:"videoContentType"`
+	ThumbnailLocations             []template.URL `yaml:"thumbnailLocations"`
+	ImageLocations                 []template.URL `yaml:"imageLocations"`
+	ImageAltTexts                  []string       `yaml:"imageAltTexts"`
+	VideoThumbnailLocation         template.URL   `yaml:"videoThumbnailLocation"`
+	VideoThumbnailFullSizeLocation template.URL   `yaml:"videoThumbnailFullSizeLocation"`
+	AnchorSuffix                   string         `yaml:"anchorSuffix"`
 }
 
 type ImageReference struct {
@@ -52,6 +53,14 @@ func (ey EntryYaml) GetVideoThumbnail(usual template.URL) template.URL {
 		return usual
 	} else {
 		return ey.VideoThumbnailLocation
+	}
+}
+
+func (ey EntryYaml) GetVideoThumbnailFullSize(usual template.URL) template.URL {
+	if ey.VideoThumbnailFullSizeLocation == "" {
+		return usual
+	} else {
+		return ey.VideoThumbnailFullSizeLocation
 	}
 }
 
