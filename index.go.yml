@@ -1,70 +1,109 @@
 #This file is (C) Captain ALM
 #Under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License
+title: "Captain ALM's  City St George's University Portfolio"
+description: "Captain ALM's City St George’s University Portfolio"
+keywords: "CaptainALM,Captain_ALM,Captain ALM,portfolio,Alfred Manville,projects,programming,hacking,cracking,city uni,cityuni,cuol,City University of London,mycityuni,cstguol,csguol,csuol,City St George's University of London,masters graduate,MSci,Computer Science with Cyber Security,cyber,cybersecurity"
+copyright: "(C) Captain ALM 2025"
 cssBaseURL: "resources/assets/base.css"
+cssHeadersBaseURL: "resources/assets/hbase.css"
+cssMax3HeadersURL: "resources/assets/h3e.css"
+cssOver3HeadersURL: "resources/assets/h3pe.css"
 cssDarkURL: "resources/assets/dark.css"
 cssLightURL: "resources/assets/light.css"
 jScriptURL: "resources/assets/index.js"
-noVideoImageLocation: "resources/assets/novideo.png"
-playVideoImageLocation: "resources/assets/video.png"
+noVideoBackgroundImageLocation: "resources/assets/video.png"
+playOverlayImageLocation: "resources/assets/play.png"
+playHighlightImageLocation: "resources/assets/playh.png"
+thumbnailNoVideoBackgroundImageLocation: "resources/assets/video_t.png"
+thumbnailPlayOverlayImageLocation: "resources/assets/play_t.png"
+thumbnailPlayHighlightImageLocation: "resources/assets/playh_t.png"
 logoImageLocation: "resources/assets/logo.png"
 moonImageLocation: "resources/assets/moon.png"
 sunImageLocation: "resources/assets/sun.png"
 sortImageLocation: "resources/assets/sort.png"
-headerLinks:
-  Main Portfolio: "https://portfolio.captainalm.com/"
-  Root Site Home: "https://www.captainalm.com/"
-  LinkedIn: "https://www.linkedin.com/in/alfred-manville/"
+navigationEntries:
+  - label: "Main Portfolio"
+    url: "https://portfolio.captainalm.com/"
+  - label: "Root Site Home"
+    url: "https://www.captainalm.com/"
+  - label: "LinkedIn"
+    url: "https://www.linkedin.com/in/alfred-manville/"
+    target: "_blank"
+  - label: "GitHub"
+    url: "https://github.com/Captain-ALM"
+    target: "_blank"
+  - label: "GitCove"
+    url: "https://gitcove.com/alfred"
+    target: "_blank"
+  - label: "Melon Code"
+    url: "https://code.mrmelon54.com/alfred"
+    target: "_blank"
+  - label: "YouTube"
+    url: "https://www.youtube.com/c/CaptainALM"
+    target: "_blank"
 about:
   title: "Alfred Manville (Captain ALM)"
   content: >
     <p>
-    Hello, I'm Alfred Manville (#age# Years Old) and a final year student at City, University of London.
-    I'm a free and open-source developer who enjoys networking my laptops together,
-    writes network software to communicate between them and then tries to break said software.
-    I also have a <a href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is in the process of being resumed from a hiatus.
+    Hello, I'm Alfred Manville (#age# Years Old; 🇬🇧🇵🇭) and a 1st class Masters Graduate in MSci Computer Science with Cyber Security from City St George's, University of London.
+    I'm a also a free and open-source developer who enjoys networking my laptops together,
+    writes network software to communicate between them and then tries to break said software; which is shown in my <a href="#entry_final_project">dissertation project</a>.
+    While the results were somewhat disappointing; I have written a <a target="_blank" href="https://github.com/1f349/handshake">successor library</a> in Go under the 1f349 banner with a 
+    <a target="_blank" href="https://github.com/1f349/pqc-handshake">PQC extender</a>, though, this only impliments a packet based handshake and not the full VPN stack. Speaking of <a target="_blank" href="https://1f349.com">1f349</a>
+    I jointly run this with a group of people (Which runs our infrastructure).
+    I also have a <a target="_blank" href="https://youtube.com/c/CaptainALM">Youtube Channel</a> which is partially in the process of being resumed from a hiatus.
     </p>
     <p>
-    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, Javascript, C++, Python, Bash,
-    Haskell, Processing and Microsoft Smallbasic (I have also dabbled in Batch).
-    I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a <a href="https://github.com/Captain-ALM/CALM-Console">command console</a>
-    in VB .net for my own pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some <a href="https://github.com/Captain-ALM/CALMNetLibSamples">
-    network communication applications</a> (Including a peer-to-peer <a href="https://github.com/Captain-ALM/C-ALM-VOIP">VOIP client</a>
+    On the programming side, I know Visual Basic .net, C# .net, C, Java, Go, JavaScript, C++, Python, Bash,
+    Haskell, Processing and Microsoft Smallbasic (I have also dabbled in Batch and PHP).
+    I am currently in the progress of writing infrastructure software in Go, in the past, I wrote a <a target="_blank" href="https://github.com/Captain-ALM/CALM-Console">command console</a>
+    in VB .net for my own pluggable libraries (I created a CMD emulator to get past the school disabling interactive CMD) and some <a target="_blank" href="https://github.com/Captain-ALM/CALMNetLibSamples">
+    network communication applications</a> (Including a peer-to-peer <a target="_blank" href="https://github.com/Captain-ALM/C-ALM-VOIP">VOIP client</a>
     using NAudio as the audio library and my own network wrapper library, however, it is in need of bug-fixing at the moment).
+    The final major current project is completing my mesh networking project that fixes and extends my dissertation project.
     </p>
     <p>
-    My github username is <a href="https://github.com/Captain-ALM">Captain-ALM</a> and has half my public programming projects,
-    the other half is located at: <a href="https://code.mrmelon54.com/alfred">https://code.mrmelon54.com/alfred</a>
+    My github username is <a target="_blank" href="https://github.com/Captain-ALM">Captain-ALM</a> and has half my public programming projects, 
+    the other half is located at: <a target="_blank" href="https://gitcove.com/alfred">https://gitcove.com/alfred</a>
     </p>
     <p>
-    On the cracking / hacking side, I've used virtual machines a lot (Mainly infrastructure testing
+    On the cracking / hacking side, I've participated in, the SANS run, <a target="_blank" href="https://ukcyberteam.sans.org/">UK Cyber Team CTF competition</a> <a target="_blank" href="https://www.credly.com/badges/b0c461ed-c03b-45f9-aa01-67560f149cc1">getting into the finals</a> (And my team [20] came 10th)!
+    I've also used virtual machines a lot (Mainly infrastructure testing
     but I did at one point try creating and breaking into a test windows domain network I had setup).
     I've also used VMs to pull perform a PXE boot off a network and analyse the partially deployed image
     (And this is why the deployment servers should be switched off when unneeded, especially since PXE
     auto-domain-join would store its credentials in the image).
-    I also played around with <a href="https://github.com/Captain-ALM/rdpccgs-ccgsrdp-">accessing the RDP servers</a>
+    I also played around with <a target="_blank" href="https://github.com/Captain-ALM/rdpccgs-ccgsrdp-">accessing the RDP servers</a>
     when I was in secondary school (Turns out remote apps is just a glorified application auto-launcher with window size detection).
-    Here is <a href="https://github.com/Captain-ALM/op_ctrl">Operation Control</a> (Stylized: op_ctrl) used for same-computer exploiting
+    Here is <a target="_blank" href="https://github.com/Captain-ALM/op_ctrl">Operation Control</a> (Stylized: op_ctrl) used for same-computer exploiting
     by wrapping target applications run by other users (Such as via RDP Remote Apps) and then starting a master server to send arbitrary
     .net DLLs to execute on the target slaved client.
     </p>
     <p>
-    I also <a href="https://subsection.captainalm.com/">bake bread</a> (Mostly learnt from my grandma); although this sub-site is still under construction.
-    I also play video-games (Check my Youtube Channel or my <a href="https://www.gog.com/u/Captain_ALM">GOG Profile</a>) and am an expert at using lower-end hardware.
+    I also <a target="_blank" href="https://subsection.captainalm.com/">bake bread</a> (Mostly learnt from my grandma).
+    I also play video-games (Check my <a target="_blank" href="https://youtube.com/c/CaptainALM">Youtube Channel</a> or my <a target="_blank" href="https://www.gog.com/u/Captain_ALM">GOG Profile</a>) and am an expert at using lower-end hardware.
     </p>
     <p>
     I used to do Karate (Kyokushin Brown Belt) and I wish I could still fit my bike.
-    Here is my <a href="https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc">GPG Key</a> for my email address.
     </p>
-    <p>
-    My CV is available in the following formats: ( <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-#year#.docx">DOCX</a> | <a href="https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-#year#.pdf">PDF</a> )
-    </p>
+    <p>And I do a bit of <a target="_blank" href="https://heavens.captainalm.com">stargazing</a>.</p>
   thumbnailLocation: "resources/assets/imageofyou_t.jpg"
   imageLocation: "resources/assets/imageofyou.jpg"
   imageAltText: "Image of me."
   birthYear: 2002
-  contactEmail: "alfred@captainalm.com"
+  contactEmails:
+    - email: "alfred@captainalm.com"
+      gpgURL: "https://cdn.captainalm.com/download/keys/alfred@captainalm.com.asc"
+      thumbprint: "877808EEF6C51B0C975B0EFB9DEA8002A644A39A"
+    - email: "alm00000@outlook.com"
+      gpgURL: "https://cdn.captainalm.com/download/keys/alm00000@outlook.com.asc"
+      thumbprint: "83E8952F67FB6B085289BB7E687D0B6568E74559"
+  extraLinks:
+    CV (docx): "https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2025.docx"
+    CV (pdf): "https://cdn.captainalm.com/download/cvs/AlfredManvilleCV-2025.pdf"
 entries:
   - name: "Bootcamp 2021: Ninjaformer GUI"
+    anchorSuffix: "ninjaformer_gui"
     content: >
       <p>
       My first programming task at City, concluding the 2 week 2021 Programming Bootcamp,
@@ -80,7 +119,7 @@ entries:
       I ran out of time before the submission to actually even start on the game. But you can play around with the main code and build your own GUIs too so... 
       </p>
       <p>
-      Here is the repo: <a href="https://github.com/Captain-ALM/Ninjaformer-Processing">https://github.com/Captain-ALM/Ninjaformer-Processing</a>
+      Here is the repo: <a target="_blank" href="https://github.com/Captain-ALM/Ninjaformer-Processing">https://github.com/Captain-ALM/Ninjaformer-Processing</a>
       </p>
       <p>
       The original video is available here: <a href="resources/stream/vid1.mp4">resources/stream/vid1.mp4</a>
@@ -89,7 +128,8 @@ entries:
     endDate: "31/10/2021"
     videoLocation: "resources/stream/vid-bootcamp.mp4"
     videoContentType: "video/mp4"
-    videoThumbnailLocation: "resources/assets/bootcamp-vid.png"
+    videoThumbnailLocation: "resources/assets/bootcamp-vid_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/bootcamp-vid.jpg"
     thumbnailLocations:
       - "resources/assets/pic1_t.jpg"
       - "resources/assets/pic2_t.jpg"
@@ -112,6 +152,7 @@ entries:
       - "Button image source code."
       - "Sprite world source code."
   - name: "City Game Project 2022: Ninjaformer (Alpha, Beta)"
+    anchorSuffix: "ninjaformer_alpha_beta"
     content: >
       <p>
       My first major project at City (A Java Game), concluding 2.2 Months of programming.
@@ -140,7 +181,7 @@ entries:
       throwing stars, swords and throwable liquids.
       </p>
       <p>
-      Here is the repo: <a href="https://github.com/cityteaching/citygame2122-Captain-ALM"><strike><del>Not public due to university anti-plagiarism policy.</del></strike></a>
+      Here is the repo: <a target="_blank" href="https://github.com/cityteaching/citygame2122-Captain-ALM"><strike><del>Awaiting core conversion, in order to be made public</del></strike></a>
       </p>
       <p>
       The original video is available here: <a href="resources/stream/vid2.mp4">resources/stream/vid2.mp4</a>
@@ -149,7 +190,8 @@ entries:
     endDate: "08/05/2022"
     videoLocation: "resources/stream/vid-ninjaformer-2022.mp4"
     videoContentType: "video/mp4"
-    videoThumbnailLocation: "resources/assets/ninjaformer-vid.png"
+    videoThumbnailLocation: "resources/assets/ninjaformer-vid_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/ninjaformer-vid.jpg"
     thumbnailLocations:
       - "resources/assets/pic4_t.jpg"
       - "resources/assets/pic5_t.jpg"
@@ -172,25 +214,27 @@ entries:
       - "Pause Menu screen."
       - "Audio Settings screen."
   - name: "Global Game Jam January 2022 : Shadow work"
+    anchorSuffix: "shadow_work"
     content: >
       <p>
       I may have not done any programming for this (Even though I know C#) but I helped write a good chunk of the background story
       (I also helped with the level design although it turns out 48 hours is hard to get polished stuff done in, so some stuff had to be axed).
       </p>
       <p>
-      Read about and get the game files from: <a href="https://globalgamejam.org/2022/games/shadow-work-8">https://globalgamejam.org/2022/games/shadow-work-8</a>
+      Read about and get the game files from: <a target="_blank" href="https://globalgamejam.org/2022/games/shadow-work-8">https://globalgamejam.org/2022/games/shadow-work-8</a>
       </p>
       <p>
-      Download the windows executable from: <a href="https://cdn.captainalm.com/download/game/dist/ShadowWorkExecutable.zip">https://cdn.captainalm.com/download/game/dist/ShadowWorkExecutable.zip</a>
+      Download the windows executable from: <a target="_blank" href="https://cdn.captainalm.com/download/game/dist/ShadowWorkExecutable.zip">https://cdn.captainalm.com/download/game/dist/ShadowWorkExecutable.zip</a>
       </p>
       <p>
-      The Design Document is available here: <a href="https://cdn.captainalm.com/download/game/design/Shadow-WIP-Story-Info.pdf">https://cdn.captainalm.com/download/game/design/Shadow-WIP-Story-Info.pdf</a>
+      The Design Document is available here: <a target="_blank" href="https://cdn.captainalm.com/download/game/design/Shadow-WIP-Story-Info.pdf">https://cdn.captainalm.com/download/game/design/Shadow-WIP-Story-Info.pdf</a>
       </p>
     startDate: "20/01/2022"
     endDate: "30/01/2022"
     videoLocation: "resources/stream/vid-shadowwork.mp4"
     videoContentType: "video/mp4"
-    videoThumbnailLocation: "resources/assets/shadowwork-vid.png"
+    videoThumbnailLocation: "resources/assets/shadowwork-vid_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/shadowwork-vid.jpg"
     thumbnailLocations:
       - "resources/assets/shadowwork-2_t.jpg"
       - "resources/assets/shadowwork-3_t.jpg"
@@ -213,6 +257,7 @@ entries:
       - "Visualisation of in-game character split."
       - "End of the game area."
   - name: "City-University Portfolio"
+    anchorSuffix: "portfolio"
     content: >
       <p>
       This project is what's outputting this page at the moment! The backend is written in Go and there is both custom front-end Javascript and CSS!
@@ -223,15 +268,17 @@ entries:
       Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
       </p>
       <p>
-      Find the source code here: <a href="https://code.mrmelon54.com/alfred/cityuni-webserver">https://code.mrmelon54.com/alfred/cityuni-webserver</a>
+      Find the source code here: <a target="_blank" href="https://gitcove.com/alfred/cityuni-webserver">https://gitcove.com/alfred/cityuni-webserver</a>
       </p>
     startDate: "13/07/2022"
+    endDate: "31/01/2026"
   - name: "Python Communicator"
+    anchorSuffix: "python_comm"
     content: >
       <p>
       After learning python for my portfolio development option, I wanted to showcase what I knew in python.
       I usually make a network application in each of the new programming languages that I learn.
-      For the repo showing me learning python please go to: <a href="https://code.mrmelon54.com/alfred/LearningPy">https://code.mrmelon54.com/alfred/LearningPy</a>
+      For the repo showing me learning python please go to: <a target="_blank" href="https://gitcove.com/alfred/LearningPy">https://gitcove.com/alfred/LearningPy</a>
       </p>
       <p>
       This project is a message based network communicator written in python and has a module for networking.
@@ -239,13 +286,14 @@ entries:
       It also comes with a nice twist, in that if you select the pickle protocol, you can inject code into another client by sending a specially crafted message!
       </p>
       <p>
-      Find the source code here: <a href="https://github.com/Captain-ALM/CALMPyNetworker">https://github.com/Captain-ALM/CALMPyNetworker</a>
+      Find the source code here: <a target="_blank" href="https://github.com/Captain-ALM/CALMPyNetworker">https://github.com/Captain-ALM/CALMPyNetworker</a>
       </p>
     startDate: "10/12/2022"
     endDate: "10/12/2022"
     videoLocation: "resources/stream/vid-pycom.mp4"
     videoContentType: "video/mp4"
-    videoThumbnailLocation: "resources/assets/pycom-vid.png"
+    videoThumbnailLocation: "resources/assets/pycom-vid_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/pycom-vid.jpg"
     thumbnailLocations:
       - "resources/assets/pycom-1_t.jpg"
       - "resources/assets/pycom-2_t.jpg"
@@ -262,6 +310,7 @@ entries:
       - "Exploit Testing."
       - "Failed Exploit Testing."
   - name: "Group Project - AirVia ATS (AirTicket Sales)"
+    anchorSuffix: "airvia_team"
     content: >
       <p>
       This group project was creating a Ticket Sales system for the fictional company AirVia LTD, for this the group had to both design the implementation and then write the code for it.
@@ -283,13 +332,14 @@ entries:
       In the end, the following features were implemented: Login, Help / Error / Status Bar, Account System + GUI, Blank Types + GUI, Blanks + GUI, Customers + GUI, Discounts, Flexible Discounts, Sales, Transactions, Refunds, Dashboard + Notifications, Database Interfacing + Backup and Rates + GUI.
       </p>
       <p>
-      Find the source code here: <a href="https://github.com/karansambee/IN2018-Team-Project/tree/master">https://github.com/karansambee/IN2018-Team-Project/tree/master</a>
+      Find the source code here: <a target="_blank" href="https://github.com/karansambee/IN2018-Team-Project/tree/master">https://github.com/karansambee/IN2018-Team-Project/tree/master</a>
       </p>
     startDate: "01/02/2023"
     endDate: "30/04/2023"
     videoLocation: "resources/stream/vid-groupproject-2023.mp4"
     videoContentType: "video/mp4"
-    videoThumbnailLocation: "resources/assets/groupproject-vid.png"
+    videoThumbnailLocation: "resources/assets/groupproject-vid_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/groupproject-vid.jpg"
     thumbnailLocations:
       - "resources/assets/groupproject-1_t.jpg"
       - "resources/assets/groupproject-2_t.jpg"
@@ -324,25 +374,28 @@ entries:
       - "Account Editor on a Manager within The Dashboard Interface."
       - "Part of the Main.java source code Screenshot."
   - name: "City-University Promotional Video"
+    anchorSuffix: "city_uni_promo"
     content: >
       <p>
-      Here, I star in an interview for City, University of London's Promotional Marketing Campaign. Join <a href="https://www.city.ac.uk/">City</a>!
+      Here, I star in an interview for City, University of London's Promotional Marketing Campaign. Join <a target="_blank" href="https://www.city.ac.uk/">City</a>!
       </p>
       <p>
-      Find the video here: <a href="https://www.youtube.com/watch?v=tOccImgskec">https://www.youtube.com/watch?v=tOccImgskec</a>
+      Find the video here: <a target="_blank" href="https://www.youtube.com/watch?v=tOccImgskec">https://www.youtube.com/watch?v=tOccImgskec</a>
       </p>
       <p>
-      Find the general School of Science and Technology video here: <a href="https://www.youtube.com/watch?v=pkTCf4CWFSY">https://www.youtube.com/watch?v=pkTCf4CWFSY</a>
+      Find the general School of Science and Technology video here: <a target="_blank" href="https://www.youtube.com/watch?v=pkTCf4CWFSY">https://www.youtube.com/watch?v=pkTCf4CWFSY</a>
       </p>
     startDate: "05/06/2023"
     endDate: "05/06/2023"
     videoLocation: "https://www.youtube.com/watch?v=tOccImgskec"
     videoContentType: "text/uri-list"
-    videoThumbnailLocation: "resources/assets/citypromo-vid.png"
+    videoThumbnailLocation: "resources/assets/citypromo-vid_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/citypromo-vid.jpg"
   - name: "Decide Quiz - GCloud City"
+    anchorSuffix: "decide_quiz"
     content: >
       <p>
-      This project was <a href="https://cdn.captainalm.com/download/gcloudcity/CloudApplicationSpecification-AlfredManville-MohammadMasood.docx">designed</a> <a href="https://cdn.captainalm.com/download/gcloudcity/CloudPresentation-AlfredManville-MohammadMasood.pptx">to</a> operate as a Kahoot clone although the front-end never got completed by the other member of the pair (This was written in React).
+      This project was <a target="_blank" href="https://cdn.captainalm.com/download/gcloudcity/CloudApplicationSpecification-AlfredManville-MohammadMasood.docx">designed</a> <a target="_blank" href="https://cdn.captainalm.com/download/gcloudcity/CloudPresentation-AlfredManville-MohammadMasood.pptx">to</a> operate as a Kahoot clone although the front-end never got completed by the other member of the pair (This was written in React).
       </p>
       <p>
       This was created in a pair as part of the Cloud Computing module at City, University of London. It was built for use using google cloud and therefore
@@ -353,18 +406,107 @@ entries:
       The REST connection is used as a fallback system where WebSockets do not work; in addition, a REST connection is made to the master server to first work out which app server has
       the least load, once found, this is sent back to the client where the client will then attempt a WebSocket connection and, on failure, a REST session is created (A key is returned
       which is then used as a parameter in subsequent communications). In the event there is no more capacity, a service unavailable error is sent and a new VM will be spun up, in the case
-      that any are left. The source code for this library can be found at <a href="https://github.com/Captain-ALM/gc-c-com">https://github.com/Captain-ALM/gc-c-com</a> and the master server source
-      code can be found at <a href="https://github.com/Captain-ALM/gc-c-master-srv">https://github.com/Captain-ALM/gc-c-master-srv</a>.
+      that any are left. The source code for this library can be found at <a target="_blank" href="https://github.com/Captain-ALM/gc-c-com">https://github.com/Captain-ALM/gc-c-com</a> and the master server source
+      code can be found at <a target="_blank" href="https://github.com/Captain-ALM/gc-c-master-srv">https://github.com/Captain-ALM/gc-c-master-srv</a>.
       </p>
       <p>
       The main game loop was supposed to allow user generated quizzes once logged in along-side allowing for public quizzes that could be used and copied by other users.
       Only logged in users could start games where any user - both logged in or not - could join and answer questions within a set amount of time, with the person answering
       the fastest getting more points than people who answer later. The system would also have a leaderboard shown at the end of each question; it was also designed to recover
-      from crashes and resume from the last question executed. The source code for the app server can be found at <a href="https://github.com/Captain-ALM/gc-c-app-srv">
-      https://github.com/Captain-ALM/gc-c-app-srv</a> where all this functionality does exist in the backend; the database source code can be found at <a href="https://github.com/Captain-ALM/gc-c-db">https://github.com/Captain-ALM/gc-c-db</a>.
+      from crashes and resume from the last question executed. The source code for the app server can be found at <a target="_blank" href="https://github.com/Captain-ALM/gc-c-app-srv">
+      https://github.com/Captain-ALM/gc-c-app-srv</a> where all this functionality does exist in the backend; the database source code can be found at <a target="_blank" href="https://github.com/Captain-ALM/gc-c-db">https://github.com/Captain-ALM/gc-c-db</a>.
       </p>
     startDate: "27/11/2023"
     endDate: "14/01/2024"
     videoLocation: "resources/stream/vid-gc-c-v2.mp4"
     videoContentType: "video/mp4"
-    videoThumbnailLocation: "resources/assets/vid-gc-c-v2.png"
+    videoThumbnailLocation: "resources/assets/vid-gc-c-v2_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/vid-gc-c-v2.jpg"
+  - name: "Analysing UK Road Traffic Accident Data"
+    anchorSuffix: "ai_intro"
+    content: >
+      <p>
+      This project used the official <a target="_blank" href="https://www.data.gov.uk/dataset/cb7ae6f0-4be6-4935-9277-47e5ce24a11f/road-safety-data">Road Safety Data (2023)</a> from the Department of Transport (HM Government UK) and was done in a pair.
+      The motivation behind it was to see if certain features of the data correlate and if so, could features be predicted given a set of features.
+      </p>
+      <p>
+      We asked the following questions:
+      <ol>
+      <li>What is the most likely vehicle age / engine size / vehicle type in a certain area; useful for resource allocation of emergency services?</li>
+      <li>What is the severity of an accident given the area, the light levels and weather conditions?</li>
+      <li>Is a driver’s age an important factor in determining the likelihood of a collision?</li>
+      <li>Are there any pedestrian demographics that are more at risk of being hit by a vehicle?</li>
+      </ol>
+      </p>
+      <p>
+      I wrote the data set loading and cleaning code with the ability to perform delayed loading, after providing features to be removed and the cleaning code / data types for each feature.
+      The data types include continuous data such as car engine size and categorical data (Which needed to be enumerated into integers to be used as features).
+      The data guide was programmatically processed to match a feature lable to an integer and the null / invalid values can also be detected and filtered out based on the labels that represented these.
+      This data, fromm a public body, is verified to be as accurate as possible, and more credible than sourcing it from a 3rd party; although with large data sets, there were many rows with inconsistent and missing data.
+      </p>
+      <p>
+      Question Methodology and Results in order:
+      </p>
+      <p>
+      Since this data was locations based features, a K-Nearest Neighbour was used with distance weights; without enough data points however, regression fails. This was used relative to categorical data EG: Weather conditions but distance is meaningless in this situation. Automatic tuning of the distance weights via threading concurrency was used to attempt to find the best model.
+      Support Vector Machines (SVMs) are better though could lead to misclassifications due to overfitting (Through over-represntation). K-Fold was used to shuffle the data for the SVNs, though this had little effect with the issues.
+      The SVM, via a confusion matrix, showed classic overfitting and would need down-sampling for the results to be more accurate (Cars over-represented).
+      The KNN showed a map of vehicle ages but was a lot more varied than the real data.
+      </p>
+      <p>
+      K-Nearest-Neighbour and a Sample Vector Regressor were used for both vehicle_age and engine_capacity_cc to predict the severity features. These were plotted in a confusion matrix and on graphs utilizing similar methods to the previous question.
+      The SVR shows overfitting for slight accidents whereas the KNN classifier shows much better visualisation though slight severity was rather high and could have done with downsampling.
+      </p>
+      <p>
+      Demographic data used random forests providing the most accurate results - more basic models such as perceptrons had too low of an accuracy. Adjusting weights on the perceptrons, such as model training time and balnced class weight and decreasing learning weight to avoid overshooting helped somewhat but kept only a 30% accuracy. Other features were also tested with the driver age being found the most important feature. A scatter plot was created for inferencing, however, the mean of some combinations were impossible to calculate due to them being non-common.
+      </p>
+      <p>
+      K-Nearest Neighbours / an SVM (Discrete) was used to introduce other demographic metrics (Similar the the previous question); sensible test sizes and balanced weights were used to downsample minor accidents to help determine risks without overfitting.
+      Random forests, again, provided the most accurate results, with casualty age being the most important feature and the confusion matrix from the SVM shows overprediction issues.
+      </p>
+      <p>
+      See Also: 
+      <a target="_blank" href="https://cdn.captainalm.com/download/university/INM701-Alfred-Manville-PRESENTATION.pptx">Findings Presentation</a>
+      </p>
+    startDate: "29/10/2024"
+    endDate: "22/12/2024"
+    videoLocation: "resources/stream/vid-ai-pres.mp4"
+    videoContentType: "video/mp4"
+    videoThumbnailLocation: "resources/assets/vid-ai-pres_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/vid-ai-pres.jpg"
+  - name: "Multi Transport Wireless Mesh VPN (Dissertation Project)"
+    anchorSuffix: "final_project"
+    content: >
+      <p>
+      This project was supposed to provide a multi-platform (Android, Windows and Linux) VPN (Layer 3) using as devices as physical relay nodes creating a mesh (Multiple transport types for different forms of wireless and infrastructure networking would be supported) but, this was too ambitious and due to so many quirks (Permissions, background operations, etc.) with the Android platform (The first targeted) took a lot longer,
+      The project uses a 'tun' adapter (Requiring a 3rd party library - wintun - on windows) for the VPN interface and should auto-configure the IP address based on the hashes of the public keys for the node.
+      The keys are post-quantum ML-KEM (768) for keysharing and ML-DSA (44) for authenticating packets (Unfortunately the key material is not cross comaptible between the two, unlike the original plan of using elliptic curve cryptography, which also causes a large increase in message size and the requirements to send seperately and fragment signature packets).
+      Two supported transports were planned - Bluetooth RFcomm, providing a serial-like stream connection, and Wi-Fi Direct proving a way to Wi-Fi link two devices and use UDP over the link. Unfortunately the Wi-Fi Direct connection was replaced with Wi-Fi infrastructure in the build created for submission due to being out of time (This mode scans for a well known port accross the subnet of the connected network).
+      The packets should have the type, TTL, data hash, destination (If unicast), source node IDs and the data.
+      The nodes must maintain a routing graph; the IP addresses are based on the SHA256 Node ID where the first 3 bytes are used with 10.x.x.x and the last 6 bytes are used in fd0a:...
+      </p>
+      <p>
+      This is designed for people without running (Or overloaded) infrastructure networking (Either Wi-Fi or Cellular) to use for communication with standard applications; the specification also supports internet routing through a node, connected to the internet, that can act as a gateway.
+      Onion routing of packets can also be supported.
+      </p>
+      <p>
+      The RFC like document, for the protocol, was planned first with diagrams for how nodes connect to each other depending on which transport is used. Research was also performed into the available APIs, with SDK 26 minimum on Android and Java 17, being targeted. The library was written in Java 8 and imported into the Android App, written after, in Java 17 using an SDK 35 target. The app used the Android Rooms database API to implement storage and generic recycler view model code was plugged in, to manage each of the tables. The App consists of a main activity and an editor/viewer activity. The VPN is processed in a foreground service. Testing was only done in the library (On packet streaming) and was lackluster.
+      </p>
+      <p>
+      In the time, a library full of bugs was produced alongside an App with support for changing settings, authorizing permissions, creating a VPN adapter, using the BouncyCastle PQC APIs and ChaCha20, peering request management, peer management and topology viewing.
+      Handshaking was fixed the day after the build submission.
+      </p>
+      <p>
+      In conclusion, this project did not go to plan with lots of set-backs, both due to the large nature of the project and heavy amounts of stress (Due to some personal issues and issues with the other University module I was doing). The mitigation operations stated in my Project Definition Document failed to take into account how bad things can go (Networking is notoriously difficult with buffer manipulation issues and was not helped with the lack of testing - I was supposed to implement a Go version of the library for the desktop platforms which would include unit testing, thats structurally easier in Go, but did not have enough time). This project is being continued and will eventually end up under the 1f349 banner (Though I want to streamline the protocol for embedded device support).
+      </p>
+      <p>
+      See also:
+      <a target="_blank" href="https://github.com/Captain-ALM/alm-mesh-net-proto/">ALM Mesh Net Proto</a>
+      <a target="_blank" href="https://github.com/Captain-ALM/alm-mesh-net-android">ALM Mesh Net Android</a>
+      </p>
+    startDate: "03/02/2025"
+    endDate: "06/06/2025"
+    videoLocation: "resources/stream/vid-dsrt.mp4"
+    videoContentType: "video/mp4"
+#    videoThumbnailLocation: "resources/assets/vid-dsrt_t.jpg"
+#    videoThumbnailFullSizeLocation: "resources/assets/vid-dsrt.jpg"

@@ -9,6 +9,7 @@ var SortOrderBStateI = true
 var SortOrderEnabled = false
 var SortValue = ""
 var OrderValue = ""
+var HState = true
 function SetupJS() {
     SetupIndexArray()
     SetupJSTheme()
@@ -16,24 +17,38 @@ function SetupJS() {
     SetupJSSOI()
     SetupJSRSN()
 }
-function CreateEntry(id, name, videourl, videotype, start, end, duration) {
+function CreateEntry(id, name, videourl, videotype, start, end, duration, anchor) {
     EntryData[id] = {
         name: name,
         videourl: videourl,
         videotype: videotype,
         start: Date.parse(start),
         end: Date.parse(end),
-        duration : parseInt(duration, 10)
+        duration : parseInt(duration, 10),
+        anchor: anchor
     };
 }
 function CreateVideoPlaceholder(id,phImageURL) {
-    var imgPH = document.createElement("img")
-    imgPH.src = phImageURL
+    var imgPH = document.createElement("div")
+    AddClass(imgPH,"vidt")
     imgPH.id = "play-"+id
-    imgPH.alt = "Play Video"
+    imgPH.style.width = "360px"
     imgPH.title = "Play"
-    imgPH.width = 360
-    imgPH.style.cursor = "pointer"
+    var imgPHT = document.createElement("img")
+    imgPHT.src = phImageURL
+    imgPHT.alt = "Play Video"
+    imgPHT.title = "Play"
+    imgPH.appendChild(imgPHT)
+    var imgPly = document.createElement("img")
+    AddClass(imgPly,"vidt-play")
+    imgPly.src = VPlayTURL
+    imgPly.title = "Play"
+    var imgPlyH = document.createElement("img")
+    AddClass(imgPlyH,"vidt-playh")
+    imgPlyH.src = VPlayHTURL
+    imgPlyH.title = "Play"
+    imgPH.appendChild(imgPly)
+    imgPH.appendChild(imgPlyH)
     if (document.addEventListener) {
         imgPH.addEventListener("click", function () {ActivateVideo(id);})
     } else {
@@ -53,7 +68,8 @@ function ActivateVideo(id) {
     vids.type = EntryData[id].videotype
     var vida = document.createElement("a")
     vida.href = EntryData[id].videourl
-    vida.innerText = "The Video"
+    vida.innerText = "Launch Video"
+    vida.target = "_blank"
     vid.appendChild(vids)
     vid.appendChild(vida)
     holder.appendChild(vid)
@@ -66,7 +82,7 @@ function SetupIndexArray() {
 }
 function SetupJSTheme() {
     var th = document.getElementById("theme")
-    th.href = "#"
+    th.href = "##"
     new Image().src = MoonImageURL //Preload I hope
     if (document.addEventListener) {
         th.addEventListener("click", ToggleTheme)
@@ -230,9 +246,12 @@ function EntrySort(o, s) {
             ReplaceHistory(url+"?"+TheParameters)
         }
         for (var i = 0; i < EntryIndices.length; i++) {
+            var aNode = document.getElementById(EntryData[EntryIndices[i]].anchor)
             var tNode = document.getElementById("entry-"+EntryIndices[i])
             var pNode = tNode.parentNode
             tNode = pNode.removeChild(tNode)
+            aNode = pNode.removeChild(aNode)
+            pNode.appendChild(aNode)
             pNode.appendChild(tNode)
         }
     }
@@ -300,7 +319,16 @@ function SetupJSRSN() {
         window.setAttribute("onresize", "PerformNavResize();")
         window.onresize = PerformNavResize
     }
+    if (document.getElementById("emenu"))
+        PerformNavMove()
     PerformNavResize()
+}
+function PerformNavMove() {
+    var men2 = document.getElementById("menu")
+    var emen2 = document.getElementById("emenu")
+    var nav2 = document.getElementById("nav")
+    if (men2) while (men2.childNodes.length > 0) {InsertBefore(emen2, men2.removeChild(men2.childNodes[men2.childNodes.length - 1]));}
+    AddClass(nav2, "h")
 }
 function PerformNavResize() {
     var ww = 0
@@ -314,9 +342,11 @@ function PerformNavResize() {
         var maxbarsz = ww - 342;
         var men = document.getElementById("menu")
         var vmen = document.getElementById("vmenu")
-        if (men && vmen) {
-            if (ww > 679) {
-                while (vmen.childNodes.length > 0) {InsertBefore(men, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
+        var emen = document.getElementById("emenu")
+        var cmen = (emen) ? emen : men;
+        if (cmen && vmen) {
+            if (ww > 679 && emen === null) {
+                while (vmen.childNodes.length > 0) {InsertBefore(cmen, vmen.removeChild(vmen.childNodes[vmen.childNodes.length - 1]));}
             } else {
                 var vmeni
                 var mensz = 0
@@ -330,17 +360,36 @@ function PerformNavResize() {
                 }
                 if (menc.length > 0) {
                     for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.removeChild(menc[vmeni]);}
-                    for (vmeni = menc.length - 1; vmeni >= 0; vmeni--) {InsertBefore(men, menc[vmeni]);}
+                    for (vmeni = menc.length - 1; vmeni >= 0; vmeni--) {InsertBefore(cmen, menc[vmeni]);}
                 } else {
-                    for (vmeni = 0; vmeni < men.childNodes.length; vmeni++) {
-                        if (men.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
-                            var mena = GetFirstSubElement(men.childNodes[vmeni], 0)
+                    for (vmeni = 0; vmeni < cmen.childNodes.length; vmeni++) {
+                        if (cmen.childNodes[vmeni].nodeType === Node.ELEMENT_NODE) {
+                            var mena = GetFirstSubElement(cmen.childNodes[vmeni], 0)
                             var menaw = GetNavTextWidth(mena.textContent)
-                            if (mensz+menaw <= maxbarsz) {menc[imenc] = men.childNodes[vmeni]; imenc++;}
+                            if (mensz+menaw <= maxbarsz) {menc[imenc] = cmen.childNodes[vmeni]; imenc++;}
                             mensz += menaw
                         }
                     }
-                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.appendChild(men.removeChild(menc[vmeni]));}
+                    for (vmeni = 0; vmeni < menc.length; vmeni++) {vmen.appendChild(cmen.removeChild(menc[vmeni]));}
+                }
+                if (emen !== null) {
+                    if (men.childNodes.length > 0 || (emen && emen.childNodes.length > 0)) {
+                        if (!HState) {
+                            var ham = document.getElementById("hmb")
+                            if (ham) {
+                                HasClassThenRemove(ham,"h",true)
+                                HState = true
+                            }
+                        }
+                    } else {
+                        if (HState) {
+                            var ham2 = document.getElementById("hmb")
+                            if (ham2) {
+                                AddClass(ham2,"h")
+                                HState = false
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -366,4 +415,43 @@ function GetNavTextWidth(s) {
         return trw
     }
     return 8 * s.length + 32
+}
+function HasClassThenRemove(e,c,r) {
+    if (e && c) {
+        if (e.classList) {
+            var hres = e.classList.contains(c)
+            if (r) e.classList.remove(c)
+            return hres
+        } else {
+            if (e.className === c) {
+                if (r) e.className = ""
+                return true
+            }
+            var sidx = e.className.indexOf(c+" ")
+            if (sidx === 0) {
+                if (r) e.className = e.className.substring(c.length+1)
+                return true
+            }
+            var midx = e.className.indexOf(" "+c+" ")
+            if (midx > -1) {
+                if (r) e.className = e.className.substring(0, midx)+e.className.substring(midx+c.length+2)
+                return true
+            }
+            var eidx = e.className.lastIndexOf(" "+c)
+            if (eidx === e.className.length-1-c.length) {
+                if (r) e.className = e.className.substring(0,e.className.length-1-c.length)
+                return true
+            }
+        }
+    }
+    return false
+}
+function AddClass(e,c) {
+    if (e && c) {
+        if (e.classList) {
+            e.classList.add(c)
+        } else if (!HasClassThenRemove(e, c, false)) {
+            e.className += " "+c
+        }
+    }
 }

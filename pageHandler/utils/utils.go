@@ -19,13 +19,7 @@ func SetLastModifiedHeader(header http.Header, modTime time.Time) {
 
 func SetCacheHeaderWithAge(header http.Header, maxAge uint, modifiedTime time.Time) {
 	header.Set("Cache-Control", "max-age="+strconv.Itoa(int(maxAge))+", must-revalidate")
-	if maxAge > 0 {
-		checkerSecondsBetween := int64(time.Now().UTC().Sub(modifiedTime.UTC()).Seconds())
-		if checkerSecondsBetween < 0 {
-			checkerSecondsBetween *= -1
-		}
-		header.Set("Age", strconv.FormatUint(uint64(checkerSecondsBetween)%uint64(maxAge), 10))
-	}
+	header.Set("Age", "0")
 }
 
 func SwitchToNonCachingHeaders(header http.Header) {

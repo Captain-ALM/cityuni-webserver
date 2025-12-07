@@ -1,10 +1,10 @@
 # Captain ALM Cityuni subdomain WebServer
 
-[![Build Status](https://ci.mrmelon54.com/api/badges/alfred/cityuni-webserver/status.svg)](https://ci.mrmelon54.com/alfred/cityuni-webserver)
-
 This provides my template and cache supporting web / application server for my city university portfolio subdomain.
 
 [Production Server](https://cityuni.captainalm.com/)
+
+[Test Server](https://cityuni.captainalm.xyz/)
 
 Maintainer: 
 [Captain ALM](https://code.mrmelon54.com/alfred)
