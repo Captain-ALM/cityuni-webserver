@@ -271,6 +271,7 @@ entries:
       Find the source code here: <a target="_blank" href="https://gitcove.com/alfred/cityuni-webserver">https://gitcove.com/alfred/cityuni-webserver</a>
       </p>
     startDate: "13/07/2022"
+    endDate: "31/01/2026"
   - name: "Python Communicator"
     anchorSuffix: "python_comm"
     content: >
