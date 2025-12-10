@@ -45,7 +45,7 @@ about:
   title: "Alfred Manville (Captain ALM)"
   content: >
     <p>
-    Hello, I'm Alfred Manville (#age# Years Old; 🇬🇧🇵🇭) and a 1st class Masters Graduate in MSci Computer Science with Cyber Security from City St George's, University of London.
+    Hello, I'm Alfred Manville (#age# Years Old) and a 1st class Masters Graduate in MSci Computer Science with Cyber Security from City St George's, University of London.
     I'm a also a free and open-source developer who enjoys networking my laptops together,
     writes network software to communicate between them and then tries to break said software; which is shown in my <a href="#entry_final_project">dissertation project</a>.
     This project does need improving, though, I have written a <a target="_blank" href="https://github.com/1f349/handshake">successor library</a> in Go under the 1f349 banner with a 
