@@ -75,7 +75,7 @@ about:
     auto-domain-join would store its credentials in the image).
     I also played around with <a target="_blank" href="https://github.com/Captain-ALM/rdpccgs-ccgsrdp-">accessing the RDP servers</a>
     when I was in secondary school (Turns out remote apps is just a glorified application auto-launcher with window size detection).
-    Here is <a target="_blank" href="https://github.com/Captain-ALM/op_ctrl">Operation Control</a> (Stylized: op_ctrl) used for same-computer exploiting
+    Here is <a target="_blank" href="https://github.com/Captain-ALM/op_ctrl">Operation Control</a> (Stylised: op_ctrl) used for same-computer exploiting
     by wrapping target applications run by other users (Such as via RDP Remote Apps) and then starting a master server to send arbitrary
     .net DLLs to execute on the target slaved client.
     </p>
@@ -449,7 +449,7 @@ entries:
       </p>
       <p>
       Since this data was locations based features, a K-Nearest Neighbour was used with distance weights; without enough data points however, regression fails. This was used relative to categorical data EG: Weather conditions but distance is meaningless in this situation. Automatic tuning of the distance weights via threading concurrency was used to attempt to find the best model.
-      Support Vector Machines (SVMs) are better though could lead to misclassifications due to overfitting (Through over-represntation). K-Fold was used to shuffle the data for the SVNs, though this had little effect with the issues.
+      Support Vector Machines (SVMs) are better though could lead to misclassifications due to over-fitting (Through over-representation). K-Fold was used to shuffle the data for the SVNs, though this had little effect with the issues.
       The SVM, via a confusion matrix, showed classic overfitting and would need down-sampling for the results to be more accurate (Cars over-represented).
       The KNN showed a map of vehicle ages but was a lot more varied than the real data.
       </p>
@@ -458,11 +458,11 @@ entries:
       The SVR shows overfitting for slight accidents whereas the KNN classifier shows much better visualisation though slight severity was rather high and could have done with downsampling.
       </p>
       <p>
-      Demographic data used random forests providing the most accurate results - more basic models such as perceptrons had too low of an accuracy. Adjusting weights on the perceptrons, such as model training time and balnced class weight and decreasing learning weight to avoid overshooting helped somewhat but kept only a 30% accuracy. Other features were also tested with the driver age being found the most important feature. A scatter plot was created for inferencing, however, the mean of some combinations were impossible to calculate due to them being non-common.
+      Demographic data used random forests providing the most accurate results - more basic models such as perceptrons had too low of an accuracy. Adjusting weights on the perceptrons, such as model training time and balanced class weight and decreasing learning weight to avoid overshooting helped somewhat but kept only a 30% accuracy. Other features were also tested with the driver age being found the most important feature. A scatter plot was created for inferencing, however, the mean of some combinations were impossible to calculate due to them being uncommon.
       </p>
       <p>
-      K-Nearest Neighbours / an SVM (Discrete) was used to introduce other demographic metrics (Similar the the previous question); sensible test sizes and balanced weights were used to downsample minor accidents to help determine risks without overfitting.
-      Random forests, again, provided the most accurate results, with casualty age being the most important feature and the confusion matrix from the SVM shows overprediction issues.
+      K-Nearest Neighbours / an SVM (Discrete) was used to introduce other demographic metrics (Similar the the previous question); sensible test sizes and balanced weights were used to downsample minor accidents to help determine risks without over-fitting.
+      Random forests, again, provided the most accurate results, with casualty age being the most important feature and the confusion matrix from the SVM shows over-prediction issues.
       </p>
       <p>
       See Also: 
@@ -480,8 +480,8 @@ entries:
       <p>
       This project was supposed to provide a multi-platform (Android, Windows and Linux) VPN (Layer 3) using as devices as physical relay nodes creating a mesh (Multiple transport types for different forms of wireless and infrastructure networking would be supported) but, this was too ambitious and due to so many quirks (Permissions, background operations, etc.) with the Android platform (The first targeted) took a lot longer,
       The project uses a 'tun' adapter (Requiring a 3rd party library - wintun - on windows) for the VPN interface and should auto-configure the IP address based on the hashes of the public keys for the node.
-      The keys are post-quantum ML-KEM (768) for keysharing and ML-DSA (44) for authenticating packets (Unfortunately the key material is not cross comaptible between the two, unlike the original plan of using elliptic curve cryptography, which also causes a large increase in message size and the requirements to send seperately and fragment signature packets).
-      Two supported transports were planned - Bluetooth RFcomm, providing a serial-like stream connection, and Wi-Fi Direct proving a way to Wi-Fi link two devices and use UDP over the link. Unfortunately the Wi-Fi Direct connection was replaced with Wi-Fi infrastructure in the build created for submission due to being out of time (This mode scans for a well known port accross the subnet of the connected network).
+      The keys are post-quantum ML-KEM (768) for key-sharing and ML-DSA (44) for authenticating packets (Unfortunately the key material is not cross comaptible between the two, unlike the original plan of using elliptic curve cryptography, which also causes a large increase in message size and the requirements to send separately and fragment signature packets).
+      Two supported transports were planned - Bluetooth RFcomm, providing a serial-like stream connection, and Wi-Fi Direct proving a way to Wi-Fi link two devices and use UDP over the link. Unfortunately the Wi-Fi Direct connection was replaced with Wi-Fi infrastructure in the build created for submission due to being out of time (This mode scans for a well known port across the subnet of the connected network).
       The packets should have the type, TTL, data hash, destination (If unicast), source node IDs and the data.
       The nodes must maintain a routing graph; the IP addresses are based on the SHA256 Node ID where the first 3 bytes are used with 10.x.x.x and the last 6 bytes are used in fd0a:...
       </p>
@@ -493,7 +493,7 @@ entries:
       The RFC like document, for the protocol, was planned first with diagrams for how nodes connect to each other depending on which transport is used. Research was also performed into the available APIs, with SDK 26 minimum on Android and Java 17, being targeted. The library was written in Java 8 and imported into the Android App, written after, in Java 17 using an SDK 35 target. The app used the Android Rooms database API to implement storage and generic recycler view model code was plugged in, to manage each of the tables. The App consists of a main activity and an editor/viewer activity. The VPN is processed in a foreground service. Testing was only done in the library (On packet streaming) and was lackluster.
       </p>
       <p>
-      In the time, a library full of bugs was produced alongside an App with support for changing settings, authorizing permissions, creating a VPN adapter, using the BouncyCastle PQC APIs and ChaCha20, peering request management, peer management and topology viewing.
+      In the time, a library full of bugs was produced alongside an App with support for changing settings, authorising permissions, creating a VPN adapter, using the BouncyCastle PQC APIs and ChaCha20, peering request management, peer management and topology viewing.
       Handshaking was fixed the day after the build submission.
       </p>
       <p>
@@ -508,5 +508,5 @@ entries:
     endDate: "06/06/2025"
     videoLocation: "resources/stream/vid-dsrt.mp4"
     videoContentType: "video/mp4"
-#    videoThumbnailLocation: "resources/assets/vid-dsrt_t.jpg"
-#    videoThumbnailFullSizeLocation: "resources/assets/vid-dsrt.jpg"
+    videoThumbnailLocation: "resources/assets/vid-dsrt_t.jpg"
+    videoThumbnailFullSizeLocation: "resources/assets/vid-dsrt.jpg"
